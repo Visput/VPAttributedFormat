@@ -58,6 +58,25 @@
     [self.argumentSpecifierSubstring makeEmpty];
 }
 
+- (NSString *)builtSubstring {
+    //            if (conversionSubstring.arguments.count == 1) {
+    //                builtSubstring = [NSString stringWithFormat:conversionSubstring.value,
+    //                                  [conversionSubstring.arguments[0] value]];
+    //
+    //            } else if (conversionSubstring.arguments.count == 2) {
+    //                builtSubstring = [NSString stringWithFormat:conversionSubstring.value,
+    //                                  [conversionSubstring.arguments[0] value],
+    //                                  [conversionSubstring.arguments[1] value]];
+    //
+    //            } else if (conversionSubstring.arguments.count == 3) {
+    //                builtSubstring = [NSString stringWithFormat:conversionSubstring.value,
+    //                                  [conversionSubstring.arguments[0] value],
+    //                                  [conversionSubstring.arguments[1] value],
+    //                                  [conversionSubstring.arguments[2] value]];
+    //            }
+    return nil;
+}
+
 #pragma mark -
 #pragma mark Property
 

@@ -47,6 +47,8 @@ typedef NS_ENUM(NSUInteger, VPType) {
 @property (nonatomic, readonly, assign) VPType type;
 @property (nonatomic, readonly, assign) NSUInteger index;
 
+@property (nonatomic, strong) id valueWrapper; // See VPValueWrapper.h for full list of wrapper classes
+
 - (instancetype)initWithType:(VPType)type
                        index:(NSUInteger)index;
 
