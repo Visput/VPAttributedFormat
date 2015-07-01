@@ -59,22 +59,29 @@
 }
 
 - (NSString *)builtSubstring {
-    //            if (conversionSubstring.arguments.count == 1) {
-    //                builtSubstring = [NSString stringWithFormat:conversionSubstring.value,
-    //                                  [conversionSubstring.arguments[0] value]];
-    //
-    //            } else if (conversionSubstring.arguments.count == 2) {
-    //                builtSubstring = [NSString stringWithFormat:conversionSubstring.value,
-    //                                  [conversionSubstring.arguments[0] value],
-    //                                  [conversionSubstring.arguments[1] value]];
-    //
-    //            } else if (conversionSubstring.arguments.count == 3) {
-    //                builtSubstring = [NSString stringWithFormat:conversionSubstring.value,
-    //                                  [conversionSubstring.arguments[0] value],
-    //                                  [conversionSubstring.arguments[1] value],
-    //                                  [conversionSubstring.arguments[2] value]];
-    //            }
-    return nil;
+    for (VPConversionArgument *argument in self.mutableArguments) {
+        NSAssert(argument.valueWrapper != nil, @"\"builtSubstring\" method is called for conversion substring with nil value for argument: %@", argument);
+    }
+    
+    NSString *builtSubstring = nil;
+    
+    if (self.arguments.count == 1) {
+        builtSubstring = [NSString stringWithFormat:self.value,
+                          [self.arguments[0] value]];
+        
+    } else if (self.arguments.count == 2) {
+        builtSubstring = [NSString stringWithFormat:self.value,
+                          [self.arguments[0] value],
+                          [self.arguments[1] value]];
+        
+    } else if (self.arguments.count == 3) {
+        builtSubstring = [NSString stringWithFormat:self.value,
+                          [self.arguments[0] value],
+                          [self.arguments[1] value],
+                          [self.arguments[2] value]];
+    }
+    
+    return builtSubstring;
 }
 
 #pragma mark -
