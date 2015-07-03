@@ -26,7 +26,7 @@
 
 - (void)fillLabelValue1 {
     NSString *name = @"Uladzimir Papko";
-    int age = 26;
+    NSString *age = @"26";
     
     self.labelValue1.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.labelFormat1.attributedText, name, age];
 }

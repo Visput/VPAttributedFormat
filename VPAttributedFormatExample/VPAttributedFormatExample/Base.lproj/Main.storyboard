@@ -16,8 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9T-E5-5xX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9T-E5-5xX">
                                 <rect key="frame" x="140" y="123" width="320" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="06i-HO-Wa4"/>
+                                    <constraint firstAttribute="width" constant="320" id="bPv-F0-2az"/>
+                                </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="My name is ">
                                         <attributes>
@@ -40,7 +44,7 @@
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="%d">
+                                    <fragment content="%@">
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="24" name="HelveticaNeue-LightItalic"/>
@@ -68,8 +72,12 @@
                                     <segment title="Complicated"/>
                                 </segments>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umi-Sa-sbc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umi-Sa-sbc">
                                 <rect key="frame" x="140" y="152" width="320" height="77"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="7rn-dM-xMo"/>
+                                    <constraint firstAttribute="height" constant="77" id="Mlx-kR-MtQ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -77,8 +85,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Umi-Sa-sbc" firstAttribute="top" secondItem="s9T-E5-5xX" secondAttribute="bottom" constant="8" id="5HT-Hp-wgr"/>
+                            <constraint firstAttribute="centerX" secondItem="s9T-E5-5xX" secondAttribute="centerX" id="HHx-Ep-fSB"/>
+                            <constraint firstAttribute="centerX" secondItem="Umi-Sa-sbc" secondAttribute="centerX" id="KVN-Fj-TDi"/>
                             <constraint firstItem="Yob-Ss-6rq" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="OSY-Ri-bHf"/>
                             <constraint firstAttribute="centerX" secondItem="Yob-Ss-6rq" secondAttribute="centerX" id="RcX-dn-Dgr"/>
+                            <constraint firstItem="s9T-E5-5xX" firstAttribute="top" secondItem="Yob-Ss-6rq" secondAttribute="bottom" constant="23" id="sjR-CT-OKd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Attributed Format Examples" id="QNR-9y-9mx"/>

@@ -102,7 +102,7 @@
     static unichar const VPArgumentIndexIndicator = '$';
     
     if (character == VPPrecisionOrWidthArgumentIndicator) { // Found precision or width argument indicator
-        VPConversionArgument *argument = [[VPConversionArgument alloc] initWithType:VPTypeInt
+        VPConversionArgument *argument = [[VPConversionArgument alloc] initWithType:VPTypeInt // Precision and width arguments have "int" type
                                                                               index:NSNotFound];
         [self.mutableArguments addObject:argument];
         
