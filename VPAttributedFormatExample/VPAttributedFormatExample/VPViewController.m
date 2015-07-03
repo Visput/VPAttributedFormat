@@ -12,18 +12,23 @@
 
 @interface VPViewController ()
 
+@property (nonatomic, weak) IBOutlet UILabel *labelFormat1;
+@property (nonatomic, weak) IBOutlet UILabel *labelValue1;
+
 @end
 
 @implementation VPViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"%@", [NSString stringWithFormat:@"%1$*2$.*3$g", 1.0, 1, 1]);
-    NSLog(@"%@", [NSString stringWithFormat:@"%*.*g", 1, 1, 1.0]);
-   
-    NSAttributedString *format = [[NSAttributedString alloc] initWithString:@"Hi, I am Vova, I am 26 years old"];
-    NSAttributedString *string = [NSAttributedString attributedStringWithAttributedFormat:format];
-    NSLog(@"%@", string);
+    [self fillLabelValue1];
+}
+
+- (void)fillLabelValue1 {
+    NSString *name = @"Uladzimir Papko";
+    int age = 26;
+    
+    self.labelValue1.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.labelFormat1.attributedText, name, age];
 }
 
 @end

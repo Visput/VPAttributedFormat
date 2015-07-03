@@ -126,9 +126,10 @@
     NSUInteger conversionArgumentsIndex = 0;
     NSMutableArray *sameIndexArguments = [NSMutableArray array];
     
-    for (NSUInteger i = 0; i < substringsContainer.conversionArgumentMaxIndex; i++) {
+    for (NSUInteger i = 0; i <= substringsContainer.conversionArgumentMaxIndex; i++) {
         
         VPConversionArgument *conversionArgument = conversionArguments[conversionArgumentsIndex];
+        [sameIndexArguments removeAllObjects]; // Clean array before executing new iteration
         [sameIndexArguments addObject:conversionArgument];
         ++conversionArgumentsIndex;
         if (conversionArgument.index != NSNotFound) { // Few arguments can have the same index only if indexes are obviously set

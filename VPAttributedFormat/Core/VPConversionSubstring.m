@@ -67,18 +67,18 @@
     
     if (self.arguments.count == 1) {
         builtSubstring = [NSString stringWithFormat:self.value,
-                          [self.arguments[0] value]];
+                          [[self.arguments[0] valueWrapper] value]];
         
     } else if (self.arguments.count == 2) {
         builtSubstring = [NSString stringWithFormat:self.value,
-                          [self.arguments[0] value],
-                          [self.arguments[1] value]];
+                          [[self.arguments[0] valueWrapper] value],
+                          [[self.arguments[1] valueWrapper] value]];
         
     } else if (self.arguments.count == 3) {
         builtSubstring = [NSString stringWithFormat:self.value,
-                          [self.arguments[0] value],
-                          [self.arguments[1] value],
-                          [self.arguments[2] value]];
+                          [[self.arguments[0] valueWrapper] value],
+                          [[self.arguments[1] valueWrapper] value],
+                          [[self.arguments[2] valueWrapper] value]];
     }
     
     return builtSubstring;

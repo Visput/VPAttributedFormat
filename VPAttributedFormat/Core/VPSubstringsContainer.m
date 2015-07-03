@@ -69,7 +69,7 @@
     [self.mutableConversionArguments addObject:conversionArgument];
     
     if (conversionArgument.index == NSNotFound) { // Arguments have natural order
-        self.conversionArgumentMaxIndex = self.mutableConversionArguments.count;
+        self.conversionArgumentMaxIndex = self.mutableConversionArguments.count - 1;
     } else {
         self.conversionArgumentMaxIndex = MAX(self.conversionArgumentMaxIndex, conversionArgument.index);
     }
