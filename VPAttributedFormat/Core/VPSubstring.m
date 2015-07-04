@@ -41,6 +41,10 @@
     return self.mutableValue.length == 0;
 }
 
+- (NSString *)builtSubstring {
+    return self.value;
+}
+
 #pragma mark -
 #pragma mark Property
 

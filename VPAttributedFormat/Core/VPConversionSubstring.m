@@ -9,6 +9,26 @@
 #import "VPConversionSubstring.h"
 #import "VPSubstring_Protected.h"
 #import "VPConversionArgument.h"
+#import "VPValueWrapper.h"
+
+#define BUILD_SUBSTRING_WITH_WRAPPER_CLASS(wrapper_class)         \
+                                                                  \
+wrapper_class *firstArgumentWrapper = firstArgument.valueWrapper; \
+if (self.arguments.count == 1) {                                  \
+    builtSubstring = [NSString stringWithFormat:self.value,       \
+                      firstArgumentWrapper.value];                \
+                                                                  \
+} else if (self.arguments.count == 2) {                           \
+    builtSubstring = [NSString stringWithFormat:self.value,       \
+                      firstArgumentWrapper.value,                 \
+                      secondArgumentWrapper.value];               \
+                                                                  \
+} else if (self.arguments.count == 3) {                           \
+    builtSubstring = [NSString stringWithFormat:self.value,       \
+                      firstArgumentWrapper.value,                 \
+                      secondArgumentWrapper.value,                \
+                      thirdArgumentWrapper.value];                \
+}                                                                 \
 
 @interface VPConversionSubstring ()
 
@@ -63,22 +83,146 @@
         NSAssert(argument.valueWrapper != nil, @"\"builtSubstring\" method is called for conversion substring with nil value for argument: %@", argument);
     }
     
+    VPConversionArgument *firstArgument = self.arguments[0];
+    VPIntValueWrapper *secondArgumentWrapper = nil;
+    if (self.arguments.count >= 2) {
+        secondArgumentWrapper = [self.arguments[1] valueWrapper];
+    }
+    VPIntValueWrapper *thirdArgumentWrapper = nil;
+    if (self.arguments.count == 3) {
+        thirdArgumentWrapper = [self.arguments[2] valueWrapper];
+    }
+    
     NSString *builtSubstring = nil;
     
-    if (self.arguments.count == 1) {
-        builtSubstring = [NSString stringWithFormat:self.value,
-                          [[self.arguments[0] valueWrapper] value]];
-        
-    } else if (self.arguments.count == 2) {
-        builtSubstring = [NSString stringWithFormat:self.value,
-                          [[self.arguments[0] valueWrapper] value],
-                          [[self.arguments[1] valueWrapper] value]];
-        
-    } else if (self.arguments.count == 3) {
-        builtSubstring = [NSString stringWithFormat:self.value,
-                          [[self.arguments[0] valueWrapper] value],
-                          [[self.arguments[1] valueWrapper] value],
-                          [[self.arguments[2] valueWrapper] value]];
+    switch (firstArgument.type) {
+        case VPTypeUnknown: {
+            NSAssert(0, @"Wrong type for argument %@", firstArgument);
+            break;
+        }
+        case VPTypeId: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPIdValueWrapper)
+            break;
+        }
+        case VPTypeVoidPointer: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPVoidPointerValueWrapper)
+            break;
+        }
+        case VPTypeChar: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPCharValueWrapper)
+            break;
+        }
+        case VPTypeCharPointer: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPCharPointerValueWrapper)
+            break;
+        }
+        case VPTypeSignedCharPointer: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPSignedCharPointerValueWrapper)
+            break;
+        }
+        case VPTypeUnsignedChar: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPUnsignedCharValueWrapper)
+            break;
+        }
+        case VPTypeUnichar: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPUnicharValueWrapper)
+            break;
+        }
+        case VPTypeUnicharPointer: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPUnicharPointerValueWrapper)
+            break;
+        }
+        case VPTypeShort: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPShortValueWrapper)
+            break;
+        }
+        case VPTypeShortPointer: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPShortPointerValueWrapper)
+            break;
+        }
+        case VPTypeUnsignedShort: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPUnsignedShortValueWrapper)
+            break;
+        }
+        case VPTypeInt: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPIntValueWrapper)
+            break;
+        }
+        case VPTypeIntPointer: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPIntPointerValueWrapper)
+            break;
+        }
+        case VPTypeUnsignedInt: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPUnsignedIntValueWrapper)
+            break;
+        }
+        case VPTypeWint_t: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPWint_tValueWrapper)
+            break;
+        }
+        case VPTypeIntmax_t: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPIntmax_tValueWrapper)
+            break;
+        }
+        case VPTypeIntmax_tPointer: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPIntmax_tPointerValueWrapper)
+            break;
+        }
+        case VPTypeUintmax_t: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPUintmax_tValueWrapper)
+            break;
+        }
+        case VPTypeSize_t: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPSize_tValueWrapper)
+            break;
+        }
+        case VPTypeSize_tPointer: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPSize_tPointerValueWrapper)
+            break;
+        }
+        case VPTypePtrdiff_t: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPPtrdiff_tValueWrapper)
+            break;
+        }
+        case VPTypePtrdiff_tPointer: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPPtrdiff_tPointerValueWrapper)
+            break;
+        }
+        case VPTypeLong: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPLongValueWrapper)
+            break;
+        }
+        case VPTypeLongPointer: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPLongPointerValueWrapper)
+            break;
+        }
+        case VPTypeUnsignedLong: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPUnsignedLongValueWrapper)
+            break;
+        }
+        case VPTypeLongLong: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPLongLongValueWrapper)
+            break;
+        }
+        case VPTypeLongLongPointer: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPLongLongPointerValueWrapper)
+            break;
+        }
+        case VPTypeUnsignedLongLong: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPUnsignedLongLongValueWrapper)
+            break;
+        }
+        case VPTypeDouble: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPDoubleValueWrapper)
+            break;
+        }
+        case VPTypeLongDouble: {
+            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPIdValueWrapper)
+            break;
+        }
+        default: {
+            break;
+        }
     }
     
     return builtSubstring;

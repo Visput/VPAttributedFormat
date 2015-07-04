@@ -43,7 +43,7 @@ header_file.write(comment)
 header_file.write("#import <Foundation/Foundation.h>\n\n")
 
 impl_file.write(comment)
-impl_file.write("#import \"" + file_name +".h\"\n\n")
+impl_file.write("#import \"" + file_name + ".h\"\n\n")
 
 for type in types:
     class_name = type.replace("Type", "") + "ValueWrapper"

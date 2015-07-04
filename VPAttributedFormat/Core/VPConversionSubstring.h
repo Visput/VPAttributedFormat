@@ -13,6 +13,4 @@
 @property (nonatomic, readonly, strong) NSArray *arguments; // Array of VPConversionArgument
 @property (nonatomic, readonly, assign) BOOL isComplete;
 
-- (NSString *)builtSubstring;
-
 @end
