@@ -304,6 +304,15 @@ if (self.arguments.count == 1) {                                  \
                                   positionInParentString:position];
             [self.mutableValue replaceCharactersInRange:self.argumentIndexSubstring.range withString:@""];
             [self.argumentIndexSubstring makeEmpty];
+            
+        } else {
+            
+            // Digits were part of precision or width
+            // Reset argument index substring because digits were added by mistake
+            [self.argumentIndexSubstring makeEmpty];
+            
+            // Try parse last character again
+            [self parseCharacter:character position:position];
         }
         
     } else {
