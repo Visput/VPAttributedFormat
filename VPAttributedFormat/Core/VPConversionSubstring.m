@@ -346,17 +346,6 @@ if (self.arguments.count == 1) {                                  \
         
         // Check if arguments types and count are valid
         [self validateArguments];
-        
-        if (self.valueArgumentIndex != NSNotFound) { // Originally conversion substring contained arguments indexes
-            
-            // Argument indexes substrings were removed
-            // Example: Was: [NSString stringWithFormat:@"%1$*2$.*3$g", 1.0, 1, 1]);
-            //       Became: [NSString stringWithFormats:@"%*.*g", 1, 1, 1.0]);
-            // Put value argument to the end of array
-            VPConversionArgument *valueArgument = self.mutableArguments[0];
-            [self.mutableArguments removeObjectAtIndex:0];
-            [self.mutableArguments addObject:valueArgument];
-        }
     }
 }
 
