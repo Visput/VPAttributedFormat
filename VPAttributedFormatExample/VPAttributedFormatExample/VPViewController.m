@@ -48,7 +48,7 @@
 
 - (void)fillLabelValue3 {
     NSString *name = @"Uladzimir Papko";
-    int age = 26;
+    long long age = 26;
     int width = 4;
     int precision = 3;
     
