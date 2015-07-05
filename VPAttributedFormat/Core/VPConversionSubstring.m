@@ -279,7 +279,9 @@ if (self.arguments.count == 1) {                                  \
             
         } else if (character == VPArgumentIndexIndicator) { // Found argument index substring
             
-            NSUInteger argumentIndex = @([self.argumentIndexSubstring.value longLongValue]).unsignedIntegerValue;
+            // Originally argument index starts from 1 (1$, 2$, 3$ and etc.)
+            // As soon as arguemnt index is determined it's value will start from 0 (0, 1, 2 and etc.)
+            NSUInteger argumentIndex = @([self.argumentIndexSubstring.value longLongValue]).unsignedIntegerValue - 1;
             
             // Example: [NSString stringWithFormat:@"%1$*2$.*3$g", 1.0, 1, 1]);
             if (self.mutableArguments.count != 0) { // Argument index is related to width or precision

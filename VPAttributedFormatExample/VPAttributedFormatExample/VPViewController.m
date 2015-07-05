@@ -15,6 +15,9 @@
 @property (nonatomic, weak) IBOutlet UILabel *labelFormat1;
 @property (nonatomic, weak) IBOutlet UILabel *labelValue1;
 
+@property (nonatomic, weak) IBOutlet UILabel *labelFormat2;
+@property (nonatomic, weak) IBOutlet UILabel *labelValue2;
+
 @end
 
 @implementation VPViewController
@@ -29,6 +32,7 @@
     int age = 26;
     
     self.labelValue1.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.labelFormat1.attributedText, name, age];
+    self.labelValue2.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.labelFormat2.attributedText, age, name];
 }
 
 @end

@@ -135,10 +135,14 @@
         if (conversionArgument.index != NSNotFound) { // Few arguments can have the same index only if indexes are obviously set
             BOOL needsStop = NO;
             while (!needsStop) {
-                conversionArgument = conversionArguments[conversionArgumentsIndex];
-                if (conversionArgument.index == i) {
-                    [sameIndexArguments addObject:conversionArgument];
-                    ++conversionArgumentsIndex;
+                if (conversionArgumentsIndex < conversionArguments.count) {
+                    VPConversionArgument *sameIndexArgument = conversionArguments[conversionArgumentsIndex];
+                    if (sameIndexArgument.index == i) {
+                        [sameIndexArguments addObject:sameIndexArgument];
+                        ++conversionArgumentsIndex;
+                    } else {
+                        needsStop = YES;
+                    }
                 } else {
                     needsStop = YES;
                 }
