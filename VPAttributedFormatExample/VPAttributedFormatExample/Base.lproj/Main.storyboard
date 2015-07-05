@@ -195,7 +195,14 @@
                                     <constraint firstAttribute="height" constant="21" id="wJt-cM-IGG"/>
                                 </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="My name is ">
+                                    <fragment content="My name is">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="15" name="HelveticaNeue-LightItalic"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <font key="NSFont" size="17" name="HelveticaNeue-LightItalic"/>
@@ -220,7 +227,7 @@
                                         <attributes>
                                             <color key="NSBackgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="NSColor" red="0.7686274509803922" green="0.10196078431372549" blue="0.086274509803921567" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="11" name="Menlo-Regular"/>
+                                            <font key="NSFont" size="10" name="Menlo-Regular"/>
                                             <integer key="NSLigature" value="0"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>

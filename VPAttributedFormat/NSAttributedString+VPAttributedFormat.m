@@ -34,7 +34,7 @@
 }
 
 - (instancetype)initWithAttributedFormat:(NSAttributedString *)attributedFormat arguments:(va_list)arguments {
-    VPAttributedStringFormatter *formatter = [[VPAttributedStringFormatter alloc] init];
+    VPAttributedStringFormatter *formatter = [VPAttributedStringFormatter new];
     self = [self initWithAttributedString:[formatter stringWithFormat:attributedFormat arguments:arguments]];
     return self;
 }

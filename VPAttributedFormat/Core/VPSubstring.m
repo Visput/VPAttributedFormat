@@ -38,7 +38,7 @@
 }
 
 - (BOOL)isEmpty {
-    return self.mutableValue.length == 0;
+    return self.value.length == 0;
 }
 
 #pragma mark -

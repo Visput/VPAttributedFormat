@@ -10,18 +10,17 @@
 
 @interface VPConversionArgument ()
 
-@property (nonatomic, assign) VPType type;
 @property (nonatomic, assign) NSUInteger index;
 
 @end
 
 @implementation VPConversionArgument
 
-- (instancetype)initWithType:(VPType)type
-                       index:(NSUInteger)index; {
+- (instancetype)initWithValueWrapper:(NSObject<VPValueWrapper> *)valueWrapper
+                               index:(NSUInteger)index {
     self = [super init];
     if (self) {
-        self.type = type;
+        self.valueWrapper = valueWrapper;
         self.index = index;
     }
     return self;

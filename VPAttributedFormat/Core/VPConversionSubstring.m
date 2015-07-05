@@ -11,25 +11,6 @@
 #import "VPConversionArgument.h"
 #import "VPValueWrapper.h"
 
-#define BUILD_SUBSTRING_WITH_WRAPPER_CLASS(wrapper_class)         \
-                                                                  \
-wrapper_class *firstArgumentWrapper = firstArgument.valueWrapper; \
-if (self.arguments.count == 1) {                                  \
-    builtSubstring = [NSString stringWithFormat:self.value,       \
-                      firstArgumentWrapper.value];                \
-                                                                  \
-} else if (self.arguments.count == 2) {                           \
-    builtSubstring = [NSString stringWithFormat:self.value,       \
-                      firstArgumentWrapper.value,                 \
-                      secondArgumentWrapper.value];               \
-                                                                  \
-} else if (self.arguments.count == 3) {                           \
-    builtSubstring = [NSString stringWithFormat:self.value,       \
-                      firstArgumentWrapper.value,                 \
-                      secondArgumentWrapper.value,                \
-                      thirdArgumentWrapper.value];                \
-}                                                                 \
-
 @interface VPConversionSubstring ()
 
 @property (nonatomic, strong) NSMutableArray *mutableArguments;
@@ -51,21 +32,21 @@ if (self.arguments.count == 1) {                                  \
         self.mutableArguments = [NSMutableArray array];
         
         self.valueArgumentIndex = NSNotFound;
-        self.argumentIndexSubstring = [[VPSubstring alloc] init];
-        self.argumentSpecifierSubstring = [[VPSubstring alloc] init];
+        self.argumentIndexSubstring = [VPSubstring new];
+        self.argumentSpecifierSubstring = [VPSubstring new];
     }
     return self;
 }
 
 - (void)appendCharacter:(unichar)character
  positionInParentString:(NSUInteger)position {
-    NSAssert(!self.isComplete, @"Conversion substring \"%@\" is complete. Character %c can't be added", self.mutableValue, character);
+    NSAssert(!self.isComplete, @"Conversion substring \"%@\" is complete. Character %c can't be added", self.value, character);
     
     [super appendCharacter:character
     positionInParentString:position];
     
     [self parseCharacter:character
-                position:self.mutableValue.length - 1];
+                position:self.value.length - 1];
 }
 
 - (void)makeEmpty {
@@ -79,150 +60,24 @@ if (self.arguments.count == 1) {                                  \
 }
 
 - (NSString *)builtSubstring {
-    for (VPConversionArgument *argument in self.mutableArguments) {
-        NSAssert(argument.valueWrapper != nil, @"\"builtSubstring\" method is called for conversion substring with nil value for argument: %@", argument);
-    }
-    
-    VPConversionArgument *firstArgument = self.arguments[0];
-    VPIntValueWrapper *secondArgumentWrapper = nil;
-    if (self.arguments.count >= 2) {
-        secondArgumentWrapper = [self.arguments[1] valueWrapper];
-    }
-    VPIntValueWrapper *thirdArgumentWrapper = nil;
-    if (self.arguments.count == 3) {
-        thirdArgumentWrapper = [self.arguments[2] valueWrapper];
-    }
-    
     NSString *builtSubstring = nil;
     
-    switch (firstArgument.type) {
-        case VPTypeUnknown: {
-            NSAssert(0, @"Wrong type for argument %@", firstArgument);
-            break;
-        }
-        case VPTypeId: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPIdValueWrapper)
-            break;
-        }
-        case VPTypeVoidPointer: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPVoidPointerValueWrapper)
-            break;
-        }
-        case VPTypeChar: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPCharValueWrapper)
-            break;
-        }
-        case VPTypeCharPointer: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPCharPointerValueWrapper)
-            break;
-        }
-        case VPTypeSignedCharPointer: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPSignedCharPointerValueWrapper)
-            break;
-        }
-        case VPTypeUnsignedChar: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPUnsignedCharValueWrapper)
-            break;
-        }
-        case VPTypeUnichar: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPUnicharValueWrapper)
-            break;
-        }
-        case VPTypeUnicharPointer: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPUnicharPointerValueWrapper)
-            break;
-        }
-        case VPTypeShort: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPShortValueWrapper)
-            break;
-        }
-        case VPTypeShortPointer: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPShortPointerValueWrapper)
-            break;
-        }
-        case VPTypeUnsignedShort: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPUnsignedShortValueWrapper)
-            break;
-        }
-        case VPTypeInt: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPIntValueWrapper)
-            break;
-        }
-        case VPTypeIntPointer: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPIntPointerValueWrapper)
-            break;
-        }
-        case VPTypeUnsignedInt: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPUnsignedIntValueWrapper)
-            break;
-        }
-        case VPTypeWint_t: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPWint_tValueWrapper)
-            break;
-        }
-        case VPTypeIntmax_t: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPIntmax_tValueWrapper)
-            break;
-        }
-        case VPTypeIntmax_tPointer: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPIntmax_tPointerValueWrapper)
-            break;
-        }
-        case VPTypeUintmax_t: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPUintmax_tValueWrapper)
-            break;
-        }
-        case VPTypeSize_t: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPSize_tValueWrapper)
-            break;
-        }
-        case VPTypeSize_tPointer: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPSize_tPointerValueWrapper)
-            break;
-        }
-        case VPTypePtrdiff_t: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPPtrdiff_tValueWrapper)
-            break;
-        }
-        case VPTypePtrdiff_tPointer: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPPtrdiff_tPointerValueWrapper)
-            break;
-        }
-        case VPTypeLong: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPLongValueWrapper)
-            break;
-        }
-        case VPTypeLongPointer: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPLongPointerValueWrapper)
-            break;
-        }
-        case VPTypeUnsignedLong: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPUnsignedLongValueWrapper)
-            break;
-        }
-        case VPTypeLongLong: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPLongLongValueWrapper)
-            break;
-        }
-        case VPTypeLongLongPointer: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPLongLongPointerValueWrapper)
-            break;
-        }
-        case VPTypeUnsignedLongLong: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPUnsignedLongLongValueWrapper)
-            break;
-        }
-        case VPTypeDouble: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPDoubleValueWrapper)
-            break;
-        }
-        case VPTypeLongDouble: {
-            BUILD_SUBSTRING_WITH_WRAPPER_CLASS(VPIdValueWrapper)
-            break;
-        }
-        default: {
-            break;
-        }
+    id<VPValueWrapper> conversionWrapper = [self.arguments.lastObject valueWrapper];
+    
+    if (self.arguments.count == 1) { // Format contains only value argument
+        builtSubstring = [conversionWrapper stringWithSingleFormat:self.value];
+        
+    } else if (self.arguments.count == 2) { // Format contains value and (width or precision) arguments
+        VPIntValueWrapper *widthOrPrecisionWrapper = (VPIntValueWrapper *)[self.arguments[0] valueWrapper];
+        builtSubstring = [conversionWrapper stringWithSingleFormat:self.value
+                                           widthOrPrecisionWrapper:widthOrPrecisionWrapper];
+        
+    } else if (self.arguments.count == 3) { // Format contains value and width and precision arguments
+        VPIntValueWrapper *widthWrapper = (VPIntValueWrapper *)[self.arguments[0] valueWrapper];
+        VPIntValueWrapper *precisionWrapper = (VPIntValueWrapper *)[self.arguments[1] valueWrapper];
+        builtSubstring = [conversionWrapper stringWithSingleFormat:self.value
+                                                      widthWrapper:widthWrapper
+                                                  precisionWrapper:precisionWrapper];
     }
     
     return builtSubstring;
@@ -246,8 +101,10 @@ if (self.arguments.count == 1) {                                  \
     static unichar const VPArgumentIndexIndicator = '$';
     
     if (character == VPPrecisionOrWidthArgumentIndicator) { // Found precision or width argument indicator
-        VPConversionArgument *argument = [[VPConversionArgument alloc] initWithType:VPTypeInt // Precision and width arguments have "int" type
-                                                                              index:NSNotFound];
+        
+        // Precision and width arguments have "int" type
+        VPConversionArgument *argument = [[VPConversionArgument alloc] initWithValueWrapper:[VPIntValueWrapper new]
+                                                                                      index:NSNotFound];
         [self.mutableArguments addObject:argument];
         
         [self.argumentIndexSubstring makeEmpty];
@@ -258,9 +115,9 @@ if (self.arguments.count == 1) {                                  \
             [self.argumentSpecifierSubstring appendCharacter:character
                                       positionInParentString:position];
             
-            VPType argumentType = [self typeForArgumentSpecifier:self.argumentSpecifierSubstring.value];
-            VPConversionArgument *argument = [[VPConversionArgument alloc] initWithType:argumentType
-                                                                                  index:self.valueArgumentIndex];
+            Class wrapperClass = [self wrapperClassForArgumentSpecifier:self.argumentSpecifierSubstring.value];
+            VPConversionArgument *argument = [[VPConversionArgument alloc] initWithValueWrapper:[wrapperClass new]
+                                                                                          index:self.valueArgumentIndex];
             [self.mutableArguments addObject:argument];
             
             [self.argumentSpecifierSubstring makeEmpty];
@@ -284,13 +141,13 @@ if (self.arguments.count == 1) {                                  \
             NSUInteger argumentIndex = @([self.argumentIndexSubstring.value longLongValue]).unsignedIntegerValue - 1;
             
             // Example: [NSString stringWithFormat:@"%1$*2$.*3$g", 1.0, 1, 1]);
-            if (self.mutableArguments.count != 0) { // Argument index is related to width or precision
+            if (self.arguments.count != 0) { // Argument index is related to width or precision
                 
                 // Update argument index
-                VPConversionArgument *oldArgument = self.mutableArguments.lastObject;
-                VPConversionArgument *newArgument = [[VPConversionArgument alloc] initWithType:oldArgument.type
-                                                                                         index:argumentIndex];
-                [self.mutableArguments replaceObjectAtIndex:self.mutableArguments.count - 1
+                VPConversionArgument *oldArgument = self.arguments.lastObject;
+                VPConversionArgument *newArgument = [[VPConversionArgument alloc] initWithValueWrapper:oldArgument.valueWrapper.copy
+                                                                                                 index:argumentIndex];
+                [self.mutableArguments replaceObjectAtIndex:self.arguments.count - 1
                                                  withObject:newArgument];
                 
             } else { // Argument index is related to value
@@ -320,9 +177,9 @@ if (self.arguments.count == 1) {                                  \
             [self.argumentSpecifierSubstring appendCharacter:character
                                       positionInParentString:position];
             
-            VPType argumentType = [self typeForArgumentSpecifier:self.argumentSpecifierSubstring.value];
-            VPConversionArgument *argument = [[VPConversionArgument alloc] initWithType:argumentType
-                                                                                  index:self.valueArgumentIndex];
+            Class wrapperClass = [self wrapperClassForArgumentSpecifier:self.argumentSpecifierSubstring.value];
+            VPConversionArgument *argument = [[VPConversionArgument alloc] initWithValueWrapper:[wrapperClass new]
+                                                                                          index:self.valueArgumentIndex];
             [self.mutableArguments addObject:argument];
             
             [self.argumentIndexSubstring makeEmpty];
@@ -358,19 +215,19 @@ if (self.arguments.count == 1) {                                  \
     }
 }
 
-- (VPType)typeForArgumentSpecifier:(NSString *)argumentSpecifier {
-    VPType type = VPTypeUnknown;
+- (Class)wrapperClassForArgumentSpecifier:(NSString *)argumentSpecifier {
+    Class wrapperClass = Nil;
     
-    NSDictionary *typeSpecifiers = self.typeSpecifiers;
-    for (NSNumber *typeNumber in typeSpecifiers) {
-        NSSet *specifiersSet = typeSpecifiers[typeNumber];
+    NSDictionary *wrapperClassSpecifiers = self.wrapperClassSpecifiers;
+    for (NSString *wrapperClassString in wrapperClassSpecifiers) {
+        NSSet *specifiersSet = wrapperClassSpecifiers[wrapperClassString];
         if ([specifiersSet containsObject:argumentSpecifier]) {
-            type = [typeNumber unsignedIntegerValue];
+            wrapperClass = NSClassFromString(wrapperClassString);
             break;
         }
     }
     
-    return type;
+    return wrapperClass;
 }
 
 - (void)validateArguments {
@@ -378,16 +235,16 @@ if (self.arguments.count == 1) {                                  \
     static NSUInteger const VPMaxNumberOfArgumentsPerConversion = 3; // Width, Precision, Value. Example: [NSString stringWithFormats:@"%*.*g", 1, 1, 1.0]);
     
     NSException *exception = [NSException exceptionWithName:NSInvalidArgumentException
-                                                     reason:[NSString stringWithFormat:@"Wrong format specifier is used in \"attributedFormat\" substring: %@", self.mutableValue]
+                                                     reason:[NSString stringWithFormat:@"Wrong format specifier is used in \"attributedFormat\" substring: %@", self.value]
                                                    userInfo:nil];
     
-    if (self.mutableArguments.count < VPMinNumberOfArgumentsPerConversion ||
-        self.mutableArguments.count > VPMaxNumberOfArgumentsPerConversion) {
+    if (self.arguments.count < VPMinNumberOfArgumentsPerConversion ||
+        self.arguments.count > VPMaxNumberOfArgumentsPerConversion) {
         @throw exception;
     }
     
-    for (VPConversionArgument *argument in self.mutableArguments) {
-        if (argument.type == VPTypeUnknown) {
+    for (VPConversionArgument *argument in self.arguments) {
+        if (argument.valueWrapper == nil) {
             @throw exception;
         }
     }
@@ -397,41 +254,41 @@ if (self.arguments.count == 1) {                                  \
  *  Documentation: https://developer.apple.com/library/prerelease/mac/documentation/Cocoa/Conceptual/Strings/Articles/formatSpecifiers.html
  *                 http://pubs.opengroup.org/onlinepubs/009695399/functions/printf.html
  */
-- (NSDictionary *)typeSpecifiers {
-    static NSDictionary *typeSpecifiers = nil;
-    if (typeSpecifiers == nil) {
-        typeSpecifiers = @{@(VPTypeId)                : [NSSet setWithObjects:@"@", nil],
-                           @(VPTypeVoidPointer)       : [NSSet setWithObjects:@"p", nil],
-                           @(VPTypeChar)              : [NSSet setWithObjects:@"hhd", @"hhD", @"hhi", nil],
-                           @(VPTypeCharPointer)       : [NSSet setWithObjects:@"hhn", nil],
-                           @(VPTypeSignedCharPointer) : [NSSet setWithObjects:@"s", nil],
-                           @(VPTypeUnsignedChar)      : [NSSet setWithObjects:@"hho", @"hhO", @"hhu", @"hhU", @"hhx", @"hhX", nil],
-                           @(VPTypeUnichar)           : [NSSet setWithObjects:@"C", nil],
-                           @(VPTypeUnicharPointer)    : [NSSet setWithObjects:@"S", @"ls", nil],
-                           @(VPTypeShort)             : [NSSet setWithObjects:@"hd", @"hD", @"hi",  nil],
-                           @(VPTypeShortPointer)      : [NSSet setWithObjects:@"hn", nil],
-                           @(VPTypeUnsignedShort)     : [NSSet setWithObjects:@"ho", @"hO", @"hu", @"hU", @"hx", @"hX", nil],
-                           @(VPTypeInt)               : [NSSet setWithObjects:@"d", @"D", @"i", nil],
-                           @(VPTypeIntPointer)        : [NSSet setWithObjects:@"n", nil],
-                           @(VPTypeUnsignedInt)       : [NSSet setWithObjects:@"o", @"O", @"u", @"U", @"x", @"X", @"c", nil],
-                           @(VPTypeWint_t)            : [NSSet setWithObjects:@"lc", nil],
-                           @(VPTypeIntmax_t)          : [NSSet setWithObjects:@"jd", @"jD", @"ji", nil],
-                           @(VPTypeIntmax_tPointer)   : [NSSet setWithObjects:@"jn", nil],
-                           @(VPTypeUintmax_t)         : [NSSet setWithObjects:@"jo", @"jO", @"ju", @"jU", @"jx", @"jX", nil],
-                           @(VPTypeSize_t)            : [NSSet setWithObjects:@"zd", @"zD", @"zo", @"zO", @"zu", @"zU", @"zx", @"zX", @"zi", nil],
-                           @(VPTypeSize_tPointer)     : [NSSet setWithObjects:@"zn", nil],
-                           @(VPTypePtrdiff_t)         : [NSSet setWithObjects:@"td", @"tD", @"to", @"tO", @"tu", @"tU", @"tx", @"tX", @"ti", nil],
-                           @(VPTypePtrdiff_tPointer)  : [NSSet setWithObjects:@"tn", nil],
-                           @(VPTypeLong)              : [NSSet setWithObjects:@"ld", @"lD", @"li", nil],
-                           @(VPTypeLongPointer)       : [NSSet setWithObjects:@"ln", nil],
-                           @(VPTypeUnsignedLong)      : [NSSet setWithObjects:@"lo", @"lO", @"lu", @"lU", @"lx", @"lX", nil],
-                           @(VPTypeLongLong)          : [NSSet setWithObjects:@"lld", @"llD", @"lli", nil],
-                           @(VPTypeLongLongPointer)   : [NSSet setWithObjects:@"lln", nil],
-                           @(VPTypeUnsignedLongLong)  : [NSSet setWithObjects:@"llo", @"llO", @"llu", @"llU", @"llx", @"llX", nil],
-                           @(VPTypeDouble)            : [NSSet setWithObjects:@"f", @"F", @"e", @"E", @"g", @"G", @"a", @"A", @"la", @"lA", @"le", @"lE", @"lf", @"lF", @"lg", @"lG", nil],
-                           @(VPTypeLongDouble)        : [NSSet setWithObjects:@"La", @"LA", @"Le", @"LE", @"Lf", @"LF", @"Lg", @"LG", nil]};
+- (NSDictionary *)wrapperClassSpecifiers {
+    static NSDictionary *wrapperClassSpecifiers = nil;
+    if (wrapperClassSpecifiers == nil) {
+        wrapperClassSpecifiers = @{NSStringFromClass([VPIdValueWrapper class])                : [NSSet setWithObjects:@"@", nil],
+                                   NSStringFromClass([VPVoidPointerValueWrapper class])       : [NSSet setWithObjects:@"p", nil],
+                                   NSStringFromClass([VPCharValueWrapper class])              : [NSSet setWithObjects:@"hhd", @"hhD", @"hhi", nil],
+                                   NSStringFromClass([VPCharPointerValueWrapper class])       : [NSSet setWithObjects:@"hhn", nil],
+                                   NSStringFromClass([VPSignedCharPointerValueWrapper class]) : [NSSet setWithObjects:@"s", nil],
+                                   NSStringFromClass([VPUnsignedCharValueWrapper class])      : [NSSet setWithObjects:@"hho", @"hhO", @"hhu", @"hhU", @"hhx", @"hhX", nil],
+                                   NSStringFromClass([VPUnicharValueWrapper class])           : [NSSet setWithObjects:@"C", nil],
+                                   NSStringFromClass([VPUnicharPointerValueWrapper class])    : [NSSet setWithObjects:@"S", @"ls", nil],
+                                   NSStringFromClass([VPShortValueWrapper class])             : [NSSet setWithObjects:@"hd", @"hD", @"hi",  nil],
+                                   NSStringFromClass([VPShortPointerValueWrapper class])      : [NSSet setWithObjects:@"hn", nil],
+                                   NSStringFromClass([VPUnsignedShortValueWrapper class])     : [NSSet setWithObjects:@"ho", @"hO", @"hu", @"hU", @"hx", @"hX", nil],
+                                   NSStringFromClass([VPIntValueWrapper class])               : [NSSet setWithObjects:@"d", @"D", @"i", nil],
+                                   NSStringFromClass([VPIntPointerValueWrapper class])        : [NSSet setWithObjects:@"n", nil],
+                                   NSStringFromClass([VPUnsignedIntValueWrapper class])       : [NSSet setWithObjects:@"o", @"O", @"u", @"U", @"x", @"X", @"c", nil],
+                                   NSStringFromClass([VPWint_tValueWrapper class])            : [NSSet setWithObjects:@"lc", nil],
+                                   NSStringFromClass([VPIntmax_tValueWrapper class])          : [NSSet setWithObjects:@"jd", @"jD", @"ji", nil],
+                                   NSStringFromClass([VPIntmax_tPointerValueWrapper class])   : [NSSet setWithObjects:@"jn", nil],
+                                   NSStringFromClass([VPUintmax_tValueWrapper class])         : [NSSet setWithObjects:@"jo", @"jO", @"ju", @"jU", @"jx", @"jX", nil],
+                                   NSStringFromClass([VPSize_tValueWrapper class])            : [NSSet setWithObjects:@"zd", @"zD", @"zo", @"zO", @"zu", @"zU", @"zx", @"zX", @"zi", nil],
+                                   NSStringFromClass([VPSize_tPointerValueWrapper class])     : [NSSet setWithObjects:@"zn", nil],
+                                   NSStringFromClass([VPPtrdiff_tValueWrapper class])         : [NSSet setWithObjects:@"td", @"tD", @"to", @"tO", @"tu", @"tU", @"tx", @"tX", @"ti", nil],
+                                   NSStringFromClass([VPPtrdiff_tPointerValueWrapper class])  : [NSSet setWithObjects:@"tn", nil],
+                                   NSStringFromClass([VPLongValueWrapper class])              : [NSSet setWithObjects:@"ld", @"lD", @"li", nil],
+                                   NSStringFromClass([VPLongPointerValueWrapper class])       : [NSSet setWithObjects:@"ln", nil],
+                                   NSStringFromClass([VPUnsignedLongValueWrapper class])      : [NSSet setWithObjects:@"lo", @"lO", @"lu", @"lU", @"lx", @"lX", nil],
+                                   NSStringFromClass([VPLongLongValueWrapper class])          : [NSSet setWithObjects:@"lld", @"llD", @"lli", nil],
+                                   NSStringFromClass([VPLongLongPointerValueWrapper class])   : [NSSet setWithObjects:@"lln", nil],
+                                   NSStringFromClass([VPUnsignedLongLongValueWrapper class])  : [NSSet setWithObjects:@"llo", @"llO", @"llu", @"llU", @"llx", @"llX", nil],
+                                   NSStringFromClass([VPDoubleValueWrapper class])            : [NSSet setWithObjects:@"f", @"F", @"e", @"E", @"g", @"G", @"a", @"A", @"la", @"lA", @"le", @"lE", @"lf", @"lF", @"lg", @"lG", nil],
+                                   NSStringFromClass([VPLongDoubleValueWrapper class])        : [NSSet setWithObjects:@"La", @"LA", @"Le", @"LE", @"Lf", @"LF", @"Lg", @"LG", nil]};
     }
-    return typeSpecifiers;
+    return wrapperClassSpecifiers;
 }
 
 - (NSSet *)conversionSpecifiers {
