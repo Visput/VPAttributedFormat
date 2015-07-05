@@ -20,6 +20,4 @@
 
 - (BOOL)isEmpty;
 
-- (NSString *)builtSubstring;
-
 @end

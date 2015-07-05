@@ -371,12 +371,23 @@
     }
     
     for (VPSubstring *substring in substringsContainer.substrings) {
-        NSString *builtSubstring = substring.builtSubstring;
-        NSMutableAttributedString *attributedSubstring = [[NSMutableAttributedString alloc] initWithString:builtSubstring];
-        [attributedFormat enumerateAttributesInRange:substring.range options:0 usingBlock:^(NSDictionary *attributes, NSRange range, BOOL *stop) {
-            [attributedSubstring addAttributes:attributes range:NSMakeRange(0, builtSubstring.length)];
-        }];
-        [resultAttributedString appendAttributedString:attributedSubstring];
+        if ([substring isKindOfClass:[VPConversionSubstring class]]) {
+            
+            // Add conversion substring
+            VPConversionSubstring *conversionSubstring = (VPConversionSubstring *)substring;
+            NSString *builtSubstring = conversionSubstring.builtSubstring;
+            NSMutableAttributedString *attributedSubstring = [[NSMutableAttributedString alloc] initWithString:builtSubstring];
+            [attributedFormat enumerateAttributesInRange:substring.range options:0 usingBlock:^(NSDictionary *attributes, NSRange range, BOOL *stop) {
+                [attributedSubstring addAttributes:attributes range:NSMakeRange(0, builtSubstring.length)];
+            }];
+            [resultAttributedString appendAttributedString:attributedSubstring];
+            
+        } else {
+            
+            // Add ordinary substring
+            NSAttributedString *attributedSubstring = [attributedFormat attributedSubstringFromRange:substring.range];
+            [resultAttributedString appendAttributedString:attributedSubstring];
+        }
     }
     
     return resultAttributedString.copy;

@@ -123,12 +123,21 @@
                                     </fragment>
                                     <fragment content="%2$@">
                                         <attributes>
-                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <font key="NSFont" size="12" name="HelveticaNeue-Bold"/>
+                                            <color key="NSBackgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="NSColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="11" name="Georgia-Bold"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=". I am ">
+                                    <fragment content=". I">
+                                        <attributes>
+                                            <color key="NSBackgroundColor" red="0.83529411764705885" green="0.25098039215686274" blue="0.023529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue-LightItalic"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" am ">
                                         <attributes>
                                             <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <font key="NSFont" size="17" name="HelveticaNeue-LightItalic"/>
@@ -493,7 +502,6 @@
         <!--Navigation Controller-->
         <scene sceneID="6B8-I8-pCz">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="o6g-7c-0yf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="l4q-CZ-v93" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GQD-bP-suC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -503,6 +511,7 @@
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="5TU-IX-fX2"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o6g-7c-0yf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="361" y="850"/>
         </scene>
