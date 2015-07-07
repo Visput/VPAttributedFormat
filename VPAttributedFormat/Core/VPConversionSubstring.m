@@ -40,7 +40,7 @@
 
 - (void)appendCharacter:(unichar)character
  positionInParentString:(NSUInteger)position {
-    NSAssert(!self.isComplete, @"Conversion substring \"%@\" is complete. Character %c can't be added", self.value, character);
+    NSAssert(!self.isComplete, @"Conversion substring '%@' is complete. Character '%c' can't be added", self.value, character);
     
     [super appendCharacter:character
     positionInParentString:position];
@@ -64,15 +64,15 @@
     
     id<VPValueWrapper> conversionWrapper = [self.arguments.lastObject valueWrapper];
     
-    if (self.arguments.count == 1) { // Format contains only value argument
+    if (self.arguments.count == 1) { // Format contains only value argument.
         builtSubstring = [conversionWrapper stringWithSingleFormat:self.value];
         
-    } else if (self.arguments.count == 2) { // Format contains value and (width or precision) arguments
+    } else if (self.arguments.count == 2) { // Format contains value and (width or precision) arguments.
         VPIntValueWrapper *widthOrPrecisionWrapper = (VPIntValueWrapper *)[self.arguments[0] valueWrapper];
         builtSubstring = [conversionWrapper stringWithSingleFormat:self.value
                                            widthOrPrecisionWrapper:widthOrPrecisionWrapper];
         
-    } else if (self.arguments.count == 3) { // Format contains value and width and precision arguments
+    } else if (self.arguments.count == 3) { // Format contains value and width and precision arguments.
         VPIntValueWrapper *widthWrapper = (VPIntValueWrapper *)[self.arguments[0] valueWrapper];
         VPIntValueWrapper *precisionWrapper = (VPIntValueWrapper *)[self.arguments[1] valueWrapper];
         builtSubstring = [conversionWrapper stringWithSingleFormat:self.value
@@ -87,7 +87,7 @@
 #pragma mark Property
 
 - (NSArray *)arguments {
-    // Return mutable value instead of immutable copy for memory usage optimization
+    // Return mutable value instead of immutable copy for memory usage optimization.
     return self.mutableArguments;
 }
 
@@ -96,13 +96,12 @@
 
 - (void)parseCharacter:(unichar)character
               position:(NSUInteger)position {
-    
     static unichar const VPPrecisionOrWidthArgumentIndicator = '*';
     static unichar const VPArgumentIndexIndicator = '$';
     
-    if (character == VPPrecisionOrWidthArgumentIndicator) { // Found precision or width argument indicator
+    if (character == VPPrecisionOrWidthArgumentIndicator) { // Found precision or width argument indicator.
         
-        // Precision and width arguments have "int" type
+        // Precision and width arguments have 'int' type.
         VPConversionArgument *argument = [[VPConversionArgument alloc] initWithValueWrapper:[VPIntValueWrapper new]
                                                                                       index:NSNotFound];
         [self.mutableArguments addObject:argument];
@@ -111,7 +110,7 @@
         [self.argumentSpecifierSubstring makeEmpty];
         
     } else if (!self.argumentSpecifierSubstring.isEmpty) {
-        if ([self.conversionSpecifiers containsObject: @(character)]) { // Conversion specifier with length modifier is finished
+        if ([self.conversionSpecifiers containsObject: @(character)]) { // Conversion specifier with length modifier is finished.
             [self.argumentSpecifierSubstring appendCharacter:character
                                       positionInParentString:position];
             
@@ -124,39 +123,39 @@
             
             self.isComplete = YES;
             
-        } else if ([self.lengthModifiers containsObject:@(character)]) { // Conversion specifier with length modifier is continued
+        } else if ([self.lengthModifiers containsObject:@(character)]) { // Conversion specifier with length modifier is continued.
             [self.argumentSpecifierSubstring appendCharacter:character
                                       positionInParentString:position];
         }
         
     } else if (!self.argumentIndexSubstring.isEmpty) {
-        if ([self.digits containsObject:@(character)]) { // Character is part of argument index substring or precision or width
+        if ([self.digits containsObject:@(character)]) { // Character is part of argument index substring or precision or width.
             [self.argumentIndexSubstring appendCharacter:character
                                   positionInParentString:position];
             
-        } else if (character == VPArgumentIndexIndicator) { // Found argument index substring
+        } else if (character == VPArgumentIndexIndicator) { // Found argument index substring.
             
-            // Originally argument index starts from 1 (1$, 2$, 3$ and etc.)
-            // When argument index is determined its value stored starting from 0 (0, 1, 2 and etc.)
+            // Originally argument index starts from 1 (1$, 2$, 3$ and etc.).
+            // When argument index is determined its value stored starting from 0 (0, 1, 2 and etc.).
             NSUInteger argumentIndex = @([self.argumentIndexSubstring.value longLongValue]).unsignedIntegerValue - 1;
             
             // Example: [NSString stringWithFormat:@"%1$*2$.*3$g", 1.0, 1, 1]);
-            if (self.arguments.count != 0) { // Argument index is related to width or precision
+            if (self.arguments.count != 0) { // Argument index is related to width or precision.
                 
-                // Update argument index
+                // Update argument index.
                 VPConversionArgument *oldArgument = self.arguments.lastObject;
                 VPConversionArgument *newArgument = [[VPConversionArgument alloc] initWithValueWrapper:oldArgument.valueWrapper.copy
                                                                                                  index:argumentIndex];
                 [self.mutableArguments replaceObjectAtIndex:self.arguments.count - 1
                                                  withObject:newArgument];
                 
-            } else { // Argument index is related to value
+            } else { // Argument index is related to value.
                 
-                // Put this index to conversion argument later when value argument will be parsed
+                // Put this index to conversion argument later when value argument will be parsed.
                 self.valueArgumentIndex = argumentIndex;
             }
             
-            // Remove argument index substring from conversion substring
+            // Remove argument index substring from conversion substring.
             [self.argumentIndexSubstring appendCharacter:character
                                   positionInParentString:position];
             [self.mutableValue replaceCharactersInRange:self.argumentIndexSubstring.range withString:@""];
@@ -164,16 +163,16 @@
             
         } else {
             
-            // Digits were part of precision or width
-            // Reset argument index substring because digits were added by mistake
+            // Digits were part of precision or width.
+            // Reset argument index substring because digits were added by mistake.
             [self.argumentIndexSubstring makeEmpty];
             
-            // Try parse last character again
+            // Try parse last character again.
             [self parseCharacter:character position:position];
         }
         
     } else {
-        if ([self.conversionSpecifiers containsObject: @(character)]) { // Conversion substring is complete
+        if ([self.conversionSpecifiers containsObject: @(character)]) { // Conversion substring is complete.
             [self.argumentSpecifierSubstring appendCharacter:character
                                       positionInParentString:position];
             
@@ -187,16 +186,16 @@
             
             self.isComplete = YES;
             
-        } else if ([self.lengthModifiers containsObject:@(character)]) { // Conversion specifier with length modifier is started
+        } else if ([self.lengthModifiers containsObject:@(character)]) { // Conversion specifier with length modifier is started.
             [self.argumentSpecifierSubstring appendCharacter:character
                                       positionInParentString:position];
             
             [self.argumentIndexSubstring makeEmpty];
             
-        } else if ([self.digits containsObject:@(character)]) { // Character is part of argument index substring or precision or width
+        } else if ([self.digits containsObject:@(character)]) { // Character is part of argument index substring or precision or width.
             
-            // Append character to argument index substring
-            // If character is part of precision or width then it will be fixed in next iterations of cycle
+            // Append character to argument index substring.
+            // If character is part of precision or width then it will be fixed in next iterations of cycle.
             [self.argumentIndexSubstring appendCharacter:character
                                   positionInParentString:position];
             
@@ -210,7 +209,7 @@
     
     if (self.isComplete) {
         
-        // Check if arguments types and count are valid
+        // Check if arguments types and count are valid.
         [self validateArguments];
     }
 }
@@ -231,11 +230,11 @@
 }
 
 - (void)validateArguments {
-    static NSUInteger const VPMinNumberOfArgumentsPerConversion = 1; // Value. Example [NSString stringWithFormats:@"%g", 1.0]);
+    static NSUInteger const VPMinNumberOfArgumentsPerConversion = 1; // Value. Example: [NSString stringWithFormats:@"%g", 1.0]);
     static NSUInteger const VPMaxNumberOfArgumentsPerConversion = 3; // Width, Precision, Value. Example: [NSString stringWithFormats:@"%*.*g", 1, 1, 1.0]);
     
     NSException *exception = [NSException exceptionWithName:NSInvalidArgumentException
-                                                     reason:[NSString stringWithFormat:@"Wrong format specifier is used in \"attributedFormat\" substring: %@", self.value]
+                                                     reason:[NSString stringWithFormat:@"Wrong format specifier is used in 'attributedFormat' substring: %@", self.value]
                                                    userInfo:nil];
     
     if (self.arguments.count < VPMinNumberOfArgumentsPerConversion ||

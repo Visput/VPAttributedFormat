@@ -8,6 +8,17 @@
 
 #import "VPValueWrapper.h"
 
+/**
+ *  This macro represents code for value wrapper implementation generation.
+ *  It makes easy to generate implementations for value wrappers classes that wrap values with different types.
+ *  The reason of generating these classes is ability to store values with different primitive types
+ *  as property in other object.
+ *  Class-wrappers allow to avoid using multiple if-else / switch-case constructions.
+ *
+ *  @param class_name    Name of class that has to be generated.
+ *  @param value_type    Type of value that has to be wrapped.
+ *  @param argument_type Type of argument that has to be read from variable argument list.
+ */
 #define SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION_EXTENDED(class_name, value_type, argument_type)        \
                                                                                                        \
 @interface class_name ()                                                                               \
@@ -50,15 +61,10 @@ SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION_EXTENDED(class_name, value_type, value_t
 
 SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION(VPIdValueWrapper, id)
 SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION(VPVoidPointerValueWrapper, void *)
-SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION_EXTENDED(VPCharValueWrapper, char, int)
 SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION(VPCharPointerValueWrapper, char *)
 SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION(VPSignedCharPointerValueWrapper, signed char *)
-SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION_EXTENDED(VPUnsignedCharValueWrapper, unsigned char, int)
-SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION_EXTENDED(VPUnicharValueWrapper, unichar, int)
 SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION(VPUnicharPointerValueWrapper, unichar *)
-SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION_EXTENDED(VPShortValueWrapper, short, int)
 SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION(VPShortPointerValueWrapper, short *)
-SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION_EXTENDED(VPUnsignedShortValueWrapper, unsigned short, int)
 SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION(VPIntValueWrapper, int)
 SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION(VPIntPointerValueWrapper, int *)
 SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION(VPUnsignedIntValueWrapper, unsigned int)
@@ -78,4 +84,11 @@ SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION(VPLongLongPointerValueWrapper, long long
 SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION(VPUnsignedLongLongValueWrapper, unsigned long long)
 SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION(VPDoubleValueWrapper, double)
 SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION(VPLongDoubleValueWrapper, long double)
+
+// Compiler requires 'int' argument type for primitive types that are described below
+SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION_EXTENDED(VPUnsignedCharValueWrapper, unsigned char, int)
+SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION_EXTENDED(VPUnicharValueWrapper, unichar, int)
+SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION_EXTENDED(VPCharValueWrapper, char, int)
+SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION_EXTENDED(VPShortValueWrapper, short, int)
+SYNTHESIZE_VALUE_WRAPPER_IMPLEMENTATION_EXTENDED(VPUnsignedShortValueWrapper, unsigned short, int)
 

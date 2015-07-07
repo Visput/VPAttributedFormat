@@ -10,7 +10,8 @@
 
 @interface VPConversionSubstring : VPSubstring
 
-@property (nonatomic, readonly, strong) NSArray *arguments; // Array of VPConversionArgument
+/// Array of VPConversionArgument.
+@property (nonatomic, readonly, strong) NSArray *arguments;
 @property (nonatomic, readonly, assign) BOOL isComplete;
 
 - (NSString *)builtSubstring;

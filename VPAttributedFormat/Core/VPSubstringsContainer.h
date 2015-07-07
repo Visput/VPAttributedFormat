@@ -13,10 +13,13 @@
 
 @interface VPSubstringsContainer : NSObject
 
-@property (nonatomic, readonly, strong) NSArray *substrings; // Array of VPSubstring
+/// Array of VPSubstring.
+@property (nonatomic, readonly, strong) NSArray *substrings;
 @property (nonatomic, readonly, assign) NSUInteger conversionArgumentMaxIndex;
 
 - (void)addSubstring:(VPSubstring *)substring;
-- (NSArray *)conversionArgumentsSortedByIndex; // Returns array of VPConversionArgument
+
+/// Returns array of VPConversionArgument.
+- (NSArray *)conversionArgumentsSortedByIndex;
 
 @end

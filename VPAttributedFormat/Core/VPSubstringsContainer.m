@@ -51,7 +51,7 @@
 #pragma mark Property
 
 - (NSArray *)substrings {
-    // Return mutable value instead of immutable copy for memory usage optimization
+    // Return mutable value instead of immutable copy for memory usage optimization.
     return self.mutableSubstrings;
 }
 
@@ -68,7 +68,7 @@
 - (void)addConversionAgument:(VPConversionArgument *)conversionArgument {
     [self.mutableConversionArguments addObject:conversionArgument];
     
-    if (conversionArgument.index == NSNotFound) { // Arguments have natural order
+    if (conversionArgument.index == NSNotFound) { // Arguments have natural order.
         self.conversionArgumentMaxIndex = self.mutableConversionArguments.count - 1;
     } else {
         self.conversionArgumentMaxIndex = MAX(self.conversionArgumentMaxIndex, conversionArgument.index);

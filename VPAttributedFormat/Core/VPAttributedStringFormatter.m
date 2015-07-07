@@ -18,9 +18,9 @@
 - (NSAttributedString *)stringWithFormat:(NSAttributedString *)attributedFormat
                                arguments:(va_list)arguments {
     if (attributedFormat == nil) {
-        // This parameter can't be nil
+        // This parameter can't be nil.
         @throw [NSException exceptionWithName:NSInvalidArgumentException
-                                       reason:@"Parameter \"attributedFormat\" can't be nil"
+                                       reason:@"Parameter 'attributedFormat' can't be nil"
                                      userInfo:nil];
     }
 
@@ -46,44 +46,44 @@
     for (int characterIndex = 0; characterIndex < formatString.length; ++characterIndex) {
         unichar formatCharacter = [formatString characterAtIndex:characterIndex];
         
-        if (!conversionSubstring.isEmpty) { // Character is part of conversion substring or percent "%%" symbol
+        if (!conversionSubstring.isEmpty) { // Character is part of conversion substring or percent "%%" symbol.
             
             [conversionSubstring appendCharacter:formatCharacter
                           positionInParentString:characterIndex];
             
-            if ([conversionSubstring.value isEqualToString:VPPercentSymbol]) { // Character is part of percent "%%" symbol
+            if ([conversionSubstring.value isEqualToString:VPPercentSymbol]) { // Character is part of percent "%%" symbol.
                 
-                // Reset conversion substring because '%' was added by mistake
+                // Reset conversion substring because '%' was added by mistake.
                 [conversionSubstring makeEmpty];
                 
-                // "%" is ordinary character, append it to ordinary substring
+                // "%" is ordinary character, append it to ordinary substring.
                 [ordinarySubstring appendCharacter:formatCharacter
                             positionInParentString:characterIndex];
                 
-            } else { // Character is part of conversion substring
+            } else { // Character is part of conversion substring.
                 
                 if (conversionSubstring.isComplete) {
                     [substringsContainer addSubstring:conversionSubstring];
                     
-                    // Create new object for next conversion substring
+                    // Create new object for next conversion substring.
                     conversionSubstring = [VPConversionSubstring new];
                 }
             }
             
         } else {
-            if (formatCharacter == VPConversionIndicator) { // Character is part of conversion substring or percent "%%" symbol
+            if (formatCharacter == VPConversionIndicator) { // Character is part of conversion substring or percent "%%" symbol.
                 if (!ordinarySubstring.isEmpty) {
                     
-                    // Ordinary string is ended
-                    // Add to container
+                    // Ordinary string is ended.
+                    // Add to container.
                     [substringsContainer addSubstring:ordinarySubstring];
                     
-                    // Create new object for next ordinary substring
+                    // Create new object for next ordinary substring.
                     ordinarySubstring = [VPSubstring new];
                 }
                 
-                // Append character to conversion substring
-                // If character is part of percent "%%" symbol then it will be fixed in next iteration of cycle
+                // Append character to conversion substring.
+                // If character is part of percent "%%" symbol then it will be fixed in next iteration of cycle.
                 [conversionSubstring appendCharacter:formatCharacter
                               positionInParentString:characterIndex];
                 
@@ -95,19 +95,19 @@
         }
     }
     
-    // If attributed format ends with ordinary substring then it has to be added to container
+    // If attributed format ends with ordinary substring then it has to be added to container.
     if (!ordinarySubstring.isEmpty) {
         [substringsContainer addSubstring:ordinarySubstring];
     }
     
-    // If attributed format ends with convesion substring then it has to be added to container
+    // If attributed format ends with convesion substring then it has to be added to container.
     if (!conversionSubstring.isEmpty) {
         if (conversionSubstring.isComplete) {
             [substringsContainer addSubstring:conversionSubstring];
             
         } else {
-            // Conversion substring is incomplete
-            // It means that attributedFormat is invalid
+            // Conversion substring is incomplete.
+            // It means that attributedFormat is invalid.
             @throw [NSException exceptionWithName:NSInvalidArgumentException
                                            reason:[NSString stringWithFormat:@"Wrong format specifier is used in \"attributedFormat\" substring: %@", conversionSubstring]
                                          userInfo:nil];
@@ -130,11 +130,11 @@
         
         VPConversionArgument *conversionArgument = conversionArguments[conversionArgumentsIndex];
         
-        // Clean array before executing new iteration
+        // Clean array before executing new iteration.
         [sameIndexArguments removeAllObjects];
         
         ++conversionArgumentsIndex;
-        if (conversionArgument.index != NSNotFound) { // Few arguments can have the same index only if indexes are obviously set
+        if (conversionArgument.index != NSNotFound) { // Few arguments can have the same index only if indexes are obviously set.
             BOOL needsStop = NO;
             while (!needsStop) {
                 if (conversionArgumentsIndex < conversionArguments.count) {
@@ -160,7 +160,7 @@
     for (VPSubstring *substring in substringsContainer.substrings) {
         if ([substring isKindOfClass:[VPConversionSubstring class]]) {
             
-            // Add conversion substring
+            // Add conversion substring.
             VPConversionSubstring *conversionSubstring = (VPConversionSubstring *)substring;
             NSString *builtSubstring = conversionSubstring.builtSubstring;
             NSMutableAttributedString *attributedSubstring = [[NSMutableAttributedString alloc] initWithString:builtSubstring];
@@ -171,7 +171,7 @@
             
         } else {
             
-            // Add ordinary substring
+            // Add ordinary substring.
             NSAttributedString *attributedSubstring = [attributedFormat attributedSubstringFromRange:substring.range];
             [resultAttributedString appendAttributedString:attributedSubstring];
         }

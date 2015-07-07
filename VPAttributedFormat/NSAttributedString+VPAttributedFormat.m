@@ -9,10 +9,6 @@
 #import "NSAttributedString+VPAttributedFormat.h"
 #import "VPAttributedStringFormatter.h"
 
-@interface NSAttributedString ()
-
-@end
-
 @implementation NSAttributedString (VPAttributedFormat)
 
 + (instancetype)attributedStringWithAttributedFormat:(NSAttributedString *)attributedFormat, ... {

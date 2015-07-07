@@ -11,7 +11,8 @@
 
 @interface VPConversionArgument : NSObject
 
-@property (nonatomic, strong) NSObject<VPValueWrapper> *valueWrapper; // See VPValueWrapper.h for full list of wrapper classes
+/// See VPValueWrapper.h for full list of wrapper classes.
+@property (nonatomic, strong) NSObject<VPValueWrapper> *valueWrapper;
 @property (nonatomic, readonly, assign) NSUInteger index;
 
 - (instancetype)initWithValueWrapper:(NSObject<VPValueWrapper> *)valueWrapper
