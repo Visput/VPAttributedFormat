@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import "VPAttributedFormat.h"
 
 @interface VPAttributedFormatTests : XCTestCase
 
@@ -15,26 +16,33 @@
 
 @implementation VPAttributedFormatTests
 
-- (void)setUp {
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+- (void)testFormat:(NSString *)format, ... {
+    NSAttributedString *attributedFormat = [[NSAttributedString alloc] initWithString:format];
+    
+    va_list arguments;
+    va_start(arguments, format);
+    NSString *string = [[NSString alloc] initWithFormat:format arguments:arguments];
+    va_end(arguments);
+    
+    va_start(arguments, format);
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithAttributedFormat:attributedFormat arguments:arguments];
+    va_end(arguments);
+    
+    XCTAssertEqualObjects(string, attributedString.string);
 }
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
+- (void)testObjectFormat {
+    [self testFormat:@"%@", @"String"];
+    [self testFormat:@"%@", @1];
+    [self testFormat:@"%@", @[@"String1", @"String2"]];
+    [self testFormat:@"%@", @{@"Key1" : @"String", @"Key2" : @1}];
+    [self testFormat:@"%@", [NSObject new]];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
-}
-
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void)testIntFormat {
+    [self testFormat:@"%d", 1];
+    [self testFormat:@"%d", INT_MAX];
+    [self testFormat:@"%d", INT_MIN];
 }
 
 @end
