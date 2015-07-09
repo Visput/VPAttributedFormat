@@ -1,6 +1,5 @@
 # VPAttributedFormat
-VPAttributedFormat project represents category: **NSAttributedString+VPAttributedFormat**  
-
+VPAttributedFormat project represents category: **NSAttributedString+VPAttributedFormat**.  
 This category provides methods for building attributed string based on attributed format and arguments that should satisfy this format.  
 The most suitable case of using this category is text controls with variable attributed text configured in interface builder.  
 You need set correct string format to attributed text and configure necessary attributes.  
