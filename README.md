@@ -4,6 +4,7 @@ This category provides methods for building attributed string based on attribute
 The most suitable case of using this category is text controls with variable attributed text configured in interface builder.  
 You need set correct string format to attributed text and configure necessary attributes.  
 Then you need pass necessary arguments in code by using methods of this category.  
+See 'Usage' and 'Examples' sections for more details.
 
 ## Installation
 ### Cocoa Pods
