@@ -162,7 +162,7 @@
             
             // Add conversion substring.
             VPConversionSubstring *conversionSubstring = (VPConversionSubstring *)substring;
-            NSString *builtSubstring = conversionSubstring.builtSubstring;
+            NSString *builtSubstring = conversionSubstring.buildSubstring;
             NSMutableAttributedString *attributedSubstring = [[NSMutableAttributedString alloc] initWithString:builtSubstring];
             [attributedFormat enumerateAttributesInRange:substring.range options:0 usingBlock:^(NSDictionary *attributes, NSRange range, BOOL *stop) {
                 [attributedSubstring addAttributes:attributes range:NSMakeRange(0, builtSubstring.length)];

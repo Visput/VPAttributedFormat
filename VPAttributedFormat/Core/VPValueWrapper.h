@@ -30,11 +30,12 @@
  *  Builds and returns formatted string by using 'format' variable and self wrapped value
  *  that was read by calling 'setValueByArguments:' method.
  *  Single argument format has to be passed as parameter for this method.
- *  Example of such format is \@"%g". Such format can be used in class that wraps 'double' value.
+ *
+ *  Example of such format is "%g". Such format can be used in class that wraps 'double' value.
  *
  *  @param format String format that is usually used in [NSString stringWithFormat:] call.
  *
- *  @return The formatted string.
+ *  @return A formatted string.
  */
 - (NSString *)stringWithSingleFormat:(NSString *)format;
 
@@ -42,12 +43,13 @@
  *  Builds and returns formatted string by using 'format' variable, self wrapped value and
  *  value that is wrapped by 'widthOrPrecisionWrapper' variable.
  *  Format with two arguments has to be passed as parameter for this method.
- *  Examples of such format are \@"%*g" or \@"%.*g". Such formats can be used in class that wraps 'double' value.
+ *
+ *  Examples of such format are "%*g" or "%.*g". Such formats can be used in class that wraps 'double' value.
  *
  *  @param format                  String format that is usually used in [NSString stringWithFormat:] call.
  *  @param widthOrPrecisionWrapper Int wrapper that represents argument width or precision.
  *
- *  @return The formatted string.
+ *  @return A formatted string.
  */
 - (NSString *)stringWithSingleFormat:(NSString *)format
              widthOrPrecisionWrapper:(VPIntValueWrapper *)widthOrPrecisionWrapper;
@@ -56,13 +58,14 @@
  *  Builds and returns formatted string by using 'format' variable, self wrapped value and
  *  values that are wrapped by 'widthWrapper' and 'precisionWrapper' variables.
  *  Format with three arguments has to be passed as parameter for this method.
- *  Example of such format is \@"%*.*g". Such format can be used in class that wraps 'double' value.
+ *
+ *  Example of such format is "%*.*g". Such format can be used in class that wraps 'double' value.
  *
  *  @param format           String format that is usually used in [NSString stringWithFormat:] call.
  *  @param widthWrapper     Int wrapper that represents argument width.
  *  @param precisionWrapper Int wrapper that represents argument precision.
  *
- *  @return The formatted string.
+ *  @return A formatted string.
  */
 - (NSString *)stringWithSingleFormat:(NSString *)format
                         widthWrapper:(VPIntValueWrapper *)widthWrapper
@@ -75,6 +78,7 @@
  *  It makes easy to generate interfaces for value wrappers classes that wrap values with different types.
  *  The reason of generating these classes is ability to store values with different primitive types
  *  as property in other object.
+ *
  *  Class-wrappers allow to avoid using multiple if-else / switch-case constructions.
  *
  *  @param class_name Name of class that has to be generated.

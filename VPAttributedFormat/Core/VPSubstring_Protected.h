@@ -8,6 +8,10 @@
 
 #import "VPSubstring.h"
 
+/**
+ *  This extension provides write access to VPSubstring class properties.
+ *  Only VPSubstring subclasses can use this extension.
+ */
 @interface VPSubstring ()
 
 @property (nonatomic, strong) NSMutableString *mutableValue;

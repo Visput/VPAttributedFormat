@@ -59,7 +59,7 @@
     [self.argumentSpecifierSubstring makeEmpty];
 }
 
-- (NSString *)builtSubstring {
+- (NSString *)buildSubstring {
     NSString *builtSubstring = nil;
     
     id<VPValueWrapper> conversionWrapper = [self.arguments.lastObject valueWrapper];
@@ -250,8 +250,10 @@
 }
 
 /**
- *  Documentation: https://developer.apple.com/library/prerelease/mac/documentation/Cocoa/Conceptual/Strings/Articles/formatSpecifiers.html
- *                 http://pubs.opengroup.org/onlinepubs/009695399/functions/printf.html
+ *  See below links for understading type and conversion specifiers and length modifiers.
+ *  Documentation links: 
+ *  NSString. Format specifiers: https://developer.apple.com/library/prerelease/mac/documentation/Cocoa/Conceptual/Strings/Articles/formatSpecifiers.html
+ *  IEEE. Formatted output: http://pubs.opengroup.org/onlinepubs/009695399/functions/printf.html
  */
 - (NSDictionary *)wrapperClassSpecifiers {
     static NSDictionary *wrapperClassSpecifiers = nil;

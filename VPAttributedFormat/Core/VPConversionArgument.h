@@ -9,12 +9,20 @@
 #import <Foundation/Foundation.h>
 #import "VPValueWrapper.h"
 
+/**
+ *  The VPConversionArgument class represents conversion argument in string format.
+ *  For example, format '%d %g' has two arguments:
+ *  int value with index '0' and double value with index '1'.
+ */
 @interface VPConversionArgument : NSObject
 
 /// See VPValueWrapper.h for full list of wrapper classes.
 @property (nonatomic, strong) NSObject<VPValueWrapper> *valueWrapper;
+
+/// Argument position in the format.
 @property (nonatomic, readonly, assign) NSUInteger index;
 
+/// Creates instance of VPConversionArgument class that is initalized with value wrapper and argument index.
 - (instancetype)initWithValueWrapper:(NSObject<VPValueWrapper> *)valueWrapper
                                index:(NSUInteger)index;
 

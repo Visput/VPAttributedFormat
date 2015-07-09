@@ -45,7 +45,7 @@
 #pragma mark Property
 
 - (NSString *)value {
-    // Return mutable value instead of immutable copy for memory usage optimization
+    // Return mutable value instead of immutable copy for memory usage optimization.
     return self.mutableValue;
 }
 

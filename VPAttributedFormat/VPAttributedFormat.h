@@ -14,6 +14,6 @@ FOUNDATION_EXPORT double VPAttributedFormatVersionNumber;
 //! Project version string for VPAttributedFormat.
 FOUNDATION_EXPORT const unsigned char VPAttributedFormatVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <VPAttributedFormat/PublicHeader.h>
+// Public headers.
 #import <VPAttributedFormat/NSAttributedString+VPAttributedFormat.h>
 
