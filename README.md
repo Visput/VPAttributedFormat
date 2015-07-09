@@ -28,3 +28,4 @@ It requires building with iOS SDK 6.0 and later.
 // By module
 @import VPAttributedFormat;
 ```
+## Examples
