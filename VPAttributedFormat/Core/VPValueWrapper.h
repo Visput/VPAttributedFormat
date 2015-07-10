@@ -22,9 +22,26 @@
  *  Class that implements this method has to internally decide value with which type
  *  has to be read from 'arguments' variable.
  *
+ *  @attention This method has to be called only on devices with @b 64-bit processor architecture.
+ *             In other case behaviour is undefined.
+ *             In 64-bit applications 'va_list' parameters are passed by reference.
+ *
  *  @param arguments Object of 'va_list' type that contains value that has to be wrapped.
  */
-- (void)setValueByArguments:(va_list)arguments;
+- (void)setValueByArgumentsValue:(va_list)arguments;
+
+/**
+ *  Initializes wrapped value by reading next argument in 'arguments' variable.
+ *  Class that implements this method has to internally decide value with which type
+ *  has to be read from 'arguments' variable.
+ *
+ *  @attention This method has to be called only on devices with @b 32-bit processor architecture.
+ *             In other case behaviour is undefined.
+ *             In 32-bit applications 'va_list' parameters are passed by value.
+ *
+ *  @param arguments Pointer to object of 'va_list' type that contains value that has to be wrapped.
+ */
+- (void)setValueByArgumentsPointer:(va_list *)arguments;
 
 /**
  *  Builds and returns formatted string by using 'format' variable and self wrapped value

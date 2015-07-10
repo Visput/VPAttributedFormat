@@ -29,8 +29,12 @@
                                                                                                        \
 @implementation class_name                                                                             \
                                                                                                        \
-- (void)setValueByArguments:(va_list)arguments {                                                       \
+- (void)setValueByArgumentsValue:(va_list)arguments {                                                  \
     self.value = va_arg(arguments, argument_type);                                                     \
+}                                                                                                      \
+                                                                                                       \
+- (void)setValueByArgumentsPointer:(va_list *)arguments {                                              \
+    self.value = va_arg(*arguments, argument_type);                                                    \
 }                                                                                                      \
                                                                                                        \
 - (NSString *)stringWithSingleFormat:(NSString *)format {                                              \

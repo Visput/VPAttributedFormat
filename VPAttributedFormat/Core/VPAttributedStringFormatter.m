@@ -151,7 +151,16 @@
             }
         }
         
-        [conversionArgument.valueWrapper setValueByArguments:arguments];
+#ifdef __LP64__
+        // 64-bit processor architecture.
+        // In 64-bit applications 'va_list' parameters are passed by reference.
+        [conversionArgument.valueWrapper setValueByArgumentsValue:arguments];
+#else
+        // 32-bit processor architecture.
+        // In 32-bit applications 'va_list' parameters are passed by value.
+        [conversionArgument.valueWrapper setValueByArgumentsPointer:&arguments];
+#endif
+        
         for (VPConversionArgument *sameIndexArgument in sameIndexArguments) {
             sameIndexArgument.valueWrapper = conversionArgument.valueWrapper.copy;
         }

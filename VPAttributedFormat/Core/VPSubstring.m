@@ -24,7 +24,7 @@
 
 - (void)appendCharacter:(unichar)character
  positionInParentString:(NSUInteger)position {
-    [self.mutableValue appendFormat:@"%c", character];
+    [self.mutableValue appendFormat:@"%C", character];
     
     if (self.range.location == NSNotFound) {
         _range.location = position;
