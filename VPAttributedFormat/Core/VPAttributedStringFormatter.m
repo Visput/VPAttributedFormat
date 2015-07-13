@@ -12,8 +12,23 @@
 #import "VPSubstringsContainer.h"
 #import "VPConversionArgument.h"
 #import "VPValueWrapper.h"
+#import "VPSpecifiersProvider.h"
+
+@interface VPAttributedStringFormatter ()
+
+@property (nonatomic, strong) VPSpecifiersProvider *specifiersProvider;
+
+@end
 
 @implementation VPAttributedStringFormatter
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.specifiersProvider = [VPSpecifiersProvider new];
+    }
+    return self;
+}
 
 - (NSAttributedString *)stringWithFormat:(NSAttributedString *)attributedFormat
                                arguments:(va_list)arguments {
@@ -41,7 +56,7 @@
     
     VPSubstringsContainer *substringsContainer = [VPSubstringsContainer new];
     VPSubstring *ordinarySubstring = [VPSubstring new];
-    VPConversionSubstring *conversionSubstring = [VPConversionSubstring new];
+    VPConversionSubstring *conversionSubstring = [[VPConversionSubstring alloc] initWithSpecifiersProvider:self.specifiersProvider];
     
     for (int characterIndex = 0; characterIndex < formatString.length; ++characterIndex) {
         unichar formatCharacter = [formatString characterAtIndex:characterIndex];
@@ -66,7 +81,7 @@
                     [substringsContainer addSubstring:conversionSubstring];
                     
                     // Create new object for next conversion substring.
-                    conversionSubstring = [VPConversionSubstring new];
+                    conversionSubstring = [[VPConversionSubstring alloc] initWithSpecifiersProvider:self.specifiersProvider];
                 }
             }
             

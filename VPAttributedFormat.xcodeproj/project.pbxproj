@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F04DF6231B53FFDE006D7B9D /* VPSpecifiersProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = F04DF6211B53FFDE006D7B9D /* VPSpecifiersProvider.h */; };
+		F04DF6241B53FFDE006D7B9D /* VPSpecifiersProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F04DF6221B53FFDE006D7B9D /* VPSpecifiersProvider.m */; };
 		F0629F401B3DD2CD00AFE634 /* VPAttributedFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = F0629F3F1B3DD2CD00AFE634 /* VPAttributedFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F0629F461B3DD2CD00AFE634 /* VPAttributedFormat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0629F3A1B3DD2CD00AFE634 /* VPAttributedFormat.framework */; };
 		F0629F4D1B3DD2CD00AFE634 /* VPAttributedFormatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0629F4C1B3DD2CD00AFE634 /* VPAttributedFormatTests.m */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F04DF6211B53FFDE006D7B9D /* VPSpecifiersProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPSpecifiersProvider.h; sourceTree = "<group>"; };
+		F04DF6221B53FFDE006D7B9D /* VPSpecifiersProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPSpecifiersProvider.m; sourceTree = "<group>"; };
 		F0629F3A1B3DD2CD00AFE634 /* VPAttributedFormat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VPAttributedFormat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0629F3E1B3DD2CD00AFE634 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0629F3F1B3DD2CD00AFE634 /* VPAttributedFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPAttributedFormat.h; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 				F0DF4AAF1B411B450069E940 /* VPConversionArgument.m */,
 				F073C1EB1B4912C300B6DC34 /* VPValueWrapper.h */,
 				F073C1EC1B4912C300B6DC34 /* VPValueWrapper.m */,
+				F04DF6211B53FFDE006D7B9D /* VPSpecifiersProvider.h */,
+				F04DF6221B53FFDE006D7B9D /* VPSpecifiersProvider.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -164,6 +170,7 @@
 				F0DF4AAC1B4110F40069E940 /* VPSubstringsContainer.h in Headers */,
 				F0629F401B3DD2CD00AFE634 /* VPAttributedFormat.h in Headers */,
 				F073C1ED1B4912C300B6DC34 /* VPValueWrapper.h in Headers */,
+				F04DF6231B53FFDE006D7B9D /* VPSpecifiersProvider.h in Headers */,
 				F0DF4A9D1B40F8F30069E940 /* VPAttributedStringFormatter.h in Headers */,
 				F0DF4AB01B411B450069E940 /* VPConversionArgument.h in Headers */,
 				F0DF4AA51B4103E10069E940 /* VPConversionSubstring.h in Headers */,
@@ -275,6 +282,7 @@
 				F0DF4A9E1B40F8F30069E940 /* VPAttributedStringFormatter.m in Sources */,
 				F0DF4AAD1B4110F40069E940 /* VPSubstringsContainer.m in Sources */,
 				F0DF4AA61B4103E10069E940 /* VPConversionSubstring.m in Sources */,
+				F04DF6241B53FFDE006D7B9D /* VPSpecifiersProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

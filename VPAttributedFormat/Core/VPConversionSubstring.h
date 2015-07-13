@@ -8,6 +8,8 @@
 
 #import "VPSubstring.h"
 
+@class VPSpecifiersProvider;
+
 /**
  *  The VPConversionSubstring class represents substring with single format and
  *  arguments related to this format.
@@ -22,6 +24,17 @@
 
 /// Indicates if conversion substring is complete.
 @property (nonatomic, readonly, assign) BOOL isComplete;
+
+/**
+ *  Creates instance of VPConversionSubstring class that is initalized with specifiers provider.
+ *
+ *  @param provider An object that provides access to different kind of specifiers.
+ *                  This object passed as parameter for ability to share it between
+ *                  multiple instances of VPConversionSubstring class.
+ *
+ *  @return An instance of VPConversionSubstring class.
+ */
+- (instancetype)initWithSpecifiersProvider:(VPSpecifiersProvider *)provider;
 
 /**
  *  Builds formatted string.
