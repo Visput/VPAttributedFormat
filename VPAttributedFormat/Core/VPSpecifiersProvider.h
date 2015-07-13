@@ -18,7 +18,7 @@
 @interface VPSpecifiersProvider : NSObject
 
 /**
- *  Dictionary that contains value wrapper class names and related to them list of type specifiers.
+ *  Lazily loaded dictionary that contains value wrapper class names and related to them list of type specifiers.
  *  Keys are NSString objects. Every string represents unique value wrapper class name.
  *  Values are NSSet objects. Every object represents set of NSString objects.
  *  Every string represents unique type specifier, for example: \@"lld".
@@ -26,13 +26,13 @@
  */
 @property (nonatomic, readonly, strong) NSDictionary *wrapperClassSpecifiers;
 
-/// Set of NSNumber objects. Every number represents unique conversion specifier char, for example: \@'d'.
+/// Lazily loaded set of NSNumber objects. Every number represents unique conversion specifier char, for example: \@'d'.
 @property (nonatomic, readonly, strong) NSSet *conversionSpecifiers;
 
-/// Set of NSNumber objects. Every number represents unique length modifier char, for example: \@'l'.
+/// Lazily loaded set of NSNumber objects. Every number represents unique length modifier char, for example: \@'l'.
 @property (nonatomic, readonly, strong) NSSet *lengthModifiers;
 
-/// Set of NSNumber objects. Every number represents unique digit char, for example: \@'1'.
+/// Lazily loaded set of NSNumber objects. Every number represents unique digit char, for example: \@'1'.
 @property (nonatomic, readonly, strong) NSSet *digits;
 
 @end
