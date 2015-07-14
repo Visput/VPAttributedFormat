@@ -128,19 +128,46 @@
 #pragma mark Pro
 
 - (void)fillProValueLabel1 {
+    long long value = 123;
     
+    self.proValueLabel1.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.proFormatLabel1.attributedText,
+                                          value,
+                                          &value];
 }
 
 - (void)fillProValueLabel2 {
+    double value1 = 12.34;
+    double value2 = 43.21;
+    double result = value1 + value2;
+    int width = 6;
+    int precision = 3;
     
+    self.proValueLabel2.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.proFormatLabel2.attributedText,
+                                          value1,
+                                          value2,
+                                          result,
+                                          width,
+                                          precision];
 }
 
 - (void)fillProValueLabel3 {
-
+    long double value = 12345.6789;
+    int width = 15;
+    int precision = 7;
+    
+    self.proValueLabel3.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.proFormatLabel3.attributedText,
+                                          width,
+                                          precision,
+                                          value];
 }
 
 - (void)fillProValueLabel4 {
+    float value1 = 123.45;
+    int value2 = 12345;
     
+    self.proValueLabel4.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.proFormatLabel4.attributedText,
+                                          value1,
+                                          value2];
 }
 
 @end
