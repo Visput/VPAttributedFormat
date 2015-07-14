@@ -747,26 +747,26 @@
                     </view>
                     <navigationItem key="navigationItem" title="Attributed Format Examples" id="QNR-9y-9mx"/>
                     <connections>
+                        <outlet property="basicFormatLabel1" destination="s9T-E5-5xX" id="fNa-8T-WlP"/>
+                        <outlet property="basicFormatLabel2" destination="4DD-aL-TYr" id="FVa-Bc-pEn"/>
+                        <outlet property="basicFormatLabel3" destination="AEM-gK-aAG" id="P6Y-6q-ADQ"/>
+                        <outlet property="basicFormatLabel4" destination="XXI-2k-KD9" id="z0R-0n-IcL"/>
                         <outlet property="basicFormatsView" destination="enC-Q9-hyC" id="8PE-zF-yyn"/>
                         <outlet property="basicFormatsViewTrailingSpace" destination="JYI-D1-shr" id="cTe-au-IpX"/>
-                        <outlet property="basicLabelFormat1" destination="s9T-E5-5xX" id="y2e-vc-RoV"/>
-                        <outlet property="basicLabelFormat2" destination="4DD-aL-TYr" id="jwP-y1-SKc"/>
-                        <outlet property="basicLabelFormat3" destination="AEM-gK-aAG" id="Ovn-ko-raU"/>
-                        <outlet property="basicLabelFormat4" destination="XXI-2k-KD9" id="t4P-Ac-CMU"/>
-                        <outlet property="basicLabelValue1" destination="Umi-Sa-sbc" id="kiM-jH-8tH"/>
-                        <outlet property="basicLabelValue2" destination="MVH-Hw-UFx" id="g78-6B-7On"/>
-                        <outlet property="basicLabelValue3" destination="NmD-TU-yl2" id="KGf-Qu-0Ht"/>
-                        <outlet property="basicLabelValue4" destination="yai-Hn-BPs" id="oPL-ya-EqU"/>
+                        <outlet property="basicValueLabel1" destination="Umi-Sa-sbc" id="xqv-sK-1kS"/>
+                        <outlet property="basicValueLabel2" destination="MVH-Hw-UFx" id="IPr-Jd-s0n"/>
+                        <outlet property="basicValueLabel3" destination="NmD-TU-yl2" id="KGf-Qu-0Ht"/>
+                        <outlet property="basicValueLabel4" destination="yai-Hn-BPs" id="oPL-ya-EqU"/>
+                        <outlet property="proFormatLabel1" destination="pbN-2K-biJ" id="yys-0R-VcV"/>
+                        <outlet property="proFormatLabel2" destination="7fE-uV-MEK" id="Qbp-3H-wCn"/>
+                        <outlet property="proFormatLabel3" destination="aDQ-6K-RaS" id="Y95-4U-oTp"/>
+                        <outlet property="proFormatLabel4" destination="23z-tg-ZU4" id="2Vq-wK-XW8"/>
                         <outlet property="proFormatsView" destination="pPT-DG-jjM" id="Ll9-xE-RO8"/>
                         <outlet property="proFormatsViewLeadingSpace" destination="O2x-wO-u7w" id="xML-mo-VCZ"/>
-                        <outlet property="proLabelFormat1" destination="pbN-2K-biJ" id="hGo-kN-eEK"/>
-                        <outlet property="proLabelFormat2" destination="7fE-uV-MEK" id="cOh-Kg-Obp"/>
-                        <outlet property="proLabelFormat3" destination="aDQ-6K-RaS" id="75h-3D-scc"/>
-                        <outlet property="proLabelFormat4" destination="23z-tg-ZU4" id="ns9-Ck-WJg"/>
-                        <outlet property="proLabelValue1" destination="zGS-Cq-EO8" id="F8O-nw-D1H"/>
-                        <outlet property="proLabelValue2" destination="Ug8-zX-psK" id="Ha8-Qr-Xsa"/>
-                        <outlet property="proLabelValue3" destination="eos-ch-wzk" id="nMs-MN-rSK"/>
-                        <outlet property="proLabelValue4" destination="DTd-rA-x4V" id="fgx-iw-xMZ"/>
+                        <outlet property="proValueLabel1" destination="zGS-Cq-EO8" id="F8O-nw-D1H"/>
+                        <outlet property="proValueLabel2" destination="Ug8-zX-psK" id="Ha8-Qr-Xsa"/>
+                        <outlet property="proValueLabel3" destination="eos-ch-wzk" id="nMs-MN-rSK"/>
+                        <outlet property="proValueLabel4" destination="DTd-rA-x4V" id="fgx-iw-xMZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
