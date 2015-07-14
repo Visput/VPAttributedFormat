@@ -12,20 +12,37 @@
 
 @interface VPViewController ()
 
-@property (nonatomic, weak) IBOutlet UILabel *labelFormat1;
-@property (nonatomic, weak) IBOutlet UILabel *labelValue1;
+// Basic.
+@property (nonatomic, weak) IBOutlet UIView *basicFormatsView;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *basicFormatsViewTrailingSpace;
 
-@property (nonatomic, weak) IBOutlet UILabel *labelFormat2;
-@property (nonatomic, weak) IBOutlet UILabel *labelValue2;
+@property (nonatomic, weak) IBOutlet UILabel *basicLabelFormat1;
+@property (nonatomic, weak) IBOutlet UILabel *basicLabelValue1;
 
-@property (nonatomic, weak) IBOutlet UILabel *labelFormat3;
-@property (nonatomic, weak) IBOutlet UILabel *labelValue3;
+@property (nonatomic, weak) IBOutlet UILabel *basicLabelFormat2;
+@property (nonatomic, weak) IBOutlet UILabel *basicLabelValue2;
 
-@property (nonatomic, weak) IBOutlet UILabel *labelFormat4;
-@property (nonatomic, weak) IBOutlet UILabel *labelValue4;
+@property (nonatomic, weak) IBOutlet UILabel *basicLabelFormat3;
+@property (nonatomic, weak) IBOutlet UILabel *basicLabelValue3;
 
-@property (nonatomic, weak) IBOutlet UILabel *labelFormat5;
-@property (nonatomic, weak) IBOutlet UILabel *labelValue5;
+@property (nonatomic, weak) IBOutlet UILabel *basicLabelFormat4;
+@property (nonatomic, weak) IBOutlet UILabel *basicLabelValue4;
+
+// Pro.
+@property (nonatomic, weak) IBOutlet UIView *proFormatsView;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *proFormatsViewLeadingSpace;
+
+@property (nonatomic, weak) IBOutlet UILabel *proLabelFormat1;
+@property (nonatomic, weak) IBOutlet UILabel *proLabelValue1;
+
+@property (nonatomic, weak) IBOutlet UILabel *proLabelFormat2;
+@property (nonatomic, weak) IBOutlet UILabel *proLabelValue2;
+
+@property (nonatomic, weak) IBOutlet UILabel *proLabelFormat3;
+@property (nonatomic, weak) IBOutlet UILabel *proLabelValue3;
+
+@property (nonatomic, weak) IBOutlet UILabel *proLabelFormat4;
+@property (nonatomic, weak) IBOutlet UILabel *proLabelValue4;
 
 @end
 
@@ -33,50 +50,96 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self fillLabelValue1];
-    [self fillLabelValue2];
-    [self fillLabelValue3];
-    [self fillLabelValue4];
-    [self fillLabelValue5];
+    
+    // Basic.
+    [self.view bringSubviewToFront:self.basicFormatsView];
+    self.basicFormatsViewTrailingSpace.constant = 0;
+    [self fillBasicLabelValue1];
+    [self fillBasicLabelValue2];
+    [self fillBasicLabelValue3];
+    [self fillBasicLabelValue4];
+    
+    // Pro.
+    self.proFormatsViewLeadingSpace.constant = 0;
+    [self fillProLabelValue1];
+    [self fillProLabelValue2];
+    [self fillProLabelValue3];
+    [self fillProLabelValue4];
 }
 
-- (void)fillLabelValue1 {
-    NSString *name = @"Uladzimir Papko";
-    int age = 26;
-    
-    self.labelValue1.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.labelFormat1.attributedText, name, age];
+- (IBAction)onSegmentControlValueChanged:(UISegmentedControl *)sender {
+    if (sender.selectedSegmentIndex == 0) {
+        [self.view bringSubviewToFront:self.basicFormatsView];
+    } else {
+        [self.view bringSubviewToFront:self.proFormatsView];
+    }
 }
 
-- (void)fillLabelValue2 {
-    NSString *name = @"Uladzimir Papko";
-    int age = 26;
+#pragma mark -
+#pragma mark Basic
+
+- (void)fillBasicLabelValue1 {
+    NSString *hot = @"Hot";
+    NSString *cold = @"Cold";
     
-    self.labelValue2.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.labelFormat2.attributedText, age, name];
+    self.basicLabelValue1.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.basicLabelFormat1.attributedText,
+                                            hot,
+                                            cold];
 }
 
-- (void)fillLabelValue3 {
-    NSString *name = @"Uladzimir Papko";
-    long long age = 26;
-    int width = 4;
-    int precision = 3;
+- (void)fillBasicLabelValue2 {
+    int mile = 1;
+    double kilometer = 1.61;
     
-    self.labelValue3.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.labelFormat3.attributedText, age, name, precision, width];
+    self.basicLabelValue2.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.basicLabelFormat2.attributedText,
+                                            mile,
+                                            kilometer];
 }
 
-- (void)fillLabelValue4 {
-    int firstNumber = 10;
-    int secondNumber = 20;
-    int thirdNumber = 50;
+- (void)fillBasicLabelValue3 {
+    NSInteger hour = 0;
+    NSInteger minute = 0;
+    NSInteger second = 0;
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    [calendar getHour:&hour minute:&minute second:&second nanosecond:NULL fromDate:[NSDate date]];
+    int width = 2;
     
-    self.labelValue4.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.labelFormat4.attributedText, firstNumber, secondNumber, thirdNumber];
+    self.basicLabelValue3.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.basicLabelFormat3.attributedText,
+                                            width,
+                                            (long)hour,
+                                            width,
+                                            (long)minute,
+                                            width,
+                                            (long)second];
 }
 
-- (void)fillLabelValue5 {
-    int hours = 12;
-    int minutes = 14;
-    int seconds = 1;
+- (void)fillBasicLabelValue4 {
+    int number = 50;
+    int percent = 20;
+    int result = number * percent / 100;
     
-    self.labelValue5.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.labelFormat5.attributedText, hours, minutes, seconds];
+    self.basicLabelValue4.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.basicLabelFormat4.attributedText,
+                                            number,
+                                            percent,
+                                            result];
+}
+
+#pragma mark -
+#pragma mark Pro
+
+- (void)fillProLabelValue1 {
+    
+}
+
+- (void)fillProLabelValue2 {
+    
+}
+
+- (void)fillProLabelValue3 {
+
+}
+
+- (void)fillProLabelValue4 {
     
 }
 
