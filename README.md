@@ -1,10 +1,5 @@
 # VPAttributedFormat
-VPAttributedFormat project represents category: **NSAttributedString+VPAttributedFormat**.  
-This category provides methods for building attributed string based on attributed format and arguments that should satisfy this format.  
-The most suitable case of using this category is text controls with variable attributed text configured in interface builder.  
-You need set correct string format to attributed text and configure necessary attributes.  
-Then you need pass necessary arguments in code by using methods of this category.  
-See 'Usage' and 'Examples' sections for more details.
+NSAttributedString+VPAttributedFormat
 
 ## Installation
 ### Cocoa Pods
@@ -29,3 +24,5 @@ It requires building with iOS SDK 6.0 and later.
 @import VPAttributedFormat;
 ```
 ## Examples
+VPAttributedFormatExample directory contains example project. It provides Basic and Pro format examples.  
+![alt tag](https://raw.githubusercontent.com/Visput/VPAttributedFormat/develop/VPAttributedFormatExample/Screenshots/Example.png?token=AG9sE4o1kk6LNGEwnDLatMmEcWdlEd4Kks5Vr_7MwA%3D%3D)
