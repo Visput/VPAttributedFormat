@@ -19,7 +19,7 @@ Add to your Podfile ```pod "VPAttributedFormat"```.
 It requires building with iOS SDK 6.0 and later.
 
 ## Usage
-### Import framework header or module
+#### Import framework header or module
 ```objective-c
 // By header
 #import <VPAttributedFormat/VPAttributedFormat.h>
@@ -28,6 +28,24 @@ It requires building with iOS SDK 6.0 and later.
 // By module
 @import VPAttributedFormat;
 ```
+#### Set correct format and attributes for text control in interface builder
+![usage](https://cloud.githubusercontent.com/assets/7302163/8710224/d34da150-2b0d-11e5-9714-9d8f57873283.png)
+#### Create IBOutlet and link it with text control
+```objective-c
+@property (nonatomic, weak) IBOutlet UILabel *textLabel;
+```
+#### Populate format with necessary arguments
+```objective-c
+NSString *hot = @"Hot";
+NSString *cold = @"Cold";
+  
+self.textLabel.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.textLabel.attributedText,
+                                 hot,
+                                 cold];
+```
+#### Enjoy the result
+![result](https://cloud.githubusercontent.com/assets/7302163/8710248/f9da5598-2b0d-11e5-9800-92b422ef15fb.png)
+
 ## Examples
 VPAttributedFormatExample directory contains example project. It provides Basic and Pro format examples.  
-![alt tag](https://raw.githubusercontent.com/Visput/VPAttributedFormat/develop/VPAttributedFormatExample/Screenshots/Example.png?token=AG9sE4o1kk6LNGEwnDLatMmEcWdlEd4Kks5Vr_7MwA%3D%3D)
+![example](https://cloud.githubusercontent.com/assets/7302163/8709672/b0560006-2b09-11e5-9a42-505bd420e804.png)
