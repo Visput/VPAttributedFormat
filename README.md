@@ -7,9 +7,9 @@ Then you need pass necessary arguments in code by using methods of this category
 See 'Usage' and 'Examples' sections for more details.
 
 ## Installation
-### Cocoa Pods
+#### Cocoa Pods
 Add to your Podfile ```pod "VPAttributedFormat"```.
-### Drag&Drop
+#### Drag&Drop
 1. Drag and drop VPAttributedFormat.xcodeproj to your project;
 2. Add VPAttributedFormat to Build Settings -> Target Dependencies;
 3. Add VPAttributedFormat.framework to Build Settings -> Link Binary With Libraries;
@@ -19,7 +19,7 @@ Add to your Podfile ```pod "VPAttributedFormat"```.
 It requires building with iOS SDK 6.0 and later.
 
 ## Usage
-#### Import framework header or module
+##### Import framework header or module
 ```objective-c
 // By header
 #import <VPAttributedFormat/VPAttributedFormat.h>
@@ -28,13 +28,13 @@ It requires building with iOS SDK 6.0 and later.
 // By module
 @import VPAttributedFormat;
 ```
-#### Set correct format and attributes for text control in interface builder
+##### Set correct format and attributes for text control in interface builder
 ![usage](https://cloud.githubusercontent.com/assets/7302163/8710224/d34da150-2b0d-11e5-9714-9d8f57873283.png)
-#### Create IBOutlet and link it with text control
+##### Create IBOutlet and link it with text control
 ```objective-c
 @property (nonatomic, weak) IBOutlet UILabel *textLabel;
 ```
-#### Populate format with necessary arguments
+##### Populate format with necessary arguments
 ```objective-c
 NSString *hot = @"Hot";
 NSString *cold = @"Cold";
@@ -43,7 +43,7 @@ self.textLabel.attributedText = [NSAttributedString attributedStringWithAttribut
                                  hot,
                                  cold];
 ```
-#### Enjoy the result
+##### Enjoy the result
 ![result](https://cloud.githubusercontent.com/assets/7302163/8710248/f9da5598-2b0d-11e5-9800-92b422ef15fb.png)
 
 ## Examples
