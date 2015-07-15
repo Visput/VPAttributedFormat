@@ -23,3 +23,6 @@ It requires building with iOS SDK 6.0 and later.
 // By module
 @import VPAttributedFormat;
 ```
+## Examples
+VPAttributedFormatExample directory contains example project. It provides Basic and Pro format examples.  
+![alt tag](https://raw.github.com/visput/vpattributedformat/develop/VPAttributedFormatExample/Screenshots/Example.png)
