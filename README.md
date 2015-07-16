@@ -42,7 +42,7 @@ import VPAttributedFormat
 ```
 ```swift
 // Swift
-@IBOutlet weak var textControl: UILabel!
+@IBOutlet weak var textLabel: UILabel!
 ```
 
 ##### Populate format with necessary arguments
@@ -61,8 +61,8 @@ let hot = "Hot"
 let cold = "Cold"
 
 var arguments: [CVarArgType] = [hot, cold]
-textControl.attributedText = withVaList(arguments) { pointer in
-    NSAttributedString(attributedFormat: textControl.attributedText, arguments: pointer)
+textLabel.attributedText = withVaList(arguments) { pointer in
+    NSAttributedString(attributedFormat: textLabel.attributedText, arguments: pointer)
 }
 ```
 
