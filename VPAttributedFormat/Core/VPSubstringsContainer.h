@@ -20,8 +20,11 @@
 /// Array of VPSubstring and VPConversionSubstring objects.
 @property (nonatomic, readonly, strong) NSArray *substrings;
 
-/// Represents maximum index of arguments that were added as part of VPConversionSubstring objects.
-@property (nonatomic, readonly, assign) NSUInteger conversionArgumentMaxIndex;
+/**
+ *  Represents maximum index of arguments that were added as part of VPConversionSubstring objects.
+ *  -1 if container doesn't have any arguments.
+ */
+@property (nonatomic, readonly, assign) NSInteger conversionArgumentMaxIndex;
 
 /// Adds substring to the end of the 'substrings' array property.
 - (void)addSubstring:(VPSubstring *)substring;

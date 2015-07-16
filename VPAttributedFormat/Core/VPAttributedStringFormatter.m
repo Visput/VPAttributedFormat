@@ -141,7 +141,7 @@
     NSUInteger conversionArgumentsIndex = 0;
     NSMutableArray *sameIndexArguments = [NSMutableArray array];
     
-    for (NSUInteger i = 0; i <= substringsContainer.conversionArgumentMaxIndex; i++) {
+    for (NSInteger i = 0; i <= substringsContainer.conversionArgumentMaxIndex; i++) {
         
         VPConversionArgument *conversionArgument = conversionArguments[conversionArgumentsIndex];
         

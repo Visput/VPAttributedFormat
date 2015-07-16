@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NSMutableArray *mutableSubstrings;
 @property (nonatomic, strong) NSMutableArray *mutableConversionSubstrings;
 @property (nonatomic, strong) NSMutableArray *mutableConversionArguments;
-@property (nonatomic, assign) NSUInteger conversionArgumentMaxIndex;
+@property (nonatomic, assign) NSInteger conversionArgumentMaxIndex;
 
 @end
 
@@ -29,6 +29,7 @@
         self.mutableSubstrings = [NSMutableArray array];
         self.mutableConversionSubstrings = [NSMutableArray array];
         self.mutableConversionArguments = [NSMutableArray array];
+        self.conversionArgumentMaxIndex = -1;
     }
     return self;
 }

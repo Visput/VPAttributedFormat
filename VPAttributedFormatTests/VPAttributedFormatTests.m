@@ -108,4 +108,12 @@
     [self testFormat:@"%@ %@", @"1", @"2"];
 }
 
+- (void)testEmptyFormat {
+    [self testFormat:@"Empty Format"];
+}
+
+- (void)testNilFormat {
+    XCTAssertThrows([self testFormat:nil]);
+}
+
 @end
