@@ -29,7 +29,7 @@ It requires building with iOS SDK 6.0 and later.
 @import VPAttributedFormat;
 ```
 ##### Set correct format and attributes for text control in interface builder
-![usage](https://cloud.githubusercontent.com/assets/7302163/8710224/d34da150-2b0d-11e5-9714-9d8f57873283.png)
+![usage](https://cloud.githubusercontent.com/assets/7302163/8714855/93099414-2b3f-11e5-8b20-ac1a48896378.png)
 ##### Create IBOutlet and link it with text control
 ```objective-c
 @property (nonatomic, weak) IBOutlet UILabel *textLabel;
@@ -43,9 +43,9 @@ self.textLabel.attributedText = [NSAttributedString attributedStringWithAttribut
                                  hot,
                                  cold];
 ```
-##### Enjoy the result
-![result](https://cloud.githubusercontent.com/assets/7302163/8710248/f9da5598-2b0d-11e5-9800-92b422ef15fb.png)
+##### Enjoy result
+![result](https://cloud.githubusercontent.com/assets/7302163/8714860/9b37dbb4-2b3f-11e5-8296-9a57f39cd702.png)
 
 ## Examples
 VPAttributedFormatExample directory contains example project. It provides Basic and Pro format examples.  
-![example](https://cloud.githubusercontent.com/assets/7302163/8709672/b0560006-2b09-11e5-9a42-505bd420e804.png)
+![example](https://cloud.githubusercontent.com/assets/7302163/8714863/a33e91c2-2b3f-11e5-93aa-f886c019ca38.png)
