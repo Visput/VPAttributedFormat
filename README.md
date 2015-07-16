@@ -5,10 +5,10 @@ The most suitable case of using this category is text controls with variable att
 You need set correct string format to attributed text and configure necessary attributes.  
 Then you need pass necessary arguments in code by using methods of this category.  
 See 'Usage' and 'Examples' sections for more details.
-
 ## Installation
 #### Cocoa Pods
 Add to your Podfile ```pod "VPAttributedFormat"```.
+
 #### Drag&Drop
 1. Drag and drop VPAttributedFormat.xcodeproj to your project;
 2. Add VPAttributedFormat to Build Settings -> Target Dependencies;
@@ -21,21 +21,33 @@ It requires building with iOS SDK 6.0 and later.
 ## Usage
 ##### Import framework header or module
 ```objective-c
+// Objective C
 // By header
 #import <VPAttributedFormat/VPAttributedFormat.h>
-```
-```objective-c
 // By module
 @import VPAttributedFormat;
 ```
+```swift
+// Swift
+import VPAttributedFormat
+```
+
 ##### Set correct format and attributes for text control in interface builder
 ![usage](https://cloud.githubusercontent.com/assets/7302163/8714855/93099414-2b3f-11e5-8b20-ac1a48896378.png)
+
 ##### Create IBOutlet and link it with text control
 ```objective-c
+// Objective C
 @property (nonatomic, weak) IBOutlet UILabel *textLabel;
 ```
+```swift
+// Swift
+@IBOutlet weak var textControl: UILabel!
+```
+
 ##### Populate format with necessary arguments
 ```objective-c
+// Objective C
 NSString *hot = @"Hot";
 NSString *cold = @"Cold";
   
@@ -43,6 +55,17 @@ self.textLabel.attributedText = [NSAttributedString attributedStringWithAttribut
                                  hot,
                                  cold];
 ```
+```swift
+// Swift
+let hot = "Hot"
+let cold = "Cold"
+
+var arguments: [CVarArgType] = [hot, cold]
+textControl.attributedText = withVaList(arguments) { pointer in
+    NSAttributedString(attributedFormat: textControl.attributedText, arguments: pointer)
+}
+```
+
 ##### Enjoy result
 ![result](https://cloud.githubusercontent.com/assets/7302163/8714860/9b37dbb4-2b3f-11e5-8296-9a57f39cd702.png)
 
