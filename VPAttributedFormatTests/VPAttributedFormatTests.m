@@ -104,16 +104,77 @@
     }
 }
 
+- (void)testEmptyFormat {
+    [self testFormat:@"Empty Format"];
+    [self testFormat:@""];
+}
+
+- (void)testNilFormat {
+    XCTAssertThrows([[NSAttributedString alloc] initWithAttributedFormat:nil arguments:NULL]);
+    XCTAssertThrows([[NSAttributedString alloc] initWithAttributedFormat:nil]);
+    XCTAssertThrows([NSAttributedString attributedStringWithAttributedFormat:nil]);
+}
+
 - (void)testComplexFormat1 {
     [self testFormat:@"%@ %@", @"1", @"2"];
 }
 
-- (void)testEmptyFormat {
-    [self testFormat:@"Empty Format"];
+- (void)testComplexFormat2 {
+    [self testFormat:@"%@ water is hotter than %@", @"Hot", @"Cold"];
 }
 
-- (void)testNilFormat {
-    XCTAssertThrows([self testFormat:nil]);
+- (void)testComplexFormat3 {
+    [self testFormat:@"%d mile is %g kilometers", 1, 1.61];
+}
+
+- (void)testComplexFormat4 {
+    NSInteger hour = 0;
+    NSInteger minute = 0;
+    NSInteger second = 0;
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    [calendar getHour:&hour minute:&minute second:&second nanosecond:NULL fromDate:[NSDate date]];
+    int width = 2;
+    
+    [self testFormat:@"Current time is %.*ld:%.*ld:%.*ld", width, (long)hour, width, (long)minute, width, (long)second];
+}
+
+- (void)testComplexFormat5 {
+    int number = 50;
+    int percent = 20;
+    int result = number * percent / 100;
+    
+    [self testFormat:@"%3$d is %2$d%% of %1$d", number, percent, result];
+}
+
+- (void)testComplexFormat6 {
+    long long value = 123;
+    
+    [self testFormat:@"%2$p is address for value %1$lld", value, &value];
+}
+
+- (void)testComplexFormat7 {
+    double value1 = 12.34;
+    double value2 = 43.21;
+    double result = value1 + value2;
+    int width = 6;
+    int precision = 3;
+    
+    [self testFormat:@"%1$*4$.*5$lf + %2$*4$.*5$lf = %3$*4$lg", value1, value2, result, width, precision];
+}
+
+- (void)testComplexFormat8 {
+    long double value = 12345.6789;
+    int width = 15;
+    int precision = 7;
+    
+    [self testFormat:@"%#-+*.*LE has unusual format", width, precision, value];
+}
+
+- (void)testComplexFormat9 {
+    float value1 = 123.45f;
+    int value2 = 12345;
+    
+    [self testFormat:@"Just two numbers: %+0#10.2f and % -10d", value1, value2];
 }
 
 @end

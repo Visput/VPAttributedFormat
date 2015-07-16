@@ -10,14 +10,14 @@
 
 @interface VPConversionArgument ()
 
-@property (nonatomic, assign) NSUInteger index;
+@property (nonatomic, assign) NSInteger index;
 
 @end
 
 @implementation VPConversionArgument
 
 - (instancetype)initWithValueWrapper:(NSObject<VPValueWrapper> *)valueWrapper
-                               index:(NSUInteger)index {
+                               index:(NSInteger)index {
     self = [super init];
     if (self) {
         self.valueWrapper = valueWrapper;

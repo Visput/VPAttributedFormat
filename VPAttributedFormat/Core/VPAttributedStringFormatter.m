@@ -58,7 +58,7 @@
     VPSubstring *ordinarySubstring = [VPSubstring new];
     VPConversionSubstring *conversionSubstring = [[VPConversionSubstring alloc] initWithSpecifiersProvider:self.specifiersProvider];
     
-    for (int characterIndex = 0; characterIndex < formatString.length; ++characterIndex) {
+    for (NSUInteger characterIndex = 0; characterIndex < formatString.length; ++characterIndex) {
         unichar formatCharacter = [formatString characterAtIndex:characterIndex];
         
         if (!conversionSubstring.isEmpty) { // Character is part of conversion substring or percent "%%" symbol.
@@ -138,7 +138,7 @@
     NSMutableAttributedString *resultAttributedString = [NSMutableAttributedString new];
     
     NSArray *conversionArguments = substringsContainer.conversionArgumentsSortedByIndex;
-    NSUInteger conversionArgumentsIndex = 0;
+    NSInteger conversionArgumentsIndex = 0;
     NSMutableArray *sameIndexArguments = [NSMutableArray array];
     
     for (NSInteger i = 0; i <= substringsContainer.conversionArgumentMaxIndex; i++) {

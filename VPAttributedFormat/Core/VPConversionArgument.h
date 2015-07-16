@@ -20,10 +20,10 @@
 @property (nonatomic, strong) NSObject<VPValueWrapper> *valueWrapper;
 
 /// Argument position in the format.
-@property (nonatomic, readonly, assign) NSUInteger index;
+@property (nonatomic, readonly, assign) NSInteger index;
 
 /// Creates instance of VPConversionArgument class that is initalized with value wrapper and argument index.
 - (instancetype)initWithValueWrapper:(NSObject<VPValueWrapper> *)valueWrapper
-                               index:(NSUInteger)index;
+                               index:(NSInteger)index;
 
 @end

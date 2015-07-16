@@ -18,7 +18,7 @@
 @property (nonatomic, assign) BOOL isComplete;
 
 @property (nonatomic, strong) VPSpecifiersProvider *provider;
-@property (nonatomic, assign) NSUInteger valueArgumentIndex;
+@property (nonatomic, assign) NSInteger valueArgumentIndex;
 @property (nonatomic, strong) VPSubstring *argumentIndexSubstring;
 @property (nonatomic, strong) VPSubstring *argumentSpecifierSubstring;
 
@@ -146,7 +146,7 @@
             
             // Originally argument index starts from 1 (1$, 2$, 3$ and etc.).
             // When argument index is determined its value stored starting from 0 (0, 1, 2 and etc.).
-            NSUInteger argumentIndex = @([self.argumentIndexSubstring.value longLongValue]).unsignedIntegerValue - 1;
+            NSInteger argumentIndex = @([self.argumentIndexSubstring.value longLongValue]).integerValue - 1;
             
             // Example: [NSString stringWithFormat:@"%1$*2$.*3$g", 1.0, 1, 1]);
             if (self.arguments.count != 0) { // Argument index is related to width or precision.
