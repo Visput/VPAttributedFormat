@@ -7,7 +7,11 @@ Then you need pass necessary arguments in code by using methods of this category
 See 'Usage' and 'Examples' sections for more details.
 ## Installation
 #### Cocoa Pods
-Add to your Podfile ```pod "VPAttributedFormat"```.
+Add to your Podfile:  
+```
+pod "VPAttributedFormat"
+use_frameworks!
+```
 
 #### Drag&Drop
 1. Drag and drop VPAttributedFormat.xcodeproj to your project;
