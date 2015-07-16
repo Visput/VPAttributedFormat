@@ -76,3 +76,6 @@ textLabel.attributedText = withVaList(arguments) { pointer in
 ## Examples
 VPAttributedFormatExample directory contains example project. It provides Basic and Pro format examples.  
 ![example](https://cloud.githubusercontent.com/assets/7302163/8714863/a33e91c2-2b3f-11e5-93aa-f886c019ca38.png)
+
+## License
+VPAttributedFormat is released under the MIT license. See LICENSE for details.
