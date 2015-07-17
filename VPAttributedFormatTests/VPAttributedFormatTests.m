@@ -16,6 +16,9 @@
 
 @implementation VPAttributedFormatTests
 
+#pragma mark -
+#pragma mark Utility
+
 - (void)testFormat:(NSString *)format, ... {
     NSAttributedString *attributedFormat = [[NSAttributedString alloc] initWithString:format];
     
@@ -32,6 +35,9 @@
     
     NSLog(@"%@", string);
 }
+
+#pragma mark -
+#pragma mark Single Formats
 
 - (void)testObjectFormat {
     [self testFormat:@"%@", @"String !@#$%^&*()_ \u1111\u1234\u99999"];
@@ -104,16 +110,8 @@
     }
 }
 
-- (void)testEmptyFormat {
-    [self testFormat:@"Empty Format"];
-    [self testFormat:@""];
-}
-
-- (void)testNilFormat {
-    XCTAssertThrows([[NSAttributedString alloc] initWithAttributedFormat:nil arguments:NULL]);
-    XCTAssertThrows([[NSAttributedString alloc] initWithAttributedFormat:nil]);
-    XCTAssertThrows([NSAttributedString attributedStringWithAttributedFormat:nil]);
-}
+#pragma mark -
+#pragma mark Complex Formats
 
 - (void)testComplexFormat1 {
     [self testFormat:@"%@ %@", @"1", @"2"];
@@ -175,6 +173,48 @@
     int value2 = 12345;
     
     [self testFormat:@"Just two numbers: %+0#10.2f and % -10d", value1, value2];
+}
+
+- (void)testComplexFormat10 {
+    [self testFormat:@"%%%%%@%%%d%%%@%%", @"This string contains ", 5, @" percent symbols"];
+}
+
+#pragma mark -
+#pragma mark Other Formats
+
+- (void)testEmptyFormat {
+    [self testFormat:@"Empty Format"];
+    [self testFormat:@""];
+}
+
+- (void)testNilFormat {
+    XCTAssertThrows([[NSAttributedString alloc] initWithAttributedFormat:nil arguments:NULL]);
+    XCTAssertThrows([[NSAttributedString alloc] initWithAttributedFormat:nil]);
+    XCTAssertThrows([NSAttributedString attributedStringWithAttributedFormat:nil]);
+}
+
+#pragma mark -
+#pragma mark Attributes
+
+- (void)testAttributes1 {
+    UIColor *color1 = [UIColor greenColor];
+    UIColor *color2 = [UIColor redColor];
+    NSString *value1 = @"String1";
+    NSString *value2 = @"String2";
+    NSMutableAttributedString *attributedFormat = [[NSMutableAttributedString alloc] initWithString:@"%@ %@"];
+    [attributedFormat addAttribute:NSForegroundColorAttributeName value:color1 range:NSMakeRange(0, 2)];
+    [attributedFormat addAttribute:NSForegroundColorAttributeName value:color2 range:NSMakeRange(3, 2)];
+    
+    NSAttributedString *attributedString = [NSAttributedString attributedStringWithAttributedFormat:attributedFormat, value1, value2];
+    
+    [attributedString enumerateAttributesInRange:[attributedString.string rangeOfString:value1] options:0 usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {
+        UIColor *aColor1 = attrs[NSForegroundColorAttributeName];
+        XCTAssertEqual(color1, aColor1);
+    }];
+    [attributedString enumerateAttributesInRange:[attributedString.string rangeOfString:value2] options:0 usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {
+        UIColor *aColor2 = attrs[NSForegroundColorAttributeName];
+        XCTAssertEqual(color2, aColor2);
+    }];
 }
 
 @end
