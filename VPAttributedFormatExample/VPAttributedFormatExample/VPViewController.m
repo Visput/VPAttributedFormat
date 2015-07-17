@@ -12,6 +12,8 @@
 
 @interface VPViewController ()
 
+@property (nonatomic, strong) NSTimer *timer;
+
 // Basic.
 @property (nonatomic, weak) IBOutlet UIView *basicFormatsView;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *basicFormatsViewTrailingSpace;
@@ -82,7 +84,7 @@
     NSString *hot = @"Hot";
     NSString *cold = @"Cold";
     
-    self.basicValueLabel1.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.basicFormatLabel1.attributedText,
+    self.basicValueLabel1.attributedText = [NSAttributedString vp_attributedStringWithAttributedFormat:self.basicFormatLabel1.attributedText,
                                             hot,
                                             cold];
 }
@@ -91,12 +93,20 @@
     int mile = 1;
     double kilometer = 1.61;
     
-    self.basicValueLabel2.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.basicFormatLabel2.attributedText,
+    self.basicValueLabel2.attributedText = [NSAttributedString vp_attributedStringWithAttributedFormat:self.basicFormatLabel2.attributedText,
                                             mile,
                                             kilometer];
 }
 
 - (void)fillBasicValueLabel3 {
+    if (self.timer == nil) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                      target:self
+                                                    selector:@selector(fillBasicValueLabel3)
+                                                    userInfo:nil
+                                                     repeats:YES];
+    }
+    
     NSInteger hour = 0;
     NSInteger minute = 0;
     NSInteger second = 0;
@@ -104,7 +114,7 @@
     [calendar getHour:&hour minute:&minute second:&second nanosecond:NULL fromDate:[NSDate date]];
     int width = 2;
     
-    self.basicValueLabel3.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.basicFormatLabel3.attributedText,
+    self.basicValueLabel3.attributedText = [NSAttributedString vp_attributedStringWithAttributedFormat:self.basicFormatLabel3.attributedText,
                                             width,
                                             (long)hour,
                                             width,
@@ -118,7 +128,7 @@
     int percent = 20;
     int result = number * percent / 100;
     
-    self.basicValueLabel4.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.basicFormatLabel4.attributedText,
+    self.basicValueLabel4.attributedText = [NSAttributedString vp_attributedStringWithAttributedFormat:self.basicFormatLabel4.attributedText,
                                             number,
                                             percent,
                                             result];
@@ -130,7 +140,7 @@
 - (void)fillProValueLabel1 {
     long long value = 123;
     
-    self.proValueLabel1.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.proFormatLabel1.attributedText,
+    self.proValueLabel1.attributedText = [NSAttributedString vp_attributedStringWithAttributedFormat:self.proFormatLabel1.attributedText,
                                           value,
                                           &value];
 }
@@ -142,7 +152,7 @@
     int width = 6;
     int precision = 3;
     
-    self.proValueLabel2.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.proFormatLabel2.attributedText,
+    self.proValueLabel2.attributedText = [NSAttributedString vp_attributedStringWithAttributedFormat:self.proFormatLabel2.attributedText,
                                           value1,
                                           value2,
                                           result,
@@ -155,7 +165,7 @@
     int width = 15;
     int precision = 7;
     
-    self.proValueLabel3.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.proFormatLabel3.attributedText,
+    self.proValueLabel3.attributedText = [NSAttributedString vp_attributedStringWithAttributedFormat:self.proFormatLabel3.attributedText,
                                           width,
                                           precision,
                                           value];
@@ -165,7 +175,7 @@
     float value1 = 123.45;
     int value2 = 12345;
     
-    self.proValueLabel4.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.proFormatLabel4.attributedText,
+    self.proValueLabel4.attributedText = [NSAttributedString vp_attributedStringWithAttributedFormat:self.proFormatLabel4.attributedText,
                                           value1,
                                           value2];
 }

@@ -28,7 +28,7 @@
     va_end(arguments);
     
     va_start(arguments, format);
-    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithAttributedFormat:attributedFormat arguments:arguments];
+    NSAttributedString *attributedString = [[NSAttributedString alloc] vp_initWithAttributedFormat:attributedFormat arguments:arguments];
     va_end(arguments);
     
     XCTAssertEqualObjects(string, attributedString.string);
@@ -188,9 +188,10 @@
 }
 
 - (void)testNilFormat {
-    XCTAssertThrows([[NSAttributedString alloc] initWithAttributedFormat:nil arguments:NULL]);
-    XCTAssertThrows([[NSAttributedString alloc] initWithAttributedFormat:nil]);
-    XCTAssertThrows([NSAttributedString attributedStringWithAttributedFormat:nil]);
+    XCTAssertThrows([[NSAttributedString alloc] vp_initWithAttributedFormat:nil arguments:NULL]);
+    XCTAssertThrows([[NSAttributedString alloc] vp_initWithAttributedFormat:nil]);
+    XCTAssertThrows([NSAttributedString vp_attributedStringWithAttributedFormat:nil arguments:NULL]);
+    XCTAssertThrows([NSAttributedString vp_attributedStringWithAttributedFormat:nil]);
 }
 
 #pragma mark -
@@ -201,19 +202,24 @@
     UIColor *color2 = [UIColor redColor];
     NSString *value1 = @"String1";
     NSString *value2 = @"String2";
-    NSMutableAttributedString *attributedFormat = [[NSMutableAttributedString alloc] initWithString:@"%@ %@"];
+    NSString *format = @"%@ %@";
+
+    NSString *string = [NSString stringWithFormat:format, value1, value2];
+    
+    NSMutableAttributedString *attributedFormat = [[NSMutableAttributedString alloc] initWithString:format];
     [attributedFormat addAttribute:NSForegroundColorAttributeName value:color1 range:NSMakeRange(0, 2)];
     [attributedFormat addAttribute:NSForegroundColorAttributeName value:color2 range:NSMakeRange(3, 2)];
+    NSAttributedString *attributedString = [NSAttributedString vp_attributedStringWithAttributedFormat:attributedFormat, value1, value2];
     
-    NSAttributedString *attributedString = [NSAttributedString attributedStringWithAttributedFormat:attributedFormat, value1, value2];
+    XCTAssertEqualObjects(string, attributedString.string);
     
     [attributedString enumerateAttributesInRange:[attributedString.string rangeOfString:value1] options:0 usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {
         UIColor *aColor1 = attrs[NSForegroundColorAttributeName];
-        XCTAssertEqual(color1, aColor1);
+        XCTAssertEqualObjects(color1, aColor1);
     }];
     [attributedString enumerateAttributesInRange:[attributedString.string rangeOfString:value2] options:0 usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {
         UIColor *aColor2 = attrs[NSForegroundColorAttributeName];
-        XCTAssertEqual(color2, aColor2);
+        XCTAssertEqualObjects(color2, aColor2);
     }];
 }
 

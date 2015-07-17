@@ -43,22 +43,7 @@
  *  @return An attributed string created by using 'attributedFormat' as a template
  *          into which the remaining argument values are substituted.
  */
-+ (instancetype)attributedStringWithAttributedFormat:(NSAttributedString *)attributedFormat, ...;
-
-/**
- *  Returns an NSAttributedString object initialized with a given attributed format and list of arguments.
- *
- *  @param attributedFormat Object that represents string format with attributes.
- *                          Behaviour is undefined if format is wrong.
- *                          Raises an NSInvalidArgumentException if 'attributedFormat' is nil.
- *
- *  @param ...              A comma-separated list of arguments to substitute into 'attributedFormat'.
- *                          Behaviour is undefined if arguments don't satisfy format.
- *
- *  @return An attributed string created by using 'attributedFormat' as a template
- *          into which the remaining argument values are substituted.
- */
-- (instancetype)initWithAttributedFormat:(NSAttributedString *)attributedFormat, ...;
++ (instancetype)vp_attributedStringWithAttributedFormat:(NSAttributedString *)attributedFormat, ...;
 
 /**
  *  Returns an NSAttributedString object initialized with a given attributed format and list of arguments.
@@ -73,6 +58,36 @@
  *  @return An attributed string created by using 'attributedFormat' as a template
  *          into which the remaining 'arguments' values are substituted.
  */
-- (instancetype)initWithAttributedFormat:(NSAttributedString *)attributedFormat arguments:(va_list)arguments;
++ (instancetype)vp_attributedStringWithAttributedFormat:(NSAttributedString *)attributedFormat arguments:(va_list)arguments;
+
+/**
+ *  Returns an NSAttributedString object initialized with a given attributed format and list of arguments.
+ *
+ *  @param attributedFormat Object that represents string format with attributes.
+ *                          Behaviour is undefined if format is wrong.
+ *                          Raises an NSInvalidArgumentException if 'attributedFormat' is nil.
+ *
+ *  @param ...              A comma-separated list of arguments to substitute into 'attributedFormat'.
+ *                          Behaviour is undefined if arguments don't satisfy format.
+ *
+ *  @return An attributed string created by using 'attributedFormat' as a template
+ *          into which the remaining argument values are substituted.
+ */
+- (instancetype)vp_initWithAttributedFormat:(NSAttributedString *)attributedFormat, ... __attribute__((objc_method_family(init)));
+
+/**
+ *  Returns an NSAttributedString object initialized with a given attributed format and list of arguments.
+ *
+ *  @param attributedFormat Object that represents string format with attributes.
+ *                          Behaviour is undefined if format is wrong.
+ *                          Raises an NSInvalidArgumentException if 'attributedFormat' is nil.
+ *
+ *  @param arguments        A list of arguments to substitute into 'attributedFormat'.
+ *                          Behaviour is undefined if arguments don't satisfy format.
+ *
+ *  @return An attributed string created by using 'attributedFormat' as a template
+ *          into which the remaining 'arguments' values are substituted.
+ */
+- (instancetype)vp_initWithAttributedFormat:(NSAttributedString *)attributedFormat arguments:(va_list)arguments __attribute__((objc_method_family(init)));
 
 @end
