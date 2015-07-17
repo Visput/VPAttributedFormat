@@ -55,7 +55,7 @@ import VPAttributedFormat
 NSString *hot = @"Hot";
 NSString *cold = @"Cold";
   
-self.textLabel.attributedText = [NSAttributedString attributedStringWithAttributedFormat:self.textLabel.attributedText,
+self.textLabel.attributedText = [NSAttributedString vp_attributedStringWithAttributedFormat:self.textLabel.attributedText,
                                  hot,
                                  cold];
 ```
@@ -66,7 +66,7 @@ let cold = "Cold"
 
 var arguments: [CVarArgType] = [hot, cold]
 textLabel.attributedText = withVaList(arguments) { pointer in
-    NSAttributedString(attributedFormat: textLabel.attributedText, arguments: pointer)
+    NSAttributedString.vp_attributedStringWithAttributedFormat(textLabel.attributedText, arguments: pointer)
 }
 ```
 
