@@ -32,12 +32,10 @@
     va_end(arguments);
     
     XCTAssertEqualObjects(string, attributedString.string);
-    
-    NSLog(@"%@", string);
 }
 
 #pragma mark -
-#pragma mark Single Formats
+#pragma mark Simple Formats
 
 - (void)testObjectFormat {
     [self testFormat:@"%@", @"String !@#$%^&*()_ \u1111\u1234\u99999"];
@@ -50,6 +48,15 @@
 - (void)testVoidPointerFormat {
     [self testFormat:@"%p", @1];
     [self testFormat:@"%p", @"String"];
+    
+    char charValue = 'a';
+    [self testFormat:@"%p", &charValue];
+    
+    int intValue = 1;
+    [self testFormat:@"%p", &intValue];
+    
+    double doubleValue = 1.0;
+    [self testFormat:@"%p", &doubleValue];
 }
 
 - (void)testCharFormat {
@@ -65,23 +72,38 @@
 }
 
 - (void)testCharPointerFormat {
-    char value = 'a';
-    [self testFormat:@"%hhn", &value];
+    int numberOfValues = 7;
+    char values[] = {'a', 'Z', 1, '\n', CHAR_MIN, CHAR_MAX, CHAR_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        char value = values[i];
+        [self testFormat:@"%hhn", &value];
+    }
 }
 
 - (void)testSignedCharPointerFormat {
-    signed char value = 'a';
-    [self testFormat:@"%s", &value];
+    int numberOfValues = 7;
+    signed char values[] = {'a', 'Z', 1, '\n', CHAR_MIN, CHAR_MAX, CHAR_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        signed char value = values[i];
+        [self testFormat:@"%s", &value];
+    }
 }
 
 - (void)testUnsignedCharFormat {
-    unsigned char value = 'a';
-    [self testFormat:@"%hho", value];
-    [self testFormat:@"%hhO", value];
-    [self testFormat:@"%hhu", value];
-    [self testFormat:@"%hhU", value];
-    [self testFormat:@"%hhx", value];
-    [self testFormat:@"%hhX", value];
+    int numberOfValues = 7;
+    unsigned char values[] = {'a', 'Z', 1, '\n', CHAR_MIN, CHAR_MAX, CHAR_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        unsigned char value = values[i];
+        [self testFormat:@"%hho", value];
+        [self testFormat:@"%hhO", value];
+        [self testFormat:@"%hhu", value];
+        [self testFormat:@"%hhU", value];
+        [self testFormat:@"%hhx", value];
+        [self testFormat:@"%hhX", value];
+    }
 }
 
 - (void)testUnicharFormat {
@@ -100,6 +122,43 @@
     }
 }
 
+- (void)testShortFormat {
+    int numberOfValues = 4;
+    short values[] = {1, SHRT_MIN, SHRT_MAX, SHRT_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        short value = values[i];
+        [self testFormat:@"%hd", value];
+        [self testFormat:@"%hD", value];
+        [self testFormat:@"%hi", value];
+    }
+}
+
+- (void)testShortPointerFormat {
+    int numberOfValues = 4;
+    short values[] = {1, SHRT_MIN, SHRT_MAX, SHRT_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        short value = values[i];
+        [self testFormat:@"%hn", &value];
+    }
+}
+
+- (void)testUnsignedShortFormat {
+    int numberOfValues = 3;
+    unsigned short values[] = {1, SHRT_MIN, USHRT_MAX};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        unsigned short value = values[i];
+        [self testFormat:@"%ho", value];
+        [self testFormat:@"%hO", value];
+        [self testFormat:@"%hu", value];
+        [self testFormat:@"%hU", value];
+        [self testFormat:@"%hx", value];
+        [self testFormat:@"%hX", value];
+    }
+}
+
 - (void)testIntFormat {
     int numberOfValues = 5;
     int values[] = {1, INT_MIN, INT_MIN - 1, INT_MAX, INT_MAX + 1};
@@ -107,6 +166,253 @@
     for (int i = 0; i < numberOfValues; i++) {
         int value = values[i];
         [self testFormat:@"%d", value];
+        [self testFormat:@"%D", value];
+        [self testFormat:@"%i", value];
+    }
+}
+
+- (void)testIntPointerFormat {
+    int numberOfValues = 5;
+    int values[] = {1, INT_MIN, INT_MIN - 1, INT_MAX, INT_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        int value = values[i];
+        [self testFormat:@"%n", &value];
+    }
+}
+
+- (void)testUnsignedIntFormat {
+    int numberOfValues = 5;
+    unsigned int values[] = {1, INT_MIN, INT_MIN - 1, INT_MAX, INT_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        unsigned int value = values[i];
+        [self testFormat:@"%o", value];
+        [self testFormat:@"%O", value];
+        [self testFormat:@"%u", value];
+        [self testFormat:@"%U", value];
+        [self testFormat:@"%x", value];
+        [self testFormat:@"%X", value];
+        [self testFormat:@"%c", value];
+    }
+}
+
+- (void)testWint_tFormat {
+    int numberOfValues = 5;
+    wint_t values[] = {1, WINT_MIN, WINT_MIN - 1, WINT_MAX, WINT_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        wint_t value = values[i];
+        [self testFormat:@"%lc", value];
+    }
+}
+
+- (void)testIntmax_tFormat {
+    int numberOfValues = 5;
+    intmax_t values[] = {1, INTMAX_MIN, INTMAX_MIN - 1, INTMAX_MAX, INTMAX_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        intmax_t value = values[i];
+        [self testFormat:@"%jd", value];
+        [self testFormat:@"%jD", value];
+        [self testFormat:@"%ji", value];
+    }
+}
+
+- (void)testIntmax_tPointerFormat {
+    int numberOfValues = 5;
+    intmax_t values[] = {1, INTMAX_MIN, INTMAX_MIN - 1, INTMAX_MAX, INTMAX_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        intmax_t value = values[i];
+        [self testFormat:@"%jn", &value];
+    }
+}
+
+- (void)testUintmax_tFormat {
+    int numberOfValues = 5;
+    uintmax_t values[] = {1, INTMAX_MIN, INTMAX_MIN - 1, UINTMAX_MAX, UINTMAX_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        uintmax_t value = values[i];
+        [self testFormat:@"%jo", value];
+        [self testFormat:@"%jO", value];
+        [self testFormat:@"%ju", value];
+        [self testFormat:@"%jU", value];
+        [self testFormat:@"%jx", value];
+        [self testFormat:@"%jX", value];
+    }
+}
+
+- (void)testSize_tFormat {
+    int numberOfValues = 5;
+    size_t values[] = {1, INTMAX_MIN, INTMAX_MIN - 1, SIZE_T_MAX, SIZE_T_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        size_t value = values[i];
+        [self testFormat:@"%zd", value];
+        [self testFormat:@"%zD", value];
+        [self testFormat:@"%zo", value];
+        [self testFormat:@"%zO", value];
+        [self testFormat:@"%zu", value];
+        [self testFormat:@"%zU", value];
+        [self testFormat:@"%zx", value];
+        [self testFormat:@"%zX", value];
+        [self testFormat:@"%zi", value];
+    }
+}
+
+- (void)testSize_tPointerFormat {
+    int numberOfValues = 5;
+    size_t values[] = {1, INTMAX_MIN, INTMAX_MIN - 1, SIZE_T_MAX, SIZE_T_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        size_t value = values[i];
+        [self testFormat:@"%zn", &value];
+    }
+}
+
+- (void)testPtrdiff_tFormat {
+    int numberOfValues = 5;
+    ptrdiff_t values[] = {1, PTRDIFF_MIN, PTRDIFF_MIN - 1, PTRDIFF_MAX, PTRDIFF_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        ptrdiff_t value = values[i];
+        [self testFormat:@"%td", value];
+        [self testFormat:@"%tD", value];
+        [self testFormat:@"%to", value];
+        [self testFormat:@"%tO", value];
+        [self testFormat:@"%tu", value];
+        [self testFormat:@"%tU", value];
+        [self testFormat:@"%tx", value];
+        [self testFormat:@"%tX", value];
+        [self testFormat:@"%ti", value];
+    }
+}
+
+- (void)testPtrdiff_tPointerFormat {
+    int numberOfValues = 5;
+    ptrdiff_t values[] = {1, PTRDIFF_MIN, PTRDIFF_MIN - 1, PTRDIFF_MAX, PTRDIFF_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        ptrdiff_t value = values[i];
+        [self testFormat:@"%tn", &value];
+    }
+}
+
+- (void)testLongFormat {
+    int numberOfValues = 5;
+    long values[] = {1L, LONG_MIN, LONG_MIN - 1, LONG_MAX, LONG_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        long value = values[i];
+        [self testFormat:@"%ld", value];
+        [self testFormat:@"%lD", value];
+        [self testFormat:@"%li", value];
+    }
+}
+
+- (void)testLongPointerFormat {
+    int numberOfValues = 5;
+    long values[] = {1L, LONG_MIN, LONG_MIN - 1, LONG_MAX, LONG_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        long value = values[i];
+        [self testFormat:@"%ln", &value];
+    }
+}
+
+- (void)testUnsignedLongFormat {
+    int numberOfValues = 4;
+    unsigned long values[] = {1LU, LONG_MIN, ULONG_MAX, ULONG_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        unsigned long value = values[i];
+        [self testFormat:@"%lo", value];
+        [self testFormat:@"%lO", value];
+        [self testFormat:@"%lu", value];
+        [self testFormat:@"%lU", value];
+        [self testFormat:@"%lx", value];
+        [self testFormat:@"%lX", value];
+    }
+}
+
+- (void)testLongLongFormat {
+    int numberOfValues = 5;
+    long long values[] = {1LL, LONG_LONG_MIN, LONG_LONG_MIN - 1, LONG_LONG_MAX, LONG_LONG_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        long long value = values[i];
+        [self testFormat:@"%lld", value];
+        [self testFormat:@"%llD", value];
+        [self testFormat:@"%lli", value];
+    }
+}
+
+- (void)testLongLongPointerFormat {
+    int numberOfValues = 5;
+    long long values[] = {1LL, LONG_LONG_MIN, LONG_LONG_MIN - 1, LONG_LONG_MAX, LONG_LONG_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        long long value = values[i];
+        [self testFormat:@"%lln", &value];
+    }
+}
+
+- (void)testUnsignedLongLongFormat {
+    int numberOfValues = 4;
+    unsigned long long values[] = {1LL, LONG_LONG_MIN, ULONG_LONG_MAX, ULONG_LONG_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        unsigned long long value = values[i];
+        [self testFormat:@"%llo", value];
+        [self testFormat:@"%llO", value];
+        [self testFormat:@"%llu", value];
+        [self testFormat:@"%llU", value];
+        [self testFormat:@"%llx", value];
+        [self testFormat:@"%llX", value];
+    }
+}
+
+- (void)testDoubleFormat {
+    int numberOfValues = 6;
+    double values[] = {1.0, -1.0f, DBL_MIN, DBL_MIN - 1, DBL_MAX, DBL_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        double value = values[i];
+        [self testFormat:@"%f", value];
+        [self testFormat:@"%F", value];
+        [self testFormat:@"%e", value];
+        [self testFormat:@"%E", value];
+        [self testFormat:@"%g", value];
+        [self testFormat:@"%G", value];
+        [self testFormat:@"%a", value];
+        [self testFormat:@"%A", value];
+        [self testFormat:@"%la", value];
+        [self testFormat:@"%lA", value];
+        [self testFormat:@"%le", value];
+        [self testFormat:@"%lE", value];
+        [self testFormat:@"%lf", value];
+        [self testFormat:@"%lF", value];
+        [self testFormat:@"%lg", value];
+        [self testFormat:@"%lG", value];
+    }
+}
+
+- (void)testLongDoubleFormat {
+    int numberOfValues = 6;
+    long double values[] = {1.0, -1.0f, LDBL_MIN, LDBL_MIN - 1, LDBL_MAX, LDBL_MAX + 1};
+    
+    for (int i = 0; i < numberOfValues; i++) {
+        long double value = values[i];
+        [self testFormat:@"%La", value];
+        [self testFormat:@"%LA", value];
+        [self testFormat:@"%Le", value];
+        [self testFormat:@"%LE", value];
+        [self testFormat:@"%Lf", value];
+        [self testFormat:@"%LF", value];
+        [self testFormat:@"%Lg", value];
+        [self testFormat:@"%LG", value];
     }
 }
 
@@ -195,7 +501,7 @@
 }
 
 #pragma mark -
-#pragma mark Attributes
+#pragma mark Attributed Formats
 
 - (void)testAttributes1 {
     UIColor *color1 = [UIColor greenColor];
