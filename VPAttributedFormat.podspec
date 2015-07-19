@@ -8,7 +8,7 @@ s.summary      =  'VPAttributedFormat project represents category: NSAttributedS
 
 # Source Info
 s.platform     =  :ios, '6.0'
-s.source       =  { :git => 'https://github.com/Visput/VPAttributedFormat', :tag => "v#{s.version}" }
+s.source       =  { :git => 'https://github.com/Visput/VPAttributedFormat.git', :tag => "v#{s.version}" }
 s.source_files =  'VPAttributedFormat/**/*.{h,m}'
 
 s.requires_arc = true
