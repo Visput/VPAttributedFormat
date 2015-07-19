@@ -245,8 +245,8 @@
 }
 
 - (void)testSize_tFormat {
-    int numberOfValues = 5;
-    size_t values[] = {1, INTMAX_MIN, INTMAX_MIN - 1, SIZE_T_MAX, SIZE_T_MAX + 1};
+    int numberOfValues = 3;
+    size_t values[] = {1, SIZE_T_MAX, SIZE_T_MAX + 1};
     
     for (int i = 0; i < numberOfValues; i++) {
         size_t value = values[i];
@@ -263,8 +263,8 @@
 }
 
 - (void)testSize_tPointerFormat {
-    int numberOfValues = 5;
-    size_t values[] = {1, INTMAX_MIN, INTMAX_MIN - 1, SIZE_T_MAX, SIZE_T_MAX + 1};
+    int numberOfValues = 3;
+    size_t values[] = {1, SIZE_T_MAX, SIZE_T_MAX + 1};
     
     for (int i = 0; i < numberOfValues; i++) {
         size_t value = values[i];
