@@ -416,6 +416,18 @@
     }
 }
 
+- (void)testEmptyFormat {
+    [self testFormat:@"Empty Format"];
+    [self testFormat:@""];
+}
+
+- (void)testNilFormat {
+    XCTAssertThrows([[NSAttributedString alloc] vp_initWithAttributedFormat:nil arguments:NULL]);
+    XCTAssertThrows([[NSAttributedString alloc] vp_initWithAttributedFormat:nil]);
+    XCTAssertThrows([NSAttributedString vp_attributedStringWithAttributedFormat:nil arguments:NULL]);
+    XCTAssertThrows([NSAttributedString vp_attributedStringWithAttributedFormat:nil]);
+}
+
 #pragma mark -
 #pragma mark Complex Formats
 
@@ -486,24 +498,9 @@
 }
 
 #pragma mark -
-#pragma mark Other Formats
-
-- (void)testEmptyFormat {
-    [self testFormat:@"Empty Format"];
-    [self testFormat:@""];
-}
-
-- (void)testNilFormat {
-    XCTAssertThrows([[NSAttributedString alloc] vp_initWithAttributedFormat:nil arguments:NULL]);
-    XCTAssertThrows([[NSAttributedString alloc] vp_initWithAttributedFormat:nil]);
-    XCTAssertThrows([NSAttributedString vp_attributedStringWithAttributedFormat:nil arguments:NULL]);
-    XCTAssertThrows([NSAttributedString vp_attributedStringWithAttributedFormat:nil]);
-}
-
-#pragma mark -
 #pragma mark Attributed Formats
 
-- (void)testAttributes1 {
+- (void)testAttributedFormat1 {
     UIColor *color1 = [UIColor greenColor];
     UIColor *color2 = [UIColor redColor];
     NSString *value1 = @"String1";
@@ -526,6 +523,105 @@
     [attributedString enumerateAttributesInRange:[attributedString.string rangeOfString:value2] options:0 usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {
         UIColor *aColor2 = attrs[NSForegroundColorAttributeName];
         XCTAssertEqualObjects(color2, aColor2);
+    }];
+}
+
+- (void)testAttributedFormat2 {
+    UIColor *color1 = [UIColor greenColor];
+    UIColor *color2 = [UIColor redColor];
+    UIColor *color3 = [UIColor blueColor];
+    NSString *value = @"String";
+    NSString *format = @"%@StringString%@";
+    
+    NSString *string = [NSString stringWithFormat:format, value, value];
+    
+    NSMutableAttributedString *attributedFormat = [[NSMutableAttributedString alloc] initWithString:format];
+    [attributedFormat addAttribute:NSForegroundColorAttributeName value:color1 range:NSMakeRange(0, 2)];
+    [attributedFormat addAttribute:NSForegroundColorAttributeName value:color2 range:NSMakeRange(2, 12)];
+    [attributedFormat addAttribute:NSForegroundColorAttributeName value:color3 range:NSMakeRange(14, 2)];
+    NSAttributedString *attributedString = [NSAttributedString vp_attributedStringWithAttributedFormat:attributedFormat, value, value];
+    
+    XCTAssertEqualObjects(string, attributedString.string);
+    
+    [attributedString enumerateAttributesInRange:NSMakeRange(0, 6) options:0 usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {
+        UIColor *aColor1 = attrs[NSForegroundColorAttributeName];
+        XCTAssertEqualObjects(color1, aColor1);
+    }];
+    [attributedString enumerateAttributesInRange:NSMakeRange(6, 12) options:0 usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {
+        UIColor *aColor2 = attrs[NSForegroundColorAttributeName];
+        XCTAssertEqualObjects(color2, aColor2);
+    }];
+    [attributedString enumerateAttributesInRange:NSMakeRange(18, 6) options:0 usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {
+        UIColor *aColor3 = attrs[NSForegroundColorAttributeName];
+        XCTAssertEqualObjects(color3, aColor3);
+    }];
+}
+
+- (void)testAttributedFormat3 {
+    UIFont *font = [UIFont systemFontOfSize:12.0f];
+    int value1 = 10;
+    double value2 = 10.10;
+    NSString *format = @"%d is not equal to %g";
+    
+    NSString *string = [NSString stringWithFormat:format, value1, value2];
+    
+    NSMutableAttributedString *attributedFormat = [[NSMutableAttributedString alloc] initWithString:format];
+    [attributedFormat addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, format.length)];
+    NSAttributedString *attributedString = [NSAttributedString vp_attributedStringWithAttributedFormat:attributedFormat, value1, value2];
+    
+    XCTAssertEqualObjects(string, attributedString.string);
+    
+    [attributedString enumerateAttributesInRange:NSMakeRange(0, string.length) options:0 usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {
+        UIFont *aFont = attrs[NSFontAttributeName];
+        XCTAssertEqualObjects(font, aFont);
+    }];
+}
+
+- (void)testAttributedFormat4 {
+    UIFont *font1 = [UIFont systemFontOfSize:12.0f];
+    UIFont *font2 = [UIFont boldSystemFontOfSize:12.0f];
+    NSArray *fonts = @[font1, font2];
+    NSString *value = @"percent";
+    NSString *format = @"%% is %@ symbol";
+    
+    NSString *string = [NSString stringWithFormat:format, value, value];
+    
+    NSMutableAttributedString *attributedFormat = [[NSMutableAttributedString alloc] initWithString:format];
+    [attributedFormat addAttribute:NSFontAttributeName value:font1 range:NSMakeRange(0, 2)];
+    [attributedFormat addAttribute:NSFontAttributeName value:font2 range:NSMakeRange(0, format.length)];
+    NSAttributedString *attributedString = [NSAttributedString vp_attributedStringWithAttributedFormat:attributedFormat, value, value];
+    
+    XCTAssertEqualObjects(string, attributedString.string);
+    
+    [attributedString enumerateAttributesInRange:NSMakeRange(0, 1) options:0 usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {
+        NSFont *font = attrs[NSFontAttributeName];
+        XCTAssertTrue([fonts containsObject:font]);
+    }];
+    [attributedString enumerateAttributesInRange:NSMakeRange(1, string.length - 1) options:0 usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {
+        NSFont *aFont2 = attrs[NSFontAttributeName];
+        XCTAssertEqualObjects(font2, aFont2);
+    }];
+}
+
+- (void)testAttributedFormat5 {
+    UIFont *font1 = [UIFont systemFontOfSize:12.0f];
+    UIFont *font2 = [UIFont boldSystemFontOfSize:12.0f];
+    NSString *format = @"Simple string";
+    
+    NSMutableAttributedString *attributedFormat = [[NSMutableAttributedString alloc] initWithString:format];
+    [attributedFormat addAttribute:NSFontAttributeName value:font1 range:NSMakeRange(0, 7)];
+    [attributedFormat addAttribute:NSFontAttributeName value:font2 range:NSMakeRange(7, 6)];
+    NSAttributedString *attributedString = [NSAttributedString vp_attributedStringWithAttributedFormat:attributedFormat];
+    
+    XCTAssertEqualObjects(attributedString.string, format);
+    
+    [attributedString enumerateAttributesInRange:NSMakeRange(0, 7) options:0 usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {
+        NSFont *aFont1 = attrs[NSFontAttributeName];
+        XCTAssertEqualObjects(font1, aFont1);
+    }];
+    [attributedString enumerateAttributesInRange:NSMakeRange(7, 6) options:0 usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {
+        NSFont *aFont2 = attrs[NSFontAttributeName];
+        XCTAssertEqualObjects(font2, aFont2);
     }];
 }
 
