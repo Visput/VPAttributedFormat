@@ -4,7 +4,11 @@ This category provides methods for building attributed string based on attribute
 The most suitable case of using this category is text controls with variable attributed text configured in interface builder.  
 You need set correct string format to attributed text and configure necessary attributes.  
 Then you need pass necessary arguments in code by using methods of this category.  
-See 'Usage' and 'Examples' sections for more details.
+
+## Examples
+Project includes example application. It provides Basic and Pro format examples.  
+![example](https://cloud.githubusercontent.com/assets/7302163/8714863/a33e91c2-2b3f-11e5-93aa-f886c019ca38.png)
+
 ## Installation
 #### Cocoa Pods
 Add to your Podfile:  
@@ -72,10 +76,6 @@ textLabel.attributedText = withVaList(arguments) { pointer in
 
 ##### Enjoy result
 ![result](https://cloud.githubusercontent.com/assets/7302163/8714860/9b37dbb4-2b3f-11e5-8296-9a57f39cd702.png)
-
-## Examples
-VPAttributedFormatExample directory contains example project. It provides Basic and Pro format examples.  
-![example](https://cloud.githubusercontent.com/assets/7302163/8714863/a33e91c2-2b3f-11e5-93aa-f886c019ca38.png)
 
 ## License
 VPAttributedFormat is released under the MIT license. See LICENSE for details.
