@@ -1,4 +1,4 @@
-# VPAttributedFormat
+## VPAttributedFormat
 VPAttributedFormat project represents category: **NSAttributedString+VPAttributedFormat**.  
 This category provides methods for building attributed string based on attributed format and arguments that should satisfy this format.  
 The most suitable case of using this category is text controls with variable attributed text configured in interface builder.  
@@ -8,7 +8,7 @@ See [Usage](#usage) and [Examples](#examples) sections for more details.
 
 ![example](https://cloud.githubusercontent.com/assets/7302163/8714863/a33e91c2-2b3f-11e5-93aa-f886c019ca38.png)
 
-## Installation
+### Installation
 ##### Cocoa Pods
 Add to your Podfile:  
 ```
@@ -22,7 +22,7 @@ use_frameworks!
 3. Add VPAttributedFormat.framework to Build Settings -> Link Binary With Libraries;
 4. Add "-all_load" flag to Build Settings -> Other Linker Flags.
 
-## Usage<a name="usage"></a>
+### Usage<a name="usage"></a>
 ##### Import framework header or module
 ```objective-c
 // Objective C
@@ -73,12 +73,12 @@ textLabel.attributedText = withVaList(arguments) { pointer in
 ##### Enjoy result
 ![result](https://cloud.githubusercontent.com/assets/7302163/8714860/9b37dbb4-2b3f-11e5-8296-9a57f39cd702.png)
 
-## System Requirements
+### System Requirements
 It requires building with iOS SDK 6.0 and later.  
 It can be used in Objective C and Swift code.
 
-## Examples<a name="examples"></a>
+### Examples<a name="examples"></a>
 [VPAttributedFormatExample](https://github.com/Visput/VPAttributedFormat/tree/master/VPAttributedFormatExample/ "VPAttributedFormatExample") is an example project. It provides Basic and Pro format examples. 
 
-## License
+### License
 VPAttributedFormat is released under the MIT license. See LICENSE for details.
