@@ -105,6 +105,7 @@
                                                     selector:@selector(fillBasicValueLabel3)
                                                     userInfo:nil
                                                      repeats:YES];
+        self.basicValueLabel3.attributedText = self.basicFormatLabel3.attributedText;
     }
     
     NSInteger hour = 0;
@@ -114,13 +115,7 @@
     [calendar getHour:&hour minute:&minute second:&second nanosecond:NULL fromDate:[NSDate date]];
     int width = 2;
     
-    self.basicValueLabel3.attributedText = [NSAttributedString vp_attributedStringWithAttributedFormat:self.basicFormatLabel3.attributedText,
-                                            width,
-                                            (long)hour,
-                                            width,
-                                            (long)minute,
-                                            width,
-                                            (long)second];
+    [self.basicValueLabel3 vp_setAttributedFormatArguments:nil, width, (long)hour, width, (long)minute, width, (long)second];
 }
 
 - (void)fillBasicValueLabel4 {

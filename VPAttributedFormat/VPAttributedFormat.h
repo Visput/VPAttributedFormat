@@ -16,4 +16,7 @@ FOUNDATION_EXPORT const unsigned char VPAttributedFormatVersionString[];
 
 // Public headers.
 #import <VPAttributedFormat/NSAttributedString+VPAttributedFormat.h>
+#import <VPAttributedFormat/UILabel+VPAttributedFormat.h>
+#import <VPAttributedFormat/UITextField+VPAttributedFormat.h>
+#import <VPAttributedFormat/UITextView+VPAttributedFormat.h>
 

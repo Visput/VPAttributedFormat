@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		F04DF6231B53FFDE006D7B9D /* VPSpecifiersProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = F04DF6211B53FFDE006D7B9D /* VPSpecifiersProvider.h */; };
 		F04DF6241B53FFDE006D7B9D /* VPSpecifiersProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F04DF6221B53FFDE006D7B9D /* VPSpecifiersProvider.m */; };
+		F0618B901B657E3400D53181 /* UILabel+VPAttributedFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = F0618B8E1B657E3400D53181 /* UILabel+VPAttributedFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0618B911B657E3400D53181 /* UILabel+VPAttributedFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = F0618B8F1B657E3400D53181 /* UILabel+VPAttributedFormat.m */; };
+		F0618B941B657E7000D53181 /* UITextField+VPAttributedFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = F0618B921B657E7000D53181 /* UITextField+VPAttributedFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0618B951B657E7000D53181 /* UITextField+VPAttributedFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = F0618B931B657E7000D53181 /* UITextField+VPAttributedFormat.m */; };
+		F0618BA01B657ECB00D53181 /* UITextView+VPAttributedFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = F0618B9E1B657ECB00D53181 /* UITextView+VPAttributedFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0618BA11B657ECB00D53181 /* UITextView+VPAttributedFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = F0618B9F1B657ECB00D53181 /* UITextView+VPAttributedFormat.m */; };
 		F0629F401B3DD2CD00AFE634 /* VPAttributedFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = F0629F3F1B3DD2CD00AFE634 /* VPAttributedFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F0629F461B3DD2CD00AFE634 /* VPAttributedFormat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0629F3A1B3DD2CD00AFE634 /* VPAttributedFormat.framework */; };
 		F0629F4D1B3DD2CD00AFE634 /* VPAttributedFormatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0629F4C1B3DD2CD00AFE634 /* VPAttributedFormatTests.m */; };
@@ -16,6 +22,8 @@
 		F0629F591B3DD3BA00AFE634 /* NSAttributedString+VPAttributedFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = F0629F571B3DD3BA00AFE634 /* NSAttributedString+VPAttributedFormat.m */; };
 		F073C1ED1B4912C300B6DC34 /* VPValueWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = F073C1EB1B4912C300B6DC34 /* VPValueWrapper.h */; };
 		F073C1EE1B4912C300B6DC34 /* VPValueWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F073C1EC1B4912C300B6DC34 /* VPValueWrapper.m */; };
+		F09CF25F1B65C958008D271B /* VPAttributedTextControlHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = F09CF25D1B65C958008D271B /* VPAttributedTextControlHelper.h */; };
+		F09CF2601B65C958008D271B /* VPAttributedTextControlHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F09CF25E1B65C958008D271B /* VPAttributedTextControlHelper.m */; };
 		F0DF4A9D1B40F8F30069E940 /* VPAttributedStringFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = F0DF4A9B1B40F8F30069E940 /* VPAttributedStringFormatter.h */; };
 		F0DF4A9E1B40F8F30069E940 /* VPAttributedStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F0DF4A9C1B40F8F30069E940 /* VPAttributedStringFormatter.m */; };
 		F0DF4AA11B40FBAA0069E940 /* VPSubstring.h in Headers */ = {isa = PBXBuildFile; fileRef = F0DF4A9F1B40FBAA0069E940 /* VPSubstring.h */; };
@@ -41,6 +49,12 @@
 /* Begin PBXFileReference section */
 		F04DF6211B53FFDE006D7B9D /* VPSpecifiersProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPSpecifiersProvider.h; sourceTree = "<group>"; };
 		F04DF6221B53FFDE006D7B9D /* VPSpecifiersProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPSpecifiersProvider.m; sourceTree = "<group>"; };
+		F0618B8E1B657E3400D53181 /* UILabel+VPAttributedFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+VPAttributedFormat.h"; sourceTree = "<group>"; };
+		F0618B8F1B657E3400D53181 /* UILabel+VPAttributedFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+VPAttributedFormat.m"; sourceTree = "<group>"; };
+		F0618B921B657E7000D53181 /* UITextField+VPAttributedFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+VPAttributedFormat.h"; sourceTree = "<group>"; };
+		F0618B931B657E7000D53181 /* UITextField+VPAttributedFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+VPAttributedFormat.m"; sourceTree = "<group>"; };
+		F0618B9E1B657ECB00D53181 /* UITextView+VPAttributedFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+VPAttributedFormat.h"; sourceTree = "<group>"; };
+		F0618B9F1B657ECB00D53181 /* UITextView+VPAttributedFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+VPAttributedFormat.m"; sourceTree = "<group>"; };
 		F0629F3A1B3DD2CD00AFE634 /* VPAttributedFormat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VPAttributedFormat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0629F3E1B3DD2CD00AFE634 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0629F3F1B3DD2CD00AFE634 /* VPAttributedFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPAttributedFormat.h; sourceTree = "<group>"; };
@@ -51,6 +65,8 @@
 		F0629F571B3DD3BA00AFE634 /* NSAttributedString+VPAttributedFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+VPAttributedFormat.m"; sourceTree = "<group>"; };
 		F073C1EB1B4912C300B6DC34 /* VPValueWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPValueWrapper.h; sourceTree = "<group>"; };
 		F073C1EC1B4912C300B6DC34 /* VPValueWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPValueWrapper.m; sourceTree = "<group>"; };
+		F09CF25D1B65C958008D271B /* VPAttributedTextControlHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPAttributedTextControlHelper.h; sourceTree = "<group>"; };
+		F09CF25E1B65C958008D271B /* VPAttributedTextControlHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPAttributedTextControlHelper.m; sourceTree = "<group>"; };
 		F0DF4A9B1B40F8F30069E940 /* VPAttributedStringFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPAttributedStringFormatter.h; sourceTree = "<group>"; };
 		F0DF4A9C1B40F8F30069E940 /* VPAttributedStringFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPAttributedStringFormatter.m; sourceTree = "<group>"; };
 		F0DF4A9F1B40FBAA0069E940 /* VPSubstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPSubstring.h; sourceTree = "<group>"; };
@@ -107,6 +123,12 @@
 				F0629F3F1B3DD2CD00AFE634 /* VPAttributedFormat.h */,
 				F0629F561B3DD3BA00AFE634 /* NSAttributedString+VPAttributedFormat.h */,
 				F0629F571B3DD3BA00AFE634 /* NSAttributedString+VPAttributedFormat.m */,
+				F0618B8E1B657E3400D53181 /* UILabel+VPAttributedFormat.h */,
+				F0618B8F1B657E3400D53181 /* UILabel+VPAttributedFormat.m */,
+				F0618B921B657E7000D53181 /* UITextField+VPAttributedFormat.h */,
+				F0618B931B657E7000D53181 /* UITextField+VPAttributedFormat.m */,
+				F0618B9E1B657ECB00D53181 /* UITextView+VPAttributedFormat.h */,
+				F0618B9F1B657ECB00D53181 /* UITextView+VPAttributedFormat.m */,
 				F0DF4A9A1B40F8CC0069E940 /* Core */,
 				F0629F3D1B3DD2CD00AFE634 /* Supporting Files */,
 			);
@@ -156,6 +178,8 @@
 				F073C1EC1B4912C300B6DC34 /* VPValueWrapper.m */,
 				F04DF6211B53FFDE006D7B9D /* VPSpecifiersProvider.h */,
 				F04DF6221B53FFDE006D7B9D /* VPSpecifiersProvider.m */,
+				F09CF25D1B65C958008D271B /* VPAttributedTextControlHelper.h */,
+				F09CF25E1B65C958008D271B /* VPAttributedTextControlHelper.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -169,11 +193,15 @@
 			files = (
 				F0DF4AAC1B4110F40069E940 /* VPSubstringsContainer.h in Headers */,
 				F0629F401B3DD2CD00AFE634 /* VPAttributedFormat.h in Headers */,
+				F0618B901B657E3400D53181 /* UILabel+VPAttributedFormat.h in Headers */,
 				F073C1ED1B4912C300B6DC34 /* VPValueWrapper.h in Headers */,
 				F04DF6231B53FFDE006D7B9D /* VPSpecifiersProvider.h in Headers */,
+				F0618BA01B657ECB00D53181 /* UITextView+VPAttributedFormat.h in Headers */,
 				F0DF4A9D1B40F8F30069E940 /* VPAttributedStringFormatter.h in Headers */,
+				F09CF25F1B65C958008D271B /* VPAttributedTextControlHelper.h in Headers */,
 				F0DF4AB01B411B450069E940 /* VPConversionArgument.h in Headers */,
 				F0DF4AA51B4103E10069E940 /* VPConversionSubstring.h in Headers */,
+				F0618B941B657E7000D53181 /* UITextField+VPAttributedFormat.h in Headers */,
 				F0DF4AA11B40FBAA0069E940 /* VPSubstring.h in Headers */,
 				F0629F581B3DD3BA00AFE634 /* NSAttributedString+VPAttributedFormat.h in Headers */,
 			);
@@ -277,7 +305,11 @@
 			files = (
 				F0629F591B3DD3BA00AFE634 /* NSAttributedString+VPAttributedFormat.m in Sources */,
 				F0DF4AA21B40FBAA0069E940 /* VPSubstring.m in Sources */,
+				F0618B911B657E3400D53181 /* UILabel+VPAttributedFormat.m in Sources */,
 				F0DF4AB11B411B450069E940 /* VPConversionArgument.m in Sources */,
+				F09CF2601B65C958008D271B /* VPAttributedTextControlHelper.m in Sources */,
+				F0618BA11B657ECB00D53181 /* UITextView+VPAttributedFormat.m in Sources */,
+				F0618B951B657E7000D53181 /* UITextField+VPAttributedFormat.m in Sources */,
 				F073C1EE1B4912C300B6DC34 /* VPValueWrapper.m in Sources */,
 				F0DF4A9E1B40F8F30069E940 /* VPAttributedStringFormatter.m in Sources */,
 				F0DF4AAD1B4110F40069E940 /* VPSubstringsContainer.m in Sources */,
