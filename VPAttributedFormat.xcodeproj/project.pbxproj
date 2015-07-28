@@ -24,6 +24,7 @@
 		F073C1EE1B4912C300B6DC34 /* VPValueWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F073C1EC1B4912C300B6DC34 /* VPValueWrapper.m */; };
 		F09CF25F1B65C958008D271B /* VPAttributedTextControlHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = F09CF25D1B65C958008D271B /* VPAttributedTextControlHelper.h */; };
 		F09CF2601B65C958008D271B /* VPAttributedTextControlHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F09CF25E1B65C958008D271B /* VPAttributedTextControlHelper.m */; };
+		F09CF29C1B683373008D271B /* VPAttributedTextControlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F09CF29B1B683373008D271B /* VPAttributedTextControlTests.m */; };
 		F0DF4A9D1B40F8F30069E940 /* VPAttributedStringFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = F0DF4A9B1B40F8F30069E940 /* VPAttributedStringFormatter.h */; };
 		F0DF4A9E1B40F8F30069E940 /* VPAttributedStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F0DF4A9C1B40F8F30069E940 /* VPAttributedStringFormatter.m */; };
 		F0DF4AA11B40FBAA0069E940 /* VPSubstring.h in Headers */ = {isa = PBXBuildFile; fileRef = F0DF4A9F1B40FBAA0069E940 /* VPSubstring.h */; };
@@ -67,6 +68,7 @@
 		F073C1EC1B4912C300B6DC34 /* VPValueWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPValueWrapper.m; sourceTree = "<group>"; };
 		F09CF25D1B65C958008D271B /* VPAttributedTextControlHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPAttributedTextControlHelper.h; sourceTree = "<group>"; };
 		F09CF25E1B65C958008D271B /* VPAttributedTextControlHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPAttributedTextControlHelper.m; sourceTree = "<group>"; };
+		F09CF29B1B683373008D271B /* VPAttributedTextControlTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPAttributedTextControlTests.m; sourceTree = "<group>"; };
 		F0DF4A9B1B40F8F30069E940 /* VPAttributedStringFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPAttributedStringFormatter.h; sourceTree = "<group>"; };
 		F0DF4A9C1B40F8F30069E940 /* VPAttributedStringFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPAttributedStringFormatter.m; sourceTree = "<group>"; };
 		F0DF4A9F1B40FBAA0069E940 /* VPSubstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPSubstring.h; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			children = (
 				F0629F4C1B3DD2CD00AFE634 /* VPAttributedFormatTests.m */,
 				F0629F4A1B3DD2CD00AFE634 /* Supporting Files */,
+				F09CF29B1B683373008D271B /* VPAttributedTextControlTests.m */,
 			);
 			path = VPAttributedFormatTests;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F09CF29C1B683373008D271B /* VPAttributedTextControlTests.m in Sources */,
 				F0629F4D1B3DD2CD00AFE634 /* VPAttributedFormatTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

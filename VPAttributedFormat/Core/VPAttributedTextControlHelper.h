@@ -14,7 +14,8 @@
 
 + (instancetype)helperForTextControl:(NSObject<VPAttributedTextControl> *)textControl;
 
-- (void)setAttributedFormatArguments:(va_list)arguments;
+- (void)setAttributedFormatArguments:(va_list)arguments
+                          keepFormat:(BOOL)keepFormat;
 
 @end
 

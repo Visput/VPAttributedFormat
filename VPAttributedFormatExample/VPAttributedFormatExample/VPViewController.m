@@ -53,6 +53,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Method 'fillBasicValueLabel3' demonstrates '-[UILabel vp_setAttributedFormatArguments:...]'.
+    // All other methods demonstrate +[NSAttributedString vp_attributedStringWithAttributedFormat:...]'.
+    
     // Basic.
     [self.view bringSubviewToFront:self.basicFormatsView];
     self.basicFormatsViewTrailingSpace.constant = 0;
@@ -115,7 +118,7 @@
     [calendar getHour:&hour minute:&minute second:&second nanosecond:NULL fromDate:[NSDate date]];
     int width = 2;
     
-    [self.basicValueLabel3 vp_setAttributedFormatArguments:nil, width, (long)hour, width, (long)minute, width, (long)second];
+    [self.basicValueLabel3 vp_setAttributedFormatArguments:YES, width, (long)hour, width, (long)minute, width, (long)second];
 }
 
 - (void)fillBasicValueLabel4 {

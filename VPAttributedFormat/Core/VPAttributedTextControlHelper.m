@@ -34,7 +34,8 @@ static const void *VPTextControlHelperKey = &VPTextControlHelperKey;
     return helper;
 }
 
-- (void)setAttributedFormatArguments:(va_list)arguments {
+- (void)setAttributedFormatArguments:(va_list)arguments
+                          keepFormat:(BOOL)keepFormat {
     if (self.attributedFormat == nil) {
         self.attributedFormat = self.textControl.attributedText;
     }
@@ -43,6 +44,10 @@ static const void *VPTextControlHelperKey = &VPTextControlHelperKey;
     self.textControl.attributedText = [NSAttributedString vp_attributedStringWithAttributedFormat:self.attributedFormat
                                                                                         arguments:arguments];
     [self registerForObservingAttributedText];
+    
+    if (!keepFormat) {
+        self.attributedFormat = nil;
+    }
 }
 
 #pragma mark -

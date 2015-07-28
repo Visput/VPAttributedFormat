@@ -10,7 +10,9 @@
 
 @interface UITextView (VPAttributedFormat)
 
-- (void)vp_setAttributedFormatArguments:(id)nilValue, ...;
-- (void)vp_setAttributedFormatArgumentsList:(va_list)arguments;
+- (void)vp_setAttributedFormatArguments:(BOOL)keepFormat, ...;
+
+- (void)vp_setAttributedFormatArguments:(va_list)arguments
+                             keepFormat:(BOOL)keepFormat;
 
 @end

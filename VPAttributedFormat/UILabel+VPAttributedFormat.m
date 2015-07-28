@@ -14,16 +14,19 @@
 
 @implementation UILabel (VPAttributedFormat)
 
-- (void)vp_setAttributedFormatArguments:(id)nilValue, ... {
+- (void)vp_setAttributedFormatArguments:(BOOL)keepFormat, ... {
     va_list arguments;
-    va_start(arguments, nilValue);
-    [self vp_setAttributedFormatArgumentsList:arguments];
+    va_start(arguments, keepFormat);
+    [self vp_setAttributedFormatArguments:arguments
+                               keepFormat:keepFormat];
     va_end(arguments);
 }
 
-- (void)vp_setAttributedFormatArgumentsList:(va_list)arguments {
+- (void)vp_setAttributedFormatArguments:(va_list)arguments
+                             keepFormat:(BOOL)keepFormat {
     VPAttributedTextControlHelper *helper = [VPAttributedTextControlHelper helperForTextControl:self];
-    [helper setAttributedFormatArguments:arguments];
+    [helper setAttributedFormatArguments:arguments
+                              keepFormat:keepFormat];
 }
 
 @end
