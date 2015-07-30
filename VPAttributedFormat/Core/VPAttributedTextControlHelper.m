@@ -10,14 +10,13 @@
 #import "NSAttributedString+VPAttributedFormat.h"
 #import <objc/runtime.h>
 
-static NSString *const VPAttributedTextKeyPath = @"attributedText";
 static const void *VPTextControlHelperKey = &VPTextControlHelperKey;
 
 @interface VPAttributedTextControlHelper ()
 
 @property (nonatomic, copy) NSAttributedString *attributedFormat;
+@property (nonatomic, copy) NSAttributedString *attributedText;
 @property (nonatomic, weak) NSObject<VPAttributedTextControl> *textControl;
-@property (nonatomic, assign) BOOL isObservingAttributedString;
 
 @end
 
@@ -36,49 +35,19 @@ static const void *VPTextControlHelperKey = &VPTextControlHelperKey;
 
 - (void)setAttributedFormatArguments:(va_list)arguments
                           keepFormat:(BOOL)keepFormat {
-    if (self.attributedFormat == nil) {
+    BOOL isFormatUninitialized = self.attributedFormat == nil;
+    BOOL isFormatChanged = ![self.attributedText isEqualToAttributedString:self.textControl.attributedText];
+    if (isFormatUninitialized || isFormatChanged) {
         self.attributedFormat = self.textControl.attributedText;
     }
-    
-    [self unregisterFromObservingAttributedText];
+
     self.textControl.attributedText = [NSAttributedString vp_attributedStringWithAttributedFormat:self.attributedFormat
                                                                                         arguments:arguments];
-    [self registerForObservingAttributedText];
+    self.attributedText = self.textControl.attributedText;
     
     if (!keepFormat) {
         self.attributedFormat = nil;
     }
-}
-
-#pragma mark -
-#pragma mark KVO
-
-- (void)registerForObservingAttributedText {
-    if (!self.isObservingAttributedString) {
-        self.isObservingAttributedString = YES;
-        [self.textControl addObserver:self
-                           forKeyPath:VPAttributedTextKeyPath
-                              options:NSKeyValueObservingOptionNew
-                              context:nil];
-    }
-}
-
-- (void)unregisterFromObservingAttributedText {
-    if (self.isObservingAttributedString) {
-        self.isObservingAttributedString = NO;
-        [self.textControl removeObserver:self
-                              forKeyPath:VPAttributedTextKeyPath];
-    }
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if ([keyPath isEqualToString:VPAttributedTextKeyPath]) {
-        self.attributedFormat = change[@"new"];
-    }
-}
-
-- (void)dealloc {
-    [self unregisterFromObservingAttributedText];
 }
 
 @end

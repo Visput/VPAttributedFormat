@@ -68,7 +68,7 @@
 		F073C1EC1B4912C300B6DC34 /* VPValueWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPValueWrapper.m; sourceTree = "<group>"; };
 		F09CF25D1B65C958008D271B /* VPAttributedTextControlHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPAttributedTextControlHelper.h; sourceTree = "<group>"; };
 		F09CF25E1B65C958008D271B /* VPAttributedTextControlHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPAttributedTextControlHelper.m; sourceTree = "<group>"; };
-		F09CF29B1B683373008D271B /* VPAttributedTextControlTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPAttributedTextControlTests.m; sourceTree = "<group>"; };
+		F09CF29B1B683373008D271B /* VPAttributedTextControlTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VPAttributedTextControlTests.m; path = VPAttributedFormatTests/VPAttributedTextControlTests.m; sourceTree = SOURCE_ROOT; };
 		F0DF4A9B1B40F8F30069E940 /* VPAttributedStringFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPAttributedStringFormatter.h; sourceTree = "<group>"; };
 		F0DF4A9C1B40F8F30069E940 /* VPAttributedStringFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPAttributedStringFormatter.m; sourceTree = "<group>"; };
 		F0DF4A9F1B40FBAA0069E940 /* VPSubstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPSubstring.h; sourceTree = "<group>"; };
@@ -149,8 +149,8 @@
 			isa = PBXGroup;
 			children = (
 				F0629F4C1B3DD2CD00AFE634 /* VPAttributedFormatTests.m */,
-				F0629F4A1B3DD2CD00AFE634 /* Supporting Files */,
 				F09CF29B1B683373008D271B /* VPAttributedTextControlTests.m */,
+				F0629F4A1B3DD2CD00AFE634 /* Supporting Files */,
 			);
 			path = VPAttributedFormatTests;
 			sourceTree = "<group>";
