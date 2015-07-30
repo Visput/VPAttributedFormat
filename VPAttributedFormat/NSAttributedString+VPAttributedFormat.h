@@ -13,7 +13,7 @@
  *  attributed format and arguments that should satisfy this format.
  *
  *  The most suitable case of using this category is
- *  text controls with variable attributed text configured in interface builder.
+ *  text controls with variable attributed text configured in Interface Builder.
  *  You need set correct string format to attributed text and configure necessary attributes.
  *  Then you need pass necessary arguments in code by using methods of this category.
  *  
