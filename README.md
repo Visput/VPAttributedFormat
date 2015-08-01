@@ -52,7 +52,7 @@ import VPAttributedFormat
 ##### Populate format with necessary arguments
 
 ###### Set arguments multiple times  
-Use *vp_setAttributedFormatArguments:YES, ...* if you need update arguments multiple times.
+Set keepFormat parameter to YES if you need update arguments multiple times:
 ```objective-c
 // Objective C
 NSString *hot = @"Hot";
@@ -67,11 +67,11 @@ let cold = "Cold"
 
 var arguments: [CVarArgType] = [hot, cold]
 withVaList(arguments) { pointer in
-  textControl.vp_setAttributedFormatArguments(pointer, keepFormat: true);
+  textLabel.vp_setAttributedFormatArguments(pointer, keepFormat: true);
 }
 ```
 ###### Set arguments only once  
-Use *vp_setAttributedFormatArguments:NO, ...* if you need set arguments only once.
+Set keepFormat parameter to NO if you need set arguments only once:
 ```objective-c
 // Objective C
 NSString *hot = @"Hot";
@@ -86,11 +86,13 @@ let cold = "Cold"
 
 var arguments: [CVarArgType] = [hot, cold]
 withVaList(arguments) { pointer in
-  textControl.vp_setAttributedFormatArguments(pointer, keepFormat: false);
+  textLabel.vp_setAttributedFormatArguments(pointer, keepFormat: false);
 }
 ```
 
-Use *vp_attributedStringWithAttributedFormat:format, ...* if you want set text directly to *attributedText* property.
+###### Set attributed text directly  
+Use NSAttributedString category methods to set attibuted text directly.  
+It's suitable if attributed format comes from another part of application.
 ```objective-c
 // Objective C
 NSString *hot = @"Hot";
