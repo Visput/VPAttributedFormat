@@ -8,7 +8,7 @@ VPAttributedFormat project represents categories:
 These categories provide methods for building attributed string based on attributed format and arguments that should satisfy this format.  
 The most suitable case of using these categories is text controls with variable attributed text configured in interface builder.  
 You need set correct string format to attributed text and configure necessary attributes.  
-Then you need pass necessary arguments in code by using methods of this category.  
+Then you need pass necessary arguments in code by using methods of these categories.  
 This project supports all standard controls that have attributedText property: UILabel, UITextView, UITextField.
 See [Usage](#usage) and [Examples](#examples) sections for more details.  
 
