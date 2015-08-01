@@ -9,7 +9,7 @@ These categories provide methods for building attributed string based on attribu
 The most suitable case of using these categories is text controls with variable attributed text configured in interface builder.  
 You need set correct string format to attributed text and configure necessary attributes.  
 Then you need pass necessary arguments in code by using methods of these categories.  
-This project supports all standard controls that have attributedText property: UILabel, UITextView, UITextField.
+This project supports all standard controls that have attributedText property: UILabel, UITextView, UITextField.  
 See [Usage](#usage) and [Examples](#examples) sections for more details.  
 
 ![example](https://cloud.githubusercontent.com/assets/7302163/8714863/a33e91c2-2b3f-11e5-93aa-f886c019ca38.png)
