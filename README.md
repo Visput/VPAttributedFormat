@@ -51,8 +51,9 @@ import VPAttributedFormat
 
 ##### Populate format with necessary arguments
 
-###### Set arguments multiple times  
-Set keepFormat parameter to YES if you need update arguments multiple times:
+###### Set arguments multiple times
+Use UILabel / UITextView / UITextField category methods.  
+Set keepFormat parameter to YES if you need update arguments multiple times.
 ```objective-c
 // Objective C
 NSString *hot = @"Hot";
@@ -71,7 +72,8 @@ withVaList(arguments) { pointer in
 }
 ```
 ###### Set arguments only once  
-Set keepFormat parameter to NO if you need set arguments only once:
+Use UILabel / UITextView / UITextField category methods.  
+Set keepFormat parameter to NO if you need set arguments only once.
 ```objective-c
 // Objective C
 NSString *hot = @"Hot";
@@ -91,8 +93,8 @@ withVaList(arguments) { pointer in
 ```
 
 ###### Set attributed text directly  
-Use NSAttributedString category methods to set attibuted text directly.  
-It's suitable if attributed format comes from another part of application.
+Use NSAttributedString category methods.  
+It's suitable for situations when attributed format comes from another part of application.
 ```objective-c
 // Objective C
 NSString *hot = @"Hot";
