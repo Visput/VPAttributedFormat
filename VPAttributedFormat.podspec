@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
 s.name         =  'VPAttributedFormat'
-s.version      =  '1.0.0'
+s.version      =  '1.1.0'
 s.license      =  { :type => 'MIT', :file => 'LICENSE' }
 s.homepage     =  'https://github.com/Visput/VPAttributedFormat'
 s.authors      =  { 'Visput' => 'uladzimir.papko@gmail.com' }
-s.summary      =  'VPAttributedFormat project represents category: NSAttributedString+VPAttributedFormat.'
+s.summary      =  'VPAttributedFormat project represents methods for building attributed string based on attributed format and arguments that should satisfy this format'
 
 # Source Info
 s.platform     =  :ios, '6.0'
