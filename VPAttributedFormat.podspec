@@ -4,7 +4,7 @@ s.version      =  '1.1.0'
 s.license      =  { :type => 'MIT', :file => 'LICENSE' }
 s.homepage     =  'https://github.com/Visput/VPAttributedFormat'
 s.authors      =  { 'Visput' => 'uladzimir.papko@gmail.com' }
-s.summary      =  'VPAttributedFormat project represents methods for building attributed string based on attributed format and arguments that should satisfy this format'
+s.summary      =  'VPAttributedFormat project represents methods for building attributed string based on attributed format and arguments'
 
 # Source Info
 s.platform     =  :ios, '6.0'
