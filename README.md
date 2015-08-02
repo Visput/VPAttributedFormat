@@ -11,6 +11,7 @@ You need set correct string format to attributed text and configure necessary at
 Then you need pass necessary arguments in code by using methods of these categories.  
 All standard controls that have attributedText property are suported: UILabel, UITextView, UITextField.  
 See [Usage](#usage) and [Examples](#examples) sections for more details.  
+Full documentation is available on [CocoaDocs](http://cocoadocs.org/docsets/VPAttributedFormat).
 
 ![example](https://cloud.githubusercontent.com/assets/7302163/8714863/a33e91c2-2b3f-11e5-93aa-f886c019ca38.png)
 
