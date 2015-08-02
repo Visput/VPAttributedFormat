@@ -33,8 +33,8 @@ static const void *VPTextControlHelperKey = &VPTextControlHelperKey;
     return helper;
 }
 
-- (void)setAttributedFormatArguments:(va_list)arguments
-                          keepFormat:(BOOL)keepFormat {
+- (void)setAttributedTextFormatArguments:(va_list)arguments
+                              keepFormat:(BOOL)keepFormat {
     BOOL isFormatUninitialized = self.attributedFormat == nil;
     BOOL isFormatChanged = ![self.attributedText isEqualToAttributedString:self.textControl.attributedText];
     if (isFormatUninitialized || isFormatChanged) {

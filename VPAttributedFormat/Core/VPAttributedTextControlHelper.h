@@ -45,8 +45,8 @@
  *                    Behaviour is undefined if this method called
  *                    multiple times with NO parameter.
  */
-- (void)setAttributedFormatArguments:(va_list)arguments
-                          keepFormat:(BOOL)keepFormat;
+- (void)setAttributedTextFormatArguments:(va_list)arguments
+                              keepFormat:(BOOL)keepFormat;
 
 @end
 

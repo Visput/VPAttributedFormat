@@ -14,19 +14,19 @@
 
 @implementation UITextField (VPAttributedFormat)
 
-- (void)vp_setAttributedFormatArguments:(BOOL)keepFormat, ... {
+- (void)vp_setAttributedTextFormatArguments:(BOOL)keepFormat, ... {
     va_list arguments;
     va_start(arguments, keepFormat);
-    [self vp_setAttributedFormatArguments:arguments
-                               keepFormat:keepFormat];
+    [self vp_setAttributedTextFormatArguments:arguments
+                                   keepFormat:keepFormat];
     va_end(arguments);
 }
 
-- (void)vp_setAttributedFormatArguments:(va_list)arguments
-                             keepFormat:(BOOL)keepFormat {
+- (void)vp_setAttributedTextFormatArguments:(va_list)arguments
+                                 keepFormat:(BOOL)keepFormat {
     VPAttributedTextControlHelper *helper = [VPAttributedTextControlHelper helperForTextControl:self];
-    [helper setAttributedFormatArguments:arguments
-                              keepFormat:keepFormat];
+    [helper setAttributedTextFormatArguments:arguments
+                                  keepFormat:keepFormat];
 }
 
 @end

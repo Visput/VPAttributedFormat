@@ -19,12 +19,12 @@
 
 @implementation VPAttributedTextControlTests
 
-- (void)testSetAttributedFormatArguments {
-    [self testSetAttributedFormatArgumentsByKeepingFormat:YES];
-    [self testSetAttributedFormatArgumentsByKeepingFormat:NO];
+- (void)testsetAttributedTextFormatArguments {
+    [self testSetAttributedTextFormatArgumentsByKeepingFormat:YES];
+    [self testSetAttributedTextFormatArgumentsByKeepingFormat:NO];
 }
 
-- (void)testSetAttributedFormatArgumentsByKeepingFormat:(BOOL)keepFormat {
+- (void)testSetAttributedTextFormatArgumentsByKeepingFormat:(BOOL)keepFormat {
     // Data
     NSArray *controlClasses = @[[UILabel class], [UITextField class], [UITextView class]];
     
@@ -55,11 +55,11 @@
         [control setAttributedText:attributedFormat1];
         attributedFormat = [control attributedText];
         
-        [control vp_setAttributedFormatArguments:keepFormat, value1, value2];
+        [control vp_setAttributedTextFormatArguments:keepFormat, value1, value2];
         attributedString = [NSAttributedString vp_attributedStringWithAttributedFormat:attributedFormat, value1, value2];
         XCTAssertEqualObjects([control attributedText], attributedString);
         
-        [control vp_setAttributedFormatArguments:keepFormat, value2, value1];
+        [control vp_setAttributedTextFormatArguments:keepFormat, value2, value1];
         attributedString = [NSAttributedString vp_attributedStringWithAttributedFormat:attributedFormat, value2, value1];
         if (keepFormat) {
             XCTAssertEqualObjects([control attributedText], attributedString);
@@ -70,11 +70,11 @@
         [control setAttributedText:attributedFormat2];
         attributedFormat = [control attributedText];
         
-        [control vp_setAttributedFormatArguments:keepFormat, value1, value1];
+        [control vp_setAttributedTextFormatArguments:keepFormat, value1, value1];
         attributedString = [NSAttributedString vp_attributedStringWithAttributedFormat:attributedFormat, value1, value1];
         XCTAssertEqualObjects([control attributedText], attributedString);
         
-        [control vp_setAttributedFormatArguments:keepFormat, value2, value2];
+        [control vp_setAttributedTextFormatArguments:keepFormat, value2, value2];
         attributedString = [NSAttributedString vp_attributedStringWithAttributedFormat:attributedFormat, value2, value2];
         if (keepFormat) {
             XCTAssertEqualObjects([control attributedText], attributedString);

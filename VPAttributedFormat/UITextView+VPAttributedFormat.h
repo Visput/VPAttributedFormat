@@ -30,7 +30,7 @@
  *  @param ...        A comma-separated list of arguments required by format.
  *                    Behaviour is undefined if arguments don't satisfy format.
  */
-- (void)vp_setAttributedFormatArguments:(BOOL)keepFormat, ...;
+- (void)vp_setAttributedTextFormatArguments:(BOOL)keepFormat, ...;
 
 /**
  *  Builds and sets attributed string to 'attributedText' property.
@@ -47,8 +47,8 @@
  *                    Less memory is used when format isn't kept.
  *                    Behaviour is undefined if this method called multiple times with NO parameter.
  */
-- (void)vp_setAttributedFormatArguments:(va_list)arguments
-                             keepFormat:(BOOL)keepFormat;
+- (void)vp_setAttributedTextFormatArguments:(va_list)arguments
+                                 keepFormat:(BOOL)keepFormat;
 
 
 @end
