@@ -9,7 +9,7 @@ These categories provide methods for building attributed string based on attribu
 The most suitable case of using these categories is text controls with variable attributed text configured in interface builder.  
 You need set correct string format to attributed text and configure necessary attributes.  
 Then you need pass necessary arguments in code by using methods of these categories.  
-This project supports all standard controls that have attributedText property: UILabel, UITextView, UITextField.  
+All standard controls that have attributedText property are suported: UILabel, UITextView, UITextField.  
 See [Usage](#usage) and [Examples](#examples) sections for more details.  
 
 ![example](https://cloud.githubusercontent.com/assets/7302163/8714863/a33e91c2-2b3f-11e5-93aa-f886c019ca38.png)
@@ -65,7 +65,7 @@ Set keepFormat parameter to YES if you need update arguments multiple times.
 NSString *hot = @"Hot";
 NSString *cold = @"Cold";
 
-[self.textLabel vp_setAttributedFormatArguments:YES, hot, cold];
+[self.textLabel vp_setAttributedTextFormatArguments:YES, hot, cold];
 ```
 ```swift
 // Swift
@@ -74,7 +74,7 @@ let cold = "Cold"
 
 var arguments: [CVarArgType] = [hot, cold]
 withVaList(arguments) { pointer in
-  textLabel.vp_setAttributedFormatArguments(pointer, keepFormat: true);
+  textLabel.vp_setAttributedTextFormatArguments(pointer, keepFormat: true);
 }
 ```
 ###### Set arguments only once  
@@ -85,7 +85,7 @@ Set keepFormat parameter to NO if you need set arguments only once.
 NSString *hot = @"Hot";
 NSString *cold = @"Cold";
 
-[self.textLabel vp_setAttributedFormatArguments:NO, hot, cold];
+[self.textLabel vp_setAttributedTextFormatArguments:NO, hot, cold];
 ```
 ```swift
 // Swift
@@ -94,7 +94,7 @@ let cold = "Cold"
 
 var arguments: [CVarArgType] = [hot, cold]
 withVaList(arguments) { pointer in
-  textLabel.vp_setAttributedFormatArguments(pointer, keepFormat: false);
+  textLabel.vp_setAttributedTextFormatArguments(pointer, keepFormat: false);
 }
 ```
 
