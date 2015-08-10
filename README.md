@@ -61,7 +61,7 @@ import VPAttributedFormat
 
 ###### Set arguments multiple times
 Use UILabel / UITextView / UITextField / UIButton category methods.  
-Set keepFormat parameter to YES if you need update arguments multiple times.
+Set keepFormat parameter to YES.
 ```objective-c
 // Objective C
 NSString *hot = @"Hot";
@@ -81,7 +81,7 @@ withVaList(arguments) { pointer in
 ```
 ###### Set arguments only once  
 Use UILabel / UITextView / UITextField / UIButton category methods.  
-Set keepFormat parameter to NO if you need set arguments only once.
+Set keepFormat parameter to NO.
 ```objective-c
 // Objective C
 NSString *hot = @"Hot";
