@@ -9,9 +9,6 @@
 #import "UITextField+VPAttributedFormat.h"
 #import "VPAttributedTextControlHelper.h"
 
-@interface UITextField ()<VPAttributedTextControl>
-@end
-
 @implementation UITextField (VPAttributedFormat)
 
 - (void)vp_setAttributedTextFormatArguments:(BOOL)keepFormat, ... {
@@ -24,9 +21,36 @@
 
 - (void)vp_setAttributedTextFormatArguments:(va_list)arguments
                                  keepFormat:(BOOL)keepFormat {
-    VPAttributedTextControlHelper *helper = [VPAttributedTextControlHelper helperForTextControl:self];
+    VPAttributedTextControlHelper *helper = [VPAttributedTextControlHelper helperForTextControl:self
+                                                                              attributedTextKey:@selector(attributedText)];
     [helper setAttributedTextFormatArguments:arguments
-                                  keepFormat:keepFormat];
+                                  keepFormat:keepFormat
+                        attributedTextGetter:^NSAttributedString *{
+                            return self.attributedText;
+                        } attributedTextSetter:^(NSAttributedString *attributedText) {
+                            self.attributedText = attributedText;
+                        }];
+}
+
+- (void)vp_setAttributedPlaceholderFormatArguments:(BOOL)keepFormat, ... {
+    va_list arguments;
+    va_start(arguments, keepFormat);
+    [self vp_setAttributedPlaceholderFormatArguments:arguments
+                                          keepFormat:keepFormat];
+    va_end(arguments);
+}
+
+- (void)vp_setAttributedPlaceholderFormatArguments:(va_list)arguments
+                                        keepFormat:(BOOL)keepFormat {
+    VPAttributedTextControlHelper *helper = [VPAttributedTextControlHelper helperForTextControl:self
+                                                                              attributedTextKey:@selector(attributedPlaceholder)];
+    [helper setAttributedTextFormatArguments:arguments
+                                  keepFormat:keepFormat
+                        attributedTextGetter:^NSAttributedString *{
+                            return self.attributedPlaceholder;
+                        } attributedTextSetter:^(NSAttributedString *attributedText) {
+                            self.attributedPlaceholder = attributedText;
+                        }];
 }
 
 @end

@@ -10,8 +10,8 @@
 
 /**
  *  This category provides methods for building and setting attributed string based on
- *  attributed format that is value of 'attributedText' property of UITextField instance
- *  and arguments that should satisfy this format.
+ *  attributed format that is value of 'attributedText' or 'attributedPlaceholder' 
+ *  properties of UITextField instance and arguments that should satisfy this format.
  */
 @interface UITextField (VPAttributedFormat)
 
@@ -49,5 +49,40 @@
  */
 - (void)vp_setAttributedTextFormatArguments:(va_list)arguments
                                  keepFormat:(BOOL)keepFormat;
+
+/**
+ *  Builds and sets attributed string to 'attributedPlaceholder' property.
+ *  It uses current or previously saved value of 'attributedPlaceholder' property and list of arguments for building string.
+ *  Correct attributed format has to be set to 'attributedTPlaceholder' property before calling this method.
+ *  Usually you can initialize 'attributedPlaceholder' property by configuring UITextField object in Interface Builder.
+ *
+ *  @param keepFormat Specify YES to keep format.
+ *                    "Keep format" means that attributed format will be kept between
+ *                    multiple calls of this method. It allows change arguments for the same format.
+ *                    Specify NO if you are going to call this method only once.
+ *                    Less memory is used when format isn't kept.
+ *                    Behaviour is undefined if this method called multiple times with NO parameter.
+ *  @param ...        A comma-separated list of arguments required by format.
+ *                    Behaviour is undefined if arguments don't satisfy format.
+ */
+- (void)vp_setAttributedPlaceholderFormatArguments:(BOOL)keepFormat, ...;
+
+/**
+*  Builds and sets attributed string to 'attributedPlaceholder' property.
+*  It uses current or previously saved value of 'attributedPlaceholder' property and 'arguments' parameter for building string.
+*  Correct attributed format has to be set to 'attributedPlaceholder' property before calling this method.
+*  Usually you can initialize 'attributedPlaceholder' property by configuring UITextField object in Interface Builder.
+*
+*  @param arguments  List of arguments required by format.
+*                    Behaviour is undefined if arguments don't satisfy format.
+*  @param keepFormat Specify YES to keep format.
+*                    "Keep format" means that attributed format will be kept between
+*                    multiple calls of this method. It allows change arguments for the same format.
+*                    Specify NO if you are going to call this method only once.
+*                    Less memory is used when format isn't kept.
+*                    Behaviour is undefined if this method called multiple times with NO parameter.
+*/
+- (void)vp_setAttributedPlaceholderFormatArguments:(va_list)arguments
+                                        keepFormat:(BOOL)keepFormat;
 
 @end

@@ -10,40 +10,50 @@
 #import "NSAttributedString+VPAttributedFormat.h"
 #import <objc/runtime.h>
 
-static const void *VPTextControlHelperKey = &VPTextControlHelperKey;
-
 @interface VPAttributedTextControlHelper ()
 
 @property (nonatomic, copy) NSAttributedString *attributedFormat;
 @property (nonatomic, copy) NSAttributedString *attributedText;
-@property (nonatomic, weak) NSObject<VPAttributedTextControl> *textControl;
+@property (nonatomic, weak) id textControl;
 
 @end
 
 @implementation VPAttributedTextControlHelper
 
-+ (instancetype)helperForTextControl:(NSObject<VPAttributedTextControl> *)textControl {
-    VPAttributedTextControlHelper *helper = objc_getAssociatedObject(textControl, VPTextControlHelperKey);
++ (instancetype)helperForTextControl:(id)textControl
+                   attributedTextKey:(const void *)attributedTextKey {
+    NSParameterAssert(textControl != nil);
+    NSParameterAssert(attributedTextKey != NULL);
+    
+    VPAttributedTextControlHelper *helper = objc_getAssociatedObject(textControl, attributedTextKey);
     if (helper == nil) {
         helper = [[self class] new];
         helper.textControl = textControl;
-        objc_setAssociatedObject(textControl, VPTextControlHelperKey, helper, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(textControl, attributedTextKey, helper, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     
     return helper;
 }
 
 - (void)setAttributedTextFormatArguments:(va_list)arguments
-                              keepFormat:(BOOL)keepFormat {
+                              keepFormat:(BOOL)keepFormat
+                    attributedTextGetter:(NSAttributedString *(^)(void))attributedTextGetter
+                    attributedTextSetter:(void(^)(NSAttributedString *attributedText))attributedTextSetter {
+    NSParameterAssert(attributedTextGetter != NULL);
+    NSParameterAssert(attributedTextSetter != NULL);
+    
+    NSAttributedString *attributedText = attributedTextGetter();
+    
     BOOL isFormatUninitialized = self.attributedFormat == nil;
-    BOOL isFormatChanged = ![self.attributedText isEqualToAttributedString:self.textControl.attributedText];
+    BOOL isFormatChanged = ![self.attributedText isEqualToAttributedString:attributedText];
     if (isFormatUninitialized || isFormatChanged) {
-        self.attributedFormat = self.textControl.attributedText;
+        self.attributedFormat = attributedText;
     }
 
-    self.textControl.attributedText = [NSAttributedString vp_attributedStringWithAttributedFormat:self.attributedFormat
-                                                                                        arguments:arguments];
-    self.attributedText = self.textControl.attributedText;
+    NSAttributedString *resultAttributedText = [NSAttributedString vp_attributedStringWithAttributedFormat:self.attributedFormat
+                                                                                                 arguments:arguments];
+    attributedTextSetter(resultAttributedText);
+    self.attributedText = resultAttributedText;
     
     if (!keepFormat) {
         self.attributedFormat = nil;

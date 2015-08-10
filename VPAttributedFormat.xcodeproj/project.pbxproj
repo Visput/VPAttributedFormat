@@ -22,6 +22,8 @@
 		F0629F591B3DD3BA00AFE634 /* NSAttributedString+VPAttributedFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = F0629F571B3DD3BA00AFE634 /* NSAttributedString+VPAttributedFormat.m */; };
 		F073C1ED1B4912C300B6DC34 /* VPValueWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = F073C1EB1B4912C300B6DC34 /* VPValueWrapper.h */; };
 		F073C1EE1B4912C300B6DC34 /* VPValueWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F073C1EC1B4912C300B6DC34 /* VPValueWrapper.m */; };
+		F09B20161B71B5C800C87474 /* UIButton+VPAttributedFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = F09B20141B71B5C800C87474 /* UIButton+VPAttributedFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F09B20171B71B5C800C87474 /* UIButton+VPAttributedFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = F09B20151B71B5C800C87474 /* UIButton+VPAttributedFormat.m */; };
 		F09CF25F1B65C958008D271B /* VPAttributedTextControlHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = F09CF25D1B65C958008D271B /* VPAttributedTextControlHelper.h */; };
 		F09CF2601B65C958008D271B /* VPAttributedTextControlHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F09CF25E1B65C958008D271B /* VPAttributedTextControlHelper.m */; };
 		F09CF29C1B683373008D271B /* VPAttributedTextControlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F09CF29B1B683373008D271B /* VPAttributedTextControlTests.m */; };
@@ -66,6 +68,8 @@
 		F0629F571B3DD3BA00AFE634 /* NSAttributedString+VPAttributedFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+VPAttributedFormat.m"; sourceTree = "<group>"; };
 		F073C1EB1B4912C300B6DC34 /* VPValueWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPValueWrapper.h; sourceTree = "<group>"; };
 		F073C1EC1B4912C300B6DC34 /* VPValueWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPValueWrapper.m; sourceTree = "<group>"; };
+		F09B20141B71B5C800C87474 /* UIButton+VPAttributedFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+VPAttributedFormat.h"; sourceTree = "<group>"; };
+		F09B20151B71B5C800C87474 /* UIButton+VPAttributedFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+VPAttributedFormat.m"; sourceTree = "<group>"; };
 		F09CF25D1B65C958008D271B /* VPAttributedTextControlHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPAttributedTextControlHelper.h; sourceTree = "<group>"; };
 		F09CF25E1B65C958008D271B /* VPAttributedTextControlHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPAttributedTextControlHelper.m; sourceTree = "<group>"; };
 		F09CF29B1B683373008D271B /* VPAttributedTextControlTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VPAttributedTextControlTests.m; path = VPAttributedFormatTests/VPAttributedTextControlTests.m; sourceTree = SOURCE_ROOT; };
@@ -131,6 +135,8 @@
 				F0618B931B657E7000D53181 /* UITextField+VPAttributedFormat.m */,
 				F0618B9E1B657ECB00D53181 /* UITextView+VPAttributedFormat.h */,
 				F0618B9F1B657ECB00D53181 /* UITextView+VPAttributedFormat.m */,
+				F09B20141B71B5C800C87474 /* UIButton+VPAttributedFormat.h */,
+				F09B20151B71B5C800C87474 /* UIButton+VPAttributedFormat.m */,
 				F0DF4A9A1B40F8CC0069E940 /* Core */,
 				F0629F3D1B3DD2CD00AFE634 /* Supporting Files */,
 			);
@@ -207,6 +213,7 @@
 				F0618B941B657E7000D53181 /* UITextField+VPAttributedFormat.h in Headers */,
 				F0DF4AA11B40FBAA0069E940 /* VPSubstring.h in Headers */,
 				F0629F581B3DD3BA00AFE634 /* NSAttributedString+VPAttributedFormat.h in Headers */,
+				F09B20161B71B5C800C87474 /* UIButton+VPAttributedFormat.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +315,7 @@
 			files = (
 				F0629F591B3DD3BA00AFE634 /* NSAttributedString+VPAttributedFormat.m in Sources */,
 				F0DF4AA21B40FBAA0069E940 /* VPSubstring.m in Sources */,
+				F09B20171B71B5C800C87474 /* UIButton+VPAttributedFormat.m in Sources */,
 				F0618B911B657E3400D53181 /* UILabel+VPAttributedFormat.m in Sources */,
 				F0DF4AB11B411B450069E940 /* VPConversionArgument.m in Sources */,
 				F09CF2601B65C958008D271B /* VPAttributedTextControlHelper.m in Sources */,

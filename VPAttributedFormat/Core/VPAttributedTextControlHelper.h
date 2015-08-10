@@ -8,58 +8,55 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol VPAttributedTextControl;
-
 /**
  *  The VPAttributedTextControlHelper provides ability to build
- *  attributed string for ui controls that have 'attributedText' property.
- *  Currently 3 standard controls satisfy this condition: UILabel, UITextField, UITextView.
+ *  attributed string for ui controls that support NSAttributedString values.
+ *  Currently 4 standard controls satisfy this condition: UILabel, UITextField, UITextView, UIButton.
  */
 @interface VPAttributedTextControlHelper : NSObject
 
 /**
  *  Creates instance of VPAttributedTextControlHelper class that is associated with 'textControl' object.
- *  Method returns the same instance if it's called multiple times for the same 'textControl' object,
+ *  Method returns the same instance if it's called multiple times for the same 'textControl' object and
+ *  the same `attributedTextKey` value.
  *  Returned instance keeps weak reference to 'textControl' object.
  *
- *  @param textControl Object that have 'attributedText' property.
+ *  @param textControl       Any object that represents text control.
+ *                           This parameter can't be nil.
+ *  @param attributedTextKey Const pointer that is used as a key for association with `textControl` object.
+ *                           This parameter can't be NULL.
  *
  *  @return An instance of VPAttributedTextControlHelper class.
  */
-+ (instancetype)helperForTextControl:(NSObject<VPAttributedTextControl> *)textControl;
++ (instancetype)helperForTextControl:(id)textControl
+                   attributedTextKey:(const void *)attributedTextKey;
 
 /**
  *  Builds and sets attributed string to associated text control.
- *  It uses 'attributedText' property and 'arguments' parameter for building string.
- *  Correct attributed format has to be set to 'attributedText' property before calling this method.
+ *  It uses 'attributedTextGetter', 'attributedTextSetter' and 'arguments' parameters for building string.
+ *  Correct attributed format has to be returned by calling 'attributedTextGetter' block.
  *  In other case behaviour is undefined.
  *
- *  @param arguments  List of arguments required by format.
- *                    Behaviour is undefined if arguments don't satisfy format.
- *  @param keepFormat Specify YES to keep format.
- *                    "Keep format" means that attributed format will be kept between
- *                    multiple calls of this method. It allows change arguments for
- *                    the same format.
- *                    Specify NO if you are going to call this method only once.
- *                    Less memory is used when format isn't kept.
- *                    Behaviour is undefined if this method called
- *                    multiple times with NO parameter.
+ *  @param arguments            List of arguments required by format.
+ *                              Behaviour is undefined if arguments don't satisfy format.
+ *  @param keepFormat           Specify YES to keep format.
+ *                              "Keep format" means that attributed format will be kept between
+ *                              multiple calls of this method. It allows change arguments for
+ *                              the same format.
+ *                              Specify NO if you are going to call this method only once.
+ *                              Less memory is used when format isn't kept.
+ *                              Behaviour is undefined if this method called
+ *                              multiple times with NO parameter.
+ *  @param attributedTextGetter Block object that has to return valid attributed string.
+ *                              This parameter can't be NULL.
+ *  @param attributedTextSetter Block object that has to use 'attributedText' parameter 
+ *                              for setting attributed text in control.
+ *                              This parameter can't be NULL.
+ *
  */
 - (void)setAttributedTextFormatArguments:(va_list)arguments
-                              keepFormat:(BOOL)keepFormat;
-
-@end
-
-/**
- *  The VPAttributedTextControl protocol declares 'attributedText' property. 
- *  It provides universal access to text controls that are instances of different classes,
- *  but all of them have such property.
- */
-@protocol VPAttributedTextControl <NSObject>
-
-/**
- *  Property that provides universal access to different text controls.
- */
-@property (nonatomic, copy) NSAttributedString *attributedText;
+                              keepFormat:(BOOL)keepFormat
+                    attributedTextGetter:(NSAttributedString *(^)(void))attributedTextGetter
+                    attributedTextSetter:(void(^)(NSAttributedString *attributedText))attributedTextSetter;
 
 @end

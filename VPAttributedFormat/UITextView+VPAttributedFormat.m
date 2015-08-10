@@ -9,9 +9,6 @@
 #import "UITextView+VPAttributedFormat.h"
 #import "VPAttributedTextControlHelper.h"
 
-@interface UITextView ()<VPAttributedTextControl>
-@end
-
 @implementation UITextView (VPAttributedFormat)
 
 - (void)vp_setAttributedTextFormatArguments:(BOOL)keepFormat, ... {
@@ -24,9 +21,15 @@
 
 - (void)vp_setAttributedTextFormatArguments:(va_list)arguments
                                  keepFormat:(BOOL)keepFormat {
-    VPAttributedTextControlHelper *helper = [VPAttributedTextControlHelper helperForTextControl:self];
+    VPAttributedTextControlHelper *helper = [VPAttributedTextControlHelper helperForTextControl:self
+                                                                              attributedTextKey:@selector(attributedText)];
     [helper setAttributedTextFormatArguments:arguments
-                                  keepFormat:keepFormat];
+                                  keepFormat:keepFormat
+                        attributedTextGetter:^NSAttributedString *{
+                            return self.attributedText;
+                        } attributedTextSetter:^(NSAttributedString *attributedText) {
+                            self.attributedText = attributedText;
+                        }];
 }
 
 @end

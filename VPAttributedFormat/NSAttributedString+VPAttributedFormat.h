@@ -58,7 +58,8 @@
  *  @return An attributed string created by using 'attributedFormat' as a template
  *          into which the remaining 'arguments' values are substituted.
  */
-+ (instancetype)vp_attributedStringWithAttributedFormat:(NSAttributedString *)attributedFormat arguments:(va_list)arguments;
++ (instancetype)vp_attributedStringWithAttributedFormat:(NSAttributedString *)attributedFormat
+                                              arguments:(va_list)arguments;
 
 /**
  *  Returns an NSAttributedString object initialized with a given attributed format and list of arguments.
@@ -88,6 +89,7 @@
  *  @return An attributed string created by using 'attributedFormat' as a template
  *          into which the remaining 'arguments' values are substituted.
  */
-- (instancetype)vp_initWithAttributedFormat:(NSAttributedString *)attributedFormat arguments:(va_list)arguments __attribute__((objc_method_family(init)));
+- (instancetype)vp_initWithAttributedFormat:(NSAttributedString *)attributedFormat
+                                  arguments:(va_list)arguments __attribute__((objc_method_family(init)));
 
 @end

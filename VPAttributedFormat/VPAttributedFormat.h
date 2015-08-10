@@ -19,4 +19,5 @@ FOUNDATION_EXPORT const unsigned char VPAttributedFormatVersionString[];
 #import <VPAttributedFormat/UILabel+VPAttributedFormat.h>
 #import <VPAttributedFormat/UITextField+VPAttributedFormat.h>
 #import <VPAttributedFormat/UITextView+VPAttributedFormat.h>
+#import <VPAttributedFormat/UIButton+VPAttributedFormat.h>
 

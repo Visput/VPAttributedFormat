@@ -17,28 +17,34 @@ static const void *VPAttributedFormatKey = &VPAttributedFormatKey;
 + (instancetype)vp_attributedStringWithAttributedFormat:(NSAttributedString *)attributedFormat, ... {
     va_list arguments;
     va_start(arguments, attributedFormat);
-    NSAttributedString *attributedString = [[[self class] alloc] vp_initWithAttributedFormat:attributedFormat arguments:arguments];
+    NSAttributedString *attributedString = [[[self class] alloc] vp_initWithAttributedFormat:attributedFormat
+                                                                                   arguments:arguments];
     va_end(arguments);
     
     return attributedString;
 }
 
-+ (instancetype)vp_attributedStringWithAttributedFormat:(NSAttributedString *)attributedFormat arguments:(va_list)arguments {
-    return [[[self class] alloc] vp_initWithAttributedFormat:attributedFormat arguments:arguments];
++ (instancetype)vp_attributedStringWithAttributedFormat:(NSAttributedString *)attributedFormat
+                                              arguments:(va_list)arguments {
+    return [[[self class] alloc] vp_initWithAttributedFormat:attributedFormat
+                                                   arguments:arguments];
 }
 
 - (instancetype)vp_initWithAttributedFormat:(NSAttributedString *)attributedFormat, ... __attribute__((objc_method_family(init))) {
     va_list arguments;
     va_start(arguments, attributedFormat);
-    self = [self vp_initWithAttributedFormat:attributedFormat arguments:arguments];
+    self = [self vp_initWithAttributedFormat:attributedFormat
+                                   arguments:arguments];
     va_end(arguments);
     
     return self;
 }
 
-- (instancetype)vp_initWithAttributedFormat:(NSAttributedString *)attributedFormat arguments:(va_list)arguments __attribute__((objc_method_family(init))) {
+- (instancetype)vp_initWithAttributedFormat:(NSAttributedString *)attributedFormat
+                                  arguments:(va_list)arguments __attribute__((objc_method_family(init))) {
     VPAttributedStringFormatter *formatter = [VPAttributedStringFormatter new];
-    self = [self initWithAttributedString:[formatter stringWithFormat:attributedFormat arguments:arguments]];
+    self = [self initWithAttributedString:[formatter stringWithFormat:attributedFormat
+                                                            arguments:arguments]];
     
     return self;
 }
