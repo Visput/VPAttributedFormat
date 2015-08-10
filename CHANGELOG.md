@@ -1,6 +1,6 @@
 # Change log
 ## 1.2.0 (09.01.2015)
-1. Added support for UIButton (attributedTitleForSate:).
+1. Added support for UIButton (attributedTitleForState:).
 2. Added support for UITextField (attributedPlaceholder).
 3. Implemented ability to use NSAttributedString objects as attributed format arguments.
 
