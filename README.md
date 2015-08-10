@@ -3,13 +3,14 @@ VPAttributedFormat project represents categories:
  - NSAttributedString+VPAttributedFormat  
  - UILabel+VPAttributedFormat  
  - UITextView+VPAttributedFormat  
- - UITextField+VPAttributedFormat  
+ - UITextField+VPAttributedFormat
+ - UIButton+VPAttributedFormat
 
 These categories provide methods for building attributed string based on attributed format and arguments that should satisfy this format.  
 The most suitable case of using these categories is text controls with variable attributed text configured in interface builder.  
 You need set correct string format to attributed text and configure necessary attributes.  
 Then you need pass necessary arguments in code by using methods of these categories.  
-All standard controls that have attributedText property are suported: UILabel, UITextView, UITextField.  
+All standard controls that work with attributed strings are supported: UILabel, UITextView, UITextField, UIButton.  
 See [Usage](#usage) and [Examples](#examples) sections for more details.  
 Full documentation is available on [CocoaDocs](http://cocoadocs.org/docsets/VPAttributedFormat).
 
@@ -59,7 +60,7 @@ import VPAttributedFormat
 ##### Populate format with necessary arguments
 
 ###### Set arguments multiple times
-Use UILabel / UITextView / UITextField category methods.  
+Use UILabel / UITextView / UITextField / UIButton category methods.  
 Set keepFormat parameter to YES if you need update arguments multiple times.
 ```objective-c
 // Objective C
@@ -79,7 +80,7 @@ withVaList(arguments) { pointer in
 }
 ```
 ###### Set arguments only once  
-Use UILabel / UITextView / UITextField category methods.  
+Use UILabel / UITextView / UITextField / UIButton category methods.  
 Set keepFormat parameter to NO if you need set arguments only once.
 ```objective-c
 // Objective C
