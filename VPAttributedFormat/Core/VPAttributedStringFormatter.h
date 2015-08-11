@@ -25,6 +25,9 @@
  *       that contains string "1 + 1 = 2",
  *       where substring "2" has bold font attribute.
  *
+ *  NSAttributedString objects can be used as attributed format arguments.
+ *  If format attributes have conflict with argument attributes then format attributes used with higher priority.
+ *
  *  @param attributedFormat Object that represents string format with attributes.
  *                          Behaviour is undefined if format is wrong.
  *                          Raises an NSInvalidArgumentException if 'attributedFormat' is nil.

@@ -37,13 +37,17 @@
 - (instancetype)initWithSpecifiersProvider:(VPSpecifiersProvider *)provider;
 
 /**
- *  Builds formatted string.
+ *  Builds formatted attributed string.
  *
  *  Internally it uses 'stringWithFormat:' method of NSString class:
  *  [NSString stringWithFormat:self.value, self.arguments[0], self.arguments[1], ..];
+ *  Result NSString object is used for creating NSAttributedString object.
+ *  Basically returned object doesn't contain any attributes.
+ *  It contains attributes only if conversion argument is instance of NSAttributedString or its subclasses.
+ *  In this case argument attributes are migrated to result string.
  *
- *  @return A formated string built by using 'value' and 'arguments' properties.
+ *  @return A formated attributed string built by using 'value' and 'arguments' properties.
  */
-- (NSString *)buildSubstring;
+- (NSAttributedString *)buildAttributedSubstring;
 
 @end

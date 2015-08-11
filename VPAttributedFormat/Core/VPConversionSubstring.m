@@ -68,28 +68,28 @@
     [self.argumentSpecifierSubstring makeEmpty];
 }
 
-- (NSString *)buildSubstring {
-    NSString *builtSubstring = nil;
+- (NSAttributedString *)buildAttributedSubstring {
+    NSAttributedString *attributedSubstring = nil;
     
     id<VPValueWrapper> conversionWrapper = [self.arguments.lastObject valueWrapper];
     
     if (self.arguments.count == 1) { // Format contains only value argument.
-        builtSubstring = [conversionWrapper stringWithSingleFormat:self.value];
+        attributedSubstring = [conversionWrapper attributedStringWithSingleFormat:self.value];
         
     } else if (self.arguments.count == 2) { // Format contains value and (width or precision) arguments.
         VPIntValueWrapper *widthOrPrecisionWrapper = (VPIntValueWrapper *)[self.arguments[0] valueWrapper];
-        builtSubstring = [conversionWrapper stringWithSingleFormat:self.value
-                                           widthOrPrecisionWrapper:widthOrPrecisionWrapper];
+        attributedSubstring = [conversionWrapper attributedStringWithSingleFormat:self.value
+                                                          widthOrPrecisionWrapper:widthOrPrecisionWrapper];
         
     } else if (self.arguments.count == 3) { // Format contains value and width and precision arguments.
         VPIntValueWrapper *widthWrapper = (VPIntValueWrapper *)[self.arguments[0] valueWrapper];
         VPIntValueWrapper *precisionWrapper = (VPIntValueWrapper *)[self.arguments[1] valueWrapper];
-        builtSubstring = [conversionWrapper stringWithSingleFormat:self.value
-                                                      widthWrapper:widthWrapper
-                                                  precisionWrapper:precisionWrapper];
+        attributedSubstring = [conversionWrapper attributedStringWithSingleFormat:self.value
+                                                                     widthWrapper:widthWrapper
+                                                                 precisionWrapper:precisionWrapper];
     }
     
-    return builtSubstring;
+    return attributedSubstring;
 }
 
 #pragma mark -

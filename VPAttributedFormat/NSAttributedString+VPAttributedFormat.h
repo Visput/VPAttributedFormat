@@ -25,6 +25,9 @@
  *       that contains string "1 + 1 = 2",
  *       where substring "2" has bold font attribute.
  *
+ *  NSAttributedString objects can be used as attributed format arguments.
+ *  If format attributes have conflict with argument attributes then format attributes used with higher priority.
+ *
  *  @see Documentation and examples: https://github.com/Visput/VPAttributedFormat
  *  @see Documentation for format specifiers: https://developer.apple.com/library/prerelease/mac/documentation/Cocoa/Conceptual/Strings/Articles/formatSpecifiers.html
  */

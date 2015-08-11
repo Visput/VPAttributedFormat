@@ -625,4 +625,32 @@
     }];
 }
 
+- (void)testAttributedFormatWithAttributedStringParameter {
+    UIFont *font1 = [UIFont systemFontOfSize:12.0f];
+    UIFont *font2 = [UIFont boldSystemFontOfSize:12.0f];
+    UIFont *font3 = [UIFont italicSystemFontOfSize:12.0f];
+    UIColor *color = [UIColor greenColor];
+    NSString *string = @"Simple string";
+    NSMutableAttributedString *attributedStringParameter = [[NSMutableAttributedString alloc] initWithString:string];
+    [attributedStringParameter addAttribute:NSFontAttributeName value:font1 range:NSMakeRange(0, 7)];
+    [attributedStringParameter addAttribute:NSFontAttributeName value:font2 range:NSMakeRange(7, 6)];
+    [attributedStringParameter addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, 13)];
+    
+    NSString *format = @"String %@";
+    NSMutableAttributedString *attributedFormat = [[NSMutableAttributedString alloc] initWithString:format];
+    [attributedFormat addAttribute:NSFontAttributeName value:font3 range:NSMakeRange(0, 9)];
+    
+    NSAttributedString *attributedString = [NSAttributedString vp_attributedStringWithAttributedFormat:attributedFormat, attributedStringParameter];
+    NSString *validationString = [NSString stringWithFormat:format, string];
+    XCTAssertEqualObjects(validationString, attributedString.string);
+ 
+    [attributedString enumerateAttributesInRange:NSMakeRange(7, 13) options:0 usingBlock:^(NSDictionary *attrs, NSRange range, BOOL *stop) {
+        NSFont *aFont = attrs[NSFontAttributeName];
+        XCTAssertEqualObjects(font3, aFont);
+        
+        UIColor *aColor = attrs[NSForegroundColorAttributeName];
+        XCTAssertEqualObjects(color, aColor);
+    }];
+}
+
 @end
