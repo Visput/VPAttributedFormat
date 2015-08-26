@@ -22,9 +22,9 @@
  *  Class that implements this method has to internally decide value with which type
  *  has to be read from 'arguments' variable.
  *
- *  @attention This method has to be called only on devices with @b 64-bit processor architecture.
+ *  @attention This method has to be called only on @b simulators with @b 64-bit processor architecture.
  *             In other case behaviour is undefined.
- *             In 64-bit applications 'va_list' parameters are passed by reference.
+ *             On simulators with 64-bit processor architecture 'va_list' parameters are passed by reference.
  *
  *  @param arguments Object of 'va_list' type that contains value that has to be wrapped.
  */
@@ -35,9 +35,11 @@
  *  Class that implements this method has to internally decide value with which type
  *  has to be read from 'arguments' variable.
  *
- *  @attention This method has to be called only on devices with @b 32-bit processor architecture.
+ *  @attention This method has to be called only on @b simulators with @b 32-bit processor architecture and
+ *             @b devices with @b any processor architecture.
  *             In other case behaviour is undefined.
- *             In 32-bit applications 'va_list' parameters are passed by value.
+ *             On simulators with 32-bit processor architecture and devices with any processor architecture
+ *             'va_list' parameters are passed by value.
  *
  *  @param arguments Pointer to object of 'va_list' type that contains value that has to be wrapped.
  */

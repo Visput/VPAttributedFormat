@@ -166,13 +166,19 @@
             }
         }
         
+#if TARGET_IPHONE_SIMULATOR
 #ifdef __LP64__
-        // 64-bit processor architecture.
-        // In 64-bit applications 'va_list' parameters are passed by reference.
+        // Simulator | 64-bit processor architecture.
+        // 'va_list' parameters are passed by reference.
         [conversionArgument.valueWrapper setValueByArgumentsValue:arguments];
 #else
-        // 32-bit processor architecture.
-        // In 32-bit applications 'va_list' parameters are passed by value.
+        // Simulator | 32-bit processor architecture.
+        // 'va_list' parameters are passed by value.
+        [conversionArgument.valueWrapper setValueByArgumentsPointer:&arguments];
+#endif
+#else
+        // Device | 32-bit or 64-bit processor architecture.
+        // 'va_list' parameters are passed by value.
         [conversionArgument.valueWrapper setValueByArgumentsPointer:&arguments];
 #endif
         

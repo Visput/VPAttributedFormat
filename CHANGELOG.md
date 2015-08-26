@@ -1,4 +1,7 @@
 # Change log
+## 1.2.1 (08.26.2015)
+Fixed attributed string formmating on devices with 64-bit processor architecture.
+
 ## 1.2.0 (08.11.2015)
 1. Added support for UIButton (attributedTitleForState:).
 2. Added support for UITextField (attributedPlaceholder).

@@ -1,4 +1,4 @@
-## VPAttributedFormat
+## VPAttributedFormat v1.2.1
 VPAttributedFormat project represents categories:   
  - NSAttributedString+VPAttributedFormat  
  - UILabel+VPAttributedFormat  
@@ -21,7 +21,6 @@ Full documentation is available on [CocoaDocs](http://cocoadocs.org/docsets/VPAt
 Add to your Podfile:  
 ```
 pod "VPAttributedFormat"
-use_frameworks!
 ```
 
 ##### Drag&Drop
