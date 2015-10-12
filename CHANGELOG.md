@@ -1,4 +1,8 @@
 # Change log
+## 1.2.2 (10.12.2015)
+1. Utilized nullability attributes in interfaces.
+2. Updated project file according to Xcode 7 suggestions.
+
 ## 1.2.1 (08.26.2015)
 Fixed attributed string formatting on devices with 64-bit processor architecture.
 
