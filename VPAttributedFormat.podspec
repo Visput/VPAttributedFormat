@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name         =  'VPAttributedFormat'
-s.version      =  '1.2.2'
+s.version      =  '1.2.3'
 s.license      =  { :type => 'MIT', :file => 'LICENSE' }
 s.homepage     =  'https://github.com/Visput/VPAttributedFormat'
 s.authors      =  { 'Visput' => 'uladzimir.papko@gmail.com' }

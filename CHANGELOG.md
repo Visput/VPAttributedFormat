@@ -1,4 +1,7 @@
 # Change log
+## 1.2.3 (10.12.2015)
+1. Fixed framework version in documentation.
+
 ## 1.2.2 (10.12.2015)
 1. Utilized nullability attributes in interfaces.
 2. Updated project file according to Xcode 7 suggestions.
