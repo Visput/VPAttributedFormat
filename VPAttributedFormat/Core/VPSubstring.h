@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
 /**
  *  The VPSubstring class provides ability
  *  to store substring of any parent string.
@@ -31,3 +32,4 @@
 - (BOOL)isEmpty;
 
 @end
+NS_ASSUME_NONNULL_END

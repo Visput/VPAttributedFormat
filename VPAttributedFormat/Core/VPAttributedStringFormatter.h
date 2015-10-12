@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
 /**
  *  The VPAttributedStringFormatter class builds attributed string
  *  based on attributed format and list of arguments.
@@ -41,3 +42,4 @@
                                arguments:(va_list)arguments;
 
 @end
+NS_ASSUME_NONNULL_END

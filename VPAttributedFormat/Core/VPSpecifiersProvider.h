@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
 /**
  *  The VPSpecifiersProvider class provides access to different kind of specifiers and modifiers.
  *  See below links for understading type and conversion specifiers and length modifiers.
@@ -36,3 +37,4 @@
 @property (nonatomic, readonly, strong) NSSet *digits;
 
 @end
+NS_ASSUME_NONNULL_END

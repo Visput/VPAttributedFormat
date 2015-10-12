@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
 /**
  *  This category provides methods for building attributed string based on
  *  attributed format and arguments that should satisfy this format.
@@ -96,3 +97,4 @@
                                   arguments:(va_list)arguments __attribute__((objc_method_family(init)));
 
 @end
+NS_ASSUME_NONNULL_END

@@ -10,6 +10,7 @@
 
 @class VPSpecifiersProvider;
 
+NS_ASSUME_NONNULL_BEGIN
 /**
  *  The VPConversionSubstring class represents substring with single format and
  *  arguments related to this format.
@@ -48,6 +49,7 @@
  *
  *  @return A formated attributed string built by using 'value' and 'arguments' properties.
  */
-- (NSAttributedString *)buildAttributedSubstring;
+- (NSAttributedString *_Nullable)buildAttributedSubstring;
 
 @end
+NS_ASSUME_NONNULL_END

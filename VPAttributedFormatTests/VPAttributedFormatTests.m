@@ -422,10 +422,13 @@
 }
 
 - (void)testNilFormat {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
     XCTAssertThrows([[NSAttributedString alloc] vp_initWithAttributedFormat:nil arguments:NULL]);
     XCTAssertThrows([[NSAttributedString alloc] vp_initWithAttributedFormat:nil]);
     XCTAssertThrows([NSAttributedString vp_attributedStringWithAttributedFormat:nil arguments:NULL]);
     XCTAssertThrows([NSAttributedString vp_attributedStringWithAttributedFormat:nil]);
+#pragma clang diagnostic pop
 }
 
 #pragma mark -

@@ -144,4 +144,3 @@ SYNTHESIZE_VALUE_WRAPPER_INTERFACE(VPLongLongPointerValueWrapper, long long *)
 SYNTHESIZE_VALUE_WRAPPER_INTERFACE(VPUnsignedLongLongValueWrapper, unsigned long long)
 SYNTHESIZE_VALUE_WRAPPER_INTERFACE(VPDoubleValueWrapper, double)
 SYNTHESIZE_VALUE_WRAPPER_INTERFACE(VPLongDoubleValueWrapper, long double)
-

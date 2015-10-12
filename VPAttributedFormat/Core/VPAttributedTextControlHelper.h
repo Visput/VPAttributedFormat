@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
 /**
  *  The VPAttributedTextControlHelper provides ability to build
  *  attributed string for ui controls that support NSAttributedString values.
@@ -60,3 +61,4 @@
                     attributedTextSetter:(void(^)(NSAttributedString *attributedText))attributedTextSetter;
 
 @end
+NS_ASSUME_NONNULL_END

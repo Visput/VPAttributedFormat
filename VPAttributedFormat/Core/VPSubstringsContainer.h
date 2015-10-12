@@ -11,6 +11,7 @@
 @class VPSubstring;
 @class VPConversionArgument;
 
+NS_ASSUME_NONNULL_BEGIN
 /**
  *  The VPSubstringsContainer class provides suitable interface for managing
  *  VPSubstring and VPConversionSubstring objects and their arguments.
@@ -33,3 +34,4 @@
 - (NSArray *)conversionArgumentsSortedByIndex;
 
 @end
+NS_ASSUME_NONNULL_END

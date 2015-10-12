@@ -8,9 +8,6 @@
 
 #import "NSAttributedString+VPAttributedFormat.h"
 #import "VPAttributedStringFormatter.h"
-#import <objc/runtime.h>
-
-static const void *VPAttributedFormatKey = &VPAttributedFormatKey;
 
 @implementation NSAttributedString (VPAttributedFormat)
 

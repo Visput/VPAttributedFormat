@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "VPValueWrapper.h"
 
+NS_ASSUME_NONNULL_BEGIN
 /**
  *  The VPConversionArgument class represents conversion argument in string format.
  *  For example, format '%d %g' has two arguments:
@@ -27,3 +28,4 @@
                                index:(NSInteger)index;
 
 @end
+NS_ASSUME_NONNULL_END
