@@ -1,4 +1,8 @@
 # Change log
+## 1.2.4 (10.16.2015)
+1. Utilized generics for collection classes.
+2. Used nullability attrubutes for VPValueWrapper.
+
 ## 1.2.3 (10.12.2015)
 1. Fixed framework version in documentation.
 
