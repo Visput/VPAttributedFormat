@@ -10,6 +10,7 @@
 
 @class VPIntValueWrapper;
 
+NS_ASSUME_NONNULL_BEGIN
 /**
  *  The VPValueWrapper protocol declares methods for providing
  *  universal access to different value wrappers classes.
@@ -43,7 +44,10 @@
  *
  *  @param arguments Pointer to object of 'va_list' type that contains value that has to be wrapped.
  */
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnullability-completeness"
 - (void)setValueByArgumentsPointer:(va_list *)arguments;
+#pragma clang diagnostic pop
 
 /**
  *  Builds and returns formatted string by using 'format' variable and self wrapped value
@@ -144,3 +148,4 @@ SYNTHESIZE_VALUE_WRAPPER_INTERFACE(VPLongLongPointerValueWrapper, long long *)
 SYNTHESIZE_VALUE_WRAPPER_INTERFACE(VPUnsignedLongLongValueWrapper, unsigned long long)
 SYNTHESIZE_VALUE_WRAPPER_INTERFACE(VPDoubleValueWrapper, double)
 SYNTHESIZE_VALUE_WRAPPER_INTERFACE(VPLongDoubleValueWrapper, long double)
+NS_ASSUME_NONNULL_END

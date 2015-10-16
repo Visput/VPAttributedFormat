@@ -8,6 +8,7 @@
 
 #import "VPSubstring.h"
 
+NS_ASSUME_NONNULL_BEGIN
 /**
  *  This extension provides write access to VPSubstring class properties.
  *  Only VPSubstring subclasses can use this extension.
@@ -18,3 +19,4 @@
 @property (nonatomic, assign) NSRange range;
 
 @end
+NS_ASSUME_NONNULL_END

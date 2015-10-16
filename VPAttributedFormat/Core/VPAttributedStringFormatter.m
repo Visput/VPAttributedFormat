@@ -137,9 +137,9 @@
                                        arguments:(va_list)arguments {
     NSMutableAttributedString *resultAttributedString = [NSMutableAttributedString new];
     
-    NSArray *conversionArguments = substringsContainer.conversionArgumentsSortedByIndex;
+    NSArray<VPConversionArgument *> *conversionArguments = substringsContainer.conversionArgumentsSortedByIndex;
     NSInteger conversionArgumentsIndex = 0;
-    NSMutableArray *sameIndexArguments = [NSMutableArray array];
+    NSMutableArray<VPConversionArgument *> *sameIndexArguments = [NSMutableArray array];
     
     for (NSInteger i = 0; i <= substringsContainer.conversionArgumentMaxIndex; i++) {
         

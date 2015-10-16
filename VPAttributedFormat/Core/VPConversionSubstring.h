@@ -9,6 +9,7 @@
 #import "VPSubstring.h"
 
 @class VPSpecifiersProvider;
+@class VPConversionArgument;
 
 NS_ASSUME_NONNULL_BEGIN
 /**
@@ -21,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface VPConversionSubstring : VPSubstring
 
 /// Array of VPConversionArgument objects.
-@property (nonatomic, readonly, strong) NSArray *arguments;
+@property (nonatomic, readonly, strong) NSArray<VPConversionArgument *> *arguments;
 
 /// Indicates if conversion substring is complete.
 @property (nonatomic, readonly, assign) BOOL isComplete;
@@ -49,7 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return A formated attributed string built by using 'value' and 'arguments' properties.
  */
-- (NSAttributedString *_Nullable)buildAttributedSubstring;
+- (nullable NSAttributedString *)buildAttributedSubstring;
 
 @end
 NS_ASSUME_NONNULL_END

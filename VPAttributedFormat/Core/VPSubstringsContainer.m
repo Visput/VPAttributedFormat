@@ -12,9 +12,9 @@
 
 @interface VPSubstringsContainer ()
 
-@property (nonatomic, strong) NSMutableArray *mutableSubstrings;
-@property (nonatomic, strong) NSMutableArray *mutableConversionSubstrings;
-@property (nonatomic, strong) NSMutableArray *mutableConversionArguments;
+@property (nonatomic, strong) NSMutableArray<VPSubstring *> *mutableSubstrings;
+@property (nonatomic, strong) NSMutableArray<VPConversionSubstring *> *mutableConversionSubstrings;
+@property (nonatomic, strong) NSMutableArray<VPConversionArgument *> *mutableConversionArguments;
 @property (nonatomic, assign) NSInteger conversionArgumentMaxIndex;
 
 @end
@@ -42,7 +42,7 @@
     }
 }
 
-- (NSArray *)conversionArgumentsSortedByIndex {
+- (NSArray<VPConversionArgument *> *)conversionArgumentsSortedByIndex {
     return [self.mutableConversionArguments sortedArrayUsingComparator:^NSComparisonResult(VPConversionArgument *argument1, VPConversionArgument *argument2) {
         return argument1.index > argument2.index;
     }];
@@ -51,7 +51,7 @@
 #pragma mark -
 #pragma mark Property
 
-- (NSArray *)substrings {
+- (NSArray<VPSubstring *> *)substrings {
     // Return mutable value instead of immutable copy for memory usage optimization.
     return self.mutableSubstrings;
 }

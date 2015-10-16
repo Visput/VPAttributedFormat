@@ -25,16 +25,16 @@ NS_ASSUME_NONNULL_BEGIN
  *  Every string represents unique type specifier, for example: \@"lld".
  *  @see VPValueWrapper.h for full list of value wrapper classes.
  */
-@property (nonatomic, readonly, strong) NSDictionary *wrapperClassSpecifiers;
+@property (nonatomic, readonly, strong) NSDictionary<NSString *, NSSet<NSString *> *> *wrapperClassSpecifiers;
 
 /// Lazily loaded set of NSNumber objects. Every number represents unique conversion specifier char, for example: \@'d'.
-@property (nonatomic, readonly, strong) NSSet *conversionSpecifiers;
+@property (nonatomic, readonly, strong) NSSet<NSNumber *> *conversionSpecifiers;
 
 /// Lazily loaded set of NSNumber objects. Every number represents unique length modifier char, for example: \@'l'.
-@property (nonatomic, readonly, strong) NSSet *lengthModifiers;
+@property (nonatomic, readonly, strong) NSSet<NSNumber *> *lengthModifiers;
 
 /// Lazily loaded set of NSNumber objects. Every number represents unique digit char, for example: \@'1'.
-@property (nonatomic, readonly, strong) NSSet *digits;
+@property (nonatomic, readonly, strong) NSSet<NSNumber *> *digits;
 
 @end
 NS_ASSUME_NONNULL_END

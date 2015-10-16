@@ -11,16 +11,16 @@
 
 @interface VPSpecifiersProvider ()
 
-@property (nonatomic, strong) NSDictionary *wrapperClassSpecifiers;
-@property (nonatomic, strong) NSSet *conversionSpecifiers;
-@property (nonatomic, strong) NSSet *lengthModifiers;
-@property (nonatomic, strong) NSSet *digits;
+@property (nonatomic, strong) NSDictionary<NSString *, NSSet<NSString *> *> *wrapperClassSpecifiers;
+@property (nonatomic, strong) NSSet<NSNumber *> *conversionSpecifiers;
+@property (nonatomic, strong) NSSet<NSNumber *> *lengthModifiers;
+@property (nonatomic, strong) NSSet<NSNumber *> *digits;
 
 @end
 
 @implementation VPSpecifiersProvider
 
-- (NSDictionary *)wrapperClassSpecifiers {
+- (NSDictionary<NSString *, NSSet<NSString *> *> *)wrapperClassSpecifiers {
     if (_wrapperClassSpecifiers == nil) {
         _wrapperClassSpecifiers = @{NSStringFromClass([VPIdValueWrapper class])                : [NSSet setWithObjects:@"@", nil],
                                     NSStringFromClass([VPVoidPointerValueWrapper class])       : [NSSet setWithObjects:@"p", nil],
@@ -56,7 +56,7 @@
     return _wrapperClassSpecifiers;
 }
 
-- (NSSet *)conversionSpecifiers {
+- (NSSet<NSNumber *> *)conversionSpecifiers {
     if (_conversionSpecifiers == nil) {
         _conversionSpecifiers = [NSSet setWithObjects:
                                  @'@', @'d', @'D', @'o', @'O', @'u',
@@ -67,14 +67,14 @@
     return _conversionSpecifiers;
 }
 
-- (NSSet *)lengthModifiers {
+- (NSSet<NSNumber *> *)lengthModifiers {
     if (_lengthModifiers == nil) {
         _lengthModifiers = [NSSet setWithObjects: @'l', @'L', @'h', @'j', @'z', @'t', nil];
     }
     return _lengthModifiers;
 }
 
-- (NSSet *)digits {
+- (NSSet<NSNumber *> *)digits {
     if (_digits == nil) {
         _digits = [NSSet setWithObjects:@'0', @'1', @'2', @'3', @'4', @'5', @'6', @'7', @'8', @'9', nil];
     }

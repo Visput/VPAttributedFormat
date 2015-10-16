@@ -14,7 +14,7 @@
 
 @interface VPConversionSubstring ()
 
-@property (nonatomic, strong) NSMutableArray *mutableArguments;
+@property (nonatomic, strong) NSMutableArray<VPConversionArgument *> *mutableArguments;
 @property (nonatomic, assign) BOOL isComplete;
 
 @property (nonatomic, strong) VPSpecifiersProvider *provider;
@@ -95,7 +95,7 @@
 #pragma mark -
 #pragma mark Property
 
-- (NSArray *)arguments {
+- (NSArray<VPConversionArgument *> *)arguments {
     // Return mutable value instead of immutable copy for memory usage optimization.
     return self.mutableArguments;
 }
@@ -227,7 +227,7 @@
     Class wrapperClass = Nil;
 
     for (NSString *wrapperClassString in self.provider.wrapperClassSpecifiers) {
-        NSSet *specifiersSet = self.provider.wrapperClassSpecifiers[wrapperClassString];
+        NSSet<NSString *> *specifiersSet = self.provider.wrapperClassSpecifiers[wrapperClassString];
         if ([specifiersSet containsObject:argumentSpecifier]) {
             wrapperClass = NSClassFromString(wrapperClassString);
             break;

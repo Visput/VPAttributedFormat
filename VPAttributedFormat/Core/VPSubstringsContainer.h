@@ -10,6 +10,7 @@
 
 @class VPSubstring;
 @class VPConversionArgument;
+@class VPConversionSubstring;
 
 NS_ASSUME_NONNULL_BEGIN
 /**
@@ -19,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface VPSubstringsContainer : NSObject
 
 /// Array of VPSubstring and VPConversionSubstring objects.
-@property (nonatomic, readonly, strong) NSArray *substrings;
+@property (nonatomic, readonly, strong) NSArray<VPSubstring *> *substrings;
 
 /**
  *  Represents maximum index of arguments that were added as part of VPConversionSubstring objects.
@@ -31,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addSubstring:(VPSubstring *)substring;
 
 /// Returns array of VPConversionArgument objects that is sorted in ascending index.
-- (NSArray *)conversionArgumentsSortedByIndex;
+- (NSArray<VPConversionArgument *> *)conversionArgumentsSortedByIndex;
 
 @end
 NS_ASSUME_NONNULL_END
