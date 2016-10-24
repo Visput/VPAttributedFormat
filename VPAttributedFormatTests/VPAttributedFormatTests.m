@@ -161,7 +161,7 @@
 
 - (void)testIntFormat {
     int numberOfValues = 5;
-    int values[] = {1, INT_MIN, INT_MIN - 1, INT_MAX, INT_MAX + 1};
+    int values[] = {1, INT_MIN, INT_MAX};
     
     for (int i = 0; i < numberOfValues; i++) {
         int value = values[i];
@@ -173,7 +173,7 @@
 
 - (void)testIntPointerFormat {
     int numberOfValues = 5;
-    int values[] = {1, INT_MIN, INT_MIN - 1, INT_MAX, INT_MAX + 1};
+    int values[] = {1, INT_MIN, INT_MAX};
     
     for (int i = 0; i < numberOfValues; i++) {
         int value = values[i];
@@ -183,7 +183,7 @@
 
 - (void)testUnsignedIntFormat {
     int numberOfValues = 5;
-    unsigned int values[] = {1, INT_MIN, INT_MIN - 1, INT_MAX, INT_MAX + 1};
+    unsigned int values[] = {1, INT_MIN, INT_MAX};
     
     for (int i = 0; i < numberOfValues; i++) {
         unsigned int value = values[i];
@@ -199,7 +199,7 @@
 
 - (void)testWint_tFormat {
     int numberOfValues = 5;
-    wint_t values[] = {1, WINT_MIN, WINT_MIN - 1, WINT_MAX, WINT_MAX + 1};
+    wint_t values[] = {1, WINT_MIN, WINT_MAX};
     
     for (int i = 0; i < numberOfValues; i++) {
         wint_t value = values[i];
@@ -209,7 +209,7 @@
 
 - (void)testIntmax_tFormat {
     int numberOfValues = 5;
-    intmax_t values[] = {1, INTMAX_MIN, INTMAX_MIN - 1, INTMAX_MAX, INTMAX_MAX + 1};
+    intmax_t values[] = {1, INTMAX_MIN, INTMAX_MAX};
     
     for (int i = 0; i < numberOfValues; i++) {
         intmax_t value = values[i];
@@ -221,7 +221,7 @@
 
 - (void)testIntmax_tPointerFormat {
     int numberOfValues = 5;
-    intmax_t values[] = {1, INTMAX_MIN, INTMAX_MIN - 1, INTMAX_MAX, INTMAX_MAX + 1};
+    intmax_t values[] = {1, INTMAX_MIN, INTMAX_MAX};
     
     for (int i = 0; i < numberOfValues; i++) {
         intmax_t value = values[i];
@@ -231,7 +231,7 @@
 
 - (void)testUintmax_tFormat {
     int numberOfValues = 5;
-    uintmax_t values[] = {1, INTMAX_MIN, INTMAX_MIN - 1, UINTMAX_MAX, UINTMAX_MAX + 1};
+    uintmax_t values[] = {1, INTMAX_MIN, UINTMAX_MAX};
     
     for (int i = 0; i < numberOfValues; i++) {
         uintmax_t value = values[i];
@@ -274,7 +274,7 @@
 
 - (void)testPtrdiff_tFormat {
     int numberOfValues = 5;
-    ptrdiff_t values[] = {1, PTRDIFF_MIN, PTRDIFF_MIN - 1, PTRDIFF_MAX, PTRDIFF_MAX + 1};
+    ptrdiff_t values[] = {1, PTRDIFF_MIN, PTRDIFF_MAX};
     
     for (int i = 0; i < numberOfValues; i++) {
         ptrdiff_t value = values[i];
@@ -292,7 +292,7 @@
 
 - (void)testPtrdiff_tPointerFormat {
     int numberOfValues = 5;
-    ptrdiff_t values[] = {1, PTRDIFF_MIN, PTRDIFF_MIN - 1, PTRDIFF_MAX, PTRDIFF_MAX + 1};
+    ptrdiff_t values[] = {1, PTRDIFF_MIN, PTRDIFF_MAX};
     
     for (int i = 0; i < numberOfValues; i++) {
         ptrdiff_t value = values[i];
@@ -302,7 +302,7 @@
 
 - (void)testLongFormat {
     int numberOfValues = 5;
-    long values[] = {1L, LONG_MIN, LONG_MIN - 1, LONG_MAX, LONG_MAX + 1};
+    long values[] = {1L, LONG_MIN, LONG_MAX};
     
     for (int i = 0; i < numberOfValues; i++) {
         long value = values[i];
@@ -314,7 +314,7 @@
 
 - (void)testLongPointerFormat {
     int numberOfValues = 5;
-    long values[] = {1L, LONG_MIN, LONG_MIN - 1, LONG_MAX, LONG_MAX + 1};
+    long values[] = {1L, LONG_MIN, LONG_MAX};
     
     for (int i = 0; i < numberOfValues; i++) {
         long value = values[i];
@@ -339,7 +339,7 @@
 
 - (void)testLongLongFormat {
     int numberOfValues = 5;
-    long long values[] = {1LL, LONG_LONG_MIN, LONG_LONG_MIN - 1, LONG_LONG_MAX, LONG_LONG_MAX + 1};
+    long long values[] = {1LL, LONG_LONG_MIN, LONG_LONG_MAX};
     
     for (int i = 0; i < numberOfValues; i++) {
         long long value = values[i];
@@ -351,7 +351,7 @@
 
 - (void)testLongLongPointerFormat {
     int numberOfValues = 5;
-    long long values[] = {1LL, LONG_LONG_MIN, LONG_LONG_MIN - 1, LONG_LONG_MAX, LONG_LONG_MAX + 1};
+    long long values[] = {1LL, LONG_LONG_MIN, LONG_LONG_MAX};
     
     for (int i = 0; i < numberOfValues; i++) {
         long long value = values[i];

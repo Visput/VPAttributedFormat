@@ -1,4 +1,8 @@
 # Change log
+## 1.2.5 (10.23.2016)
+1. Updated project file according to Xcode 8 suggestions.
+2. Fixed warnings in unit tests.
+
 ## 1.2.4 (10.16.2015)
 1. Utilized generics for collection classes.
 2. Used nullability attrubutes for VPValueWrapper.
