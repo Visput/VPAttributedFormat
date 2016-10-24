@@ -1,4 +1,4 @@
-## VPAttributedFormat v1.2.4
+## VPAttributedFormat v1.2.5
 VPAttributedFormat project represents categories:   
  - NSAttributedString+VPAttributedFormat  
  - UILabel+VPAttributedFormat  
