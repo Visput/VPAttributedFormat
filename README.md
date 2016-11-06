@@ -17,7 +17,7 @@ Full documentation is available on [CocoaDocs](http://cocoadocs.org/docsets/VPAt
 ![example](https://cloud.githubusercontent.com/assets/7302163/8714863/a33e91c2-2b3f-11e5-93aa-f886c019ca38.png)
 
 ### Installation
-##### Cocoa Pods
+##### CocoaPods
 Add to your Podfile:  
 ```
 pod "VPAttributedFormat"
